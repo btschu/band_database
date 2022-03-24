@@ -1,6 +1,6 @@
 from flask import render_template,redirect,session,request, flash
 from flask_app import app
-from flask_app.models import director, student
+from flask_app.models import director, student, instrument
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -24,7 +24,6 @@ def director_login():
     session['director_email'] = user.director_email
     session['director_first_name'] = user.director_first_name
     session['director_last_name'] = user.director_last_name
-    session['school_id'] = user.school_id
     return redirect('/dashboard')
 
 @app.route('/registration')
@@ -40,14 +39,12 @@ def register():
         "director_last_name": request.form['director_last_name'],
         "director_email": request.form['director_email'],
         "password": bcrypt.generate_password_hash(request.form['password']),
-        "school_id": request.form['school_id'],
     }
     id = director.Director.add_new_director(data)
     session['director_id'] = id
     session['director_email'] = request.form['director_email']
     session['director_first_name'] = request.form['director_first_name']
     session['director_last_name'] = request.form['director_last_name']
-    session['school_id'] = request.form['school_id']
     return redirect('/dashboard')
 
 @app.route('/logout')

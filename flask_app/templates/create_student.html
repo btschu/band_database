@@ -28,31 +28,43 @@
         {% endwith %}
         <form class="d-flex justify-content-center" action="/student/create" method="post">
             <div class="mb-3 mr-5">
-                <!-- <input type="hidden" name="id" value="{{session.school_id}}"> -->
+                <input type="hidden" name="student_id">
                 <label for="student_first_name" class="form-label">Student First Name:</label>
                 <input type="text" class="form-control mb-3" name="student_first_name" value="">
+
                 <label for="student_last_name" class="form-label">Student Last Name:</label>
                 <input type="text" class="form-control mb-3" name="student_last_name" value="">
-                <label for="student_last_name" class="form-label">Primary Instrument:</label>
-                <input type="text" class="form-control mb-3" name="student_last_name" value="">
-                <label for="student_last_name" class="form-label">Secondary Instrument:</label>
-                <input type="text" class="form-control mb-3" name="student_last_name" value="">
-                <label for="student_last_name" class="form-label">Tuxedo Jacket:</label>
-                <input type="text" class="form-control mb-3" name="student_last_name" value="">
-                <label for="student_last_name" class="form-label">Tuxedo Pants:</label>
-                <input type="text" class="form-control mb-3" name="student_last_name" value="">
-                <label for="student_last_name" class="form-label">Concert Dress:</label>
-                <input type="text" class="form-control mb-3" name="student_last_name" value="">
-                <label for="student_last_name" class="form-label">Marching Jacket:</label>
-                <input type="text" class="form-control mb-3" name="student_last_name" value="">
-                <label for="student_last_name" class="form-label">Marching Pants:</label>
-                <input type="text" class="form-control mb-3" name="student_last_name" value="">
-                <label for="student_last_name" class="form-label">Marching Hat:</label>
-                <input type="text" class="form-control mb-3" name="student_last_name" value="">
-                <label for="student_last_name" class="form-label">Gauntlets:</label>
-                <input type="text" class="form-control mb-3" name="student_last_name" value="">
-                <label for="student_last_name" class="form-label">Colorguard Uniform:</label>
-                <input type="text" class="form-control mb-3" name="student_last_name" value="">
+
+                <label for="primary_instrument" class="form-label">Primary Instrument:</label>
+                <input type="text" class="form-control mb-3" name="primary_instrument" value="">
+
+                <label for="secondary_instrument" class="form-label">Secondary Instrument:</label>
+                <input type="text" class="form-control mb-3" name="secondary_instrument" value="">
+
+                <label for="tux_coat" class="form-label">Tuxedo Jacket:</label>
+                <input type="text" class="form-control mb-3" name="tux_coat" value="">
+
+                <label for="tux_pants" class="form-label">Tuxedo Pants:</label>
+                <input type="text" class="form-control mb-3" name="tux_pants" value="">
+
+                <label for="dress" class="form-label">Concert Dress:</label>
+                <input type="text" class="form-control mb-3" name="dress" value="">
+
+                <label for="marching_jacket" class="form-label">Marching Jacket:</label>
+                <input type="text" class="form-control mb-3" name="marching_jacket" value="">
+
+                <label for="marching_pants" class="form-label">Marching Pants:</label>
+                <input type="text" class="form-control mb-3" name="marching_pants" value="">
+
+                <label for="hat" class="form-label">Marching Hat:</label>
+                <input type="text" class="form-control mb-3" name="hat" value="">
+
+                <label for="gauntlets" class="form-label">Gauntlets:</label>
+                <input type="text" class="form-control mb-3" name="gauntlets" value="">
+
+                <label for="colorguard_uniform" class="form-label">Colorguard Uniform:</label>
+                <input type="text" class="form-control mb-3" name="colorguard_uniform" value="">
+
                 <input type='submit' value='Add Student' class="btn btn-success">
             </div>
         </form>

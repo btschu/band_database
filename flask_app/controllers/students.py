@@ -1,15 +1,15 @@
 import re
 from flask import render_template,redirect,session,request, flash
 from flask_app import app
-from flask_app.models import student, director
+from flask_app.models import student, director, instrument
 
 @app.route('/dashboard')
 def dashboard():
     if 'director_id' not in session:
         return redirect('/logout')
-    data ={
-        'id': session['director_id'],
-    }
+    # data ={
+    #     'id': session['director_id'],
+    # }
     context = {
         "all_students" : student.Student.get_all_students(),
     }
@@ -27,13 +27,19 @@ def create_student():
         return redirect('/logout')
     if not student.Student.validate_student(request.form):
         return redirect('/student/new')
-    data = {
+    student_info = {
+        "id": id,
         "student_first_name": request.form["student_first_name"],
         "student_last_name": request.form["student_last_name"],
-        "director_id": session["school_id"],
-        "school_id": session["school_id"]
+        "director_id": session["director_id"],
     }
-    student.Student.add_new_student(data)
+    student_id = student.Student.add_new_student(student_info)
+    instrument_info = {
+        "primary_instrument": request.form["primary_instrument"],
+        "secondary_instrument": request.form["secondary_instrument"],
+        "student_id": student_id
+    }
+    instrument.Instrument.add_new_instrument(instrument_info)
     return redirect('/dashboard')
 
 @app.route('/student/edit/<int:id>')
@@ -55,13 +61,18 @@ def update_student():
     student_id = request.form['id']
     if not student.Student.validate_student(request.form):
         return redirect(f'/student/edit/{student_id}')
-    data = {
+    student_info = {
         "id": request.form['id'],
         "student_first_name": request.form["student_first_name"],
         "student_last_name": request.form["student_last_name"],
-        "school_id": session['school_id']
     }
-    student.Student.update_student_information(data)
+    instrument_info = {
+        "primary_instrument": request.form["primary_instrument"],
+        "secondary_instrument": request.form["secondary_instrument"],
+        "student_id": student_id
+    }
+    instrument.Instrument.update_instrument(instrument_info)
+    student.Student.update_student_information(student_info)
     return redirect('/dashboard')
 
 @app.route('/student/view/<int:id>')

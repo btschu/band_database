@@ -14,12 +14,15 @@ class Director:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.school_id = data['school_id']
+
+    def director_full_name(self):
+        director_full_name = f"{self.director_first_name} {self.director_last_name}"
+        return director_full_name
 
     @classmethod
     def add_new_director(cls,data):
-        query = """INSERT INTO directors (director_first_name, director_last_name, director_email, password, school_id)
-        VALUES(%(director_first_name)s, %(director_last_name)s, %(director_email)s, %(password)s, %(school_id)s )"""
+        query = """INSERT INTO directors (director_first_name, director_last_name, director_email, password)
+        VALUES(%(director_first_name)s, %(director_last_name)s, %(director_email)s, %(password)s)"""
         return connectToMySQL(db).query_db(query,data)
 
     @classmethod
