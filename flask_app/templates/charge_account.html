@@ -64,67 +64,20 @@
                 </div>
             {% endif %}
         {% endwith %}
-        <form class="m-4" action="/student/create" method="post">
+        <form class="m-4" action="/student/charge" method="post">
             <div class="row d-flex justify-content-center m-4">
-
                 <div class="col p-3 me-3 ms-3 card">
-                    <h3 class="text-center text-decoration-underline mb-3">Student Name</h3>
-                    <input type="hidden" name="student_id">
-                    <!-- <label for="student_first_name" class="form-label">Student First Name:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="student_first_name" placeholder="First Name" value="">
-
-                    <!-- <label for="student_last_name" class="form-label">Student Last Name:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="student_last_name" placeholder="Last Name" value="">
+                    <h3 class="text-center text-decoration-underline mb-3">Add Item to Student Account</h3>
+                    <input type="hidden" name="student_id" value="{{student.id}}">
+                    <input type="date" class="form-control-sm mb-3" name="item_date" placeholder="Date of Charge" value="">
+                    <input type="text" class="form-control-sm mb-3" name="item_description" placeholder="Item Description" value="">
+                    <input type="text" class="form-control-sm mb-3" name="item_cost" placeholder="Cost of Item" value="">
+                    <input type="hidden" class="form-control-sm mb-3" name="item_payment" placeholder="" value="0">
                 </div>
-
-                <div class="col p-3 me-3 ms-3 card">
-                    <h3 class="text-center text-decoration-underline mb-3">Instruments</h3>
-                    <!-- <label for="concert_instrument" class="form-label">Concert Instrument:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="concert_instrument" placeholder="Concert Instrument" value="">
-
-                    <!-- <label for="marching_instrument" class="form-label">Marching Instrument:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="marching_instrument" placeholder="Marching Instrument" value="">
-
-                    <!-- <label for="jazz_instrument" class="form-label">Jazz Instrument:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="jazz_instrument" placeholder="Jazz Instrument" value="">
-                </div>
-
-                <div class="col p-3 me-3 ms-3 card">
-                    <h3 class="text-center text-decoration-underline mb-3">Concert Uniform</h3>
-                    <!-- <label for="tux_coat" class="form-label">Tuxedo Jacket:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="tux_coat" placeholder="Tuxedo Jacket #" value="">
-
-                    <!-- <label for="tux_pants" class="form-label">Tuxedo Pants:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="tux_pants" placeholder="Tuxedo Pants #" value="">
-
-                    <!-- <label for="dress" class="form-label">Concert Dress:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="dress" placeholder="Concert Dress #" value="">
-                </div>
-
-                <div class="col p-3 me-3 ms-3 card">
-                    <h3 class="text-center text-decoration-underline mb-3">Marching Uniform</h3>
-                    <!-- <label for="marching_jacket" class="form-label">Marching Jacket:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="marching_jacket" placeholder="Marching Jacket #"value="">
-
-                    <!-- <label for="marching_pants" class="form-label">Marching Pants:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="marching_pants" placeholder="Marching Pants #" value="">
-
-                    <!-- <label for="hat" class="form-label">Marching Hat:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="hat" placeholder="Marching Hat #" value="">
-
-                    <!-- <label for="gauntlets" class="form-label">Gauntlets:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="gauntlets" placeholder="Gauntlets #" value="">
-
-                    <!-- <label for="colorguard_uniform" class="form-label">Colorguard Uniform:</label> -->
-                    <input type="text" class="form-control-sm mb-3" name="colorguard_uniform" placeholder="Colorguard Uniform #" value="">
-                </div>
-
             </div>
-
             <input type='submit' value='Add Student' class="btn btn-primary float-end me-5">
         </form>
     </main>
-
     <footer class="py-4 bg-dark mt-auto fixed-bottom">
         <div class="container-fluid px-4">
             <div class="text-center small">

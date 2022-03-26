@@ -28,7 +28,8 @@ h1 {
 }
 
 body {
-    background: rgb(155, 179, 169) !important;
+    /* background: rgb(155, 179, 169) !important; */
+    background: #c7c7c1 !important;
     /* height: 100vh !important; */
     /* background: linear-gradient(blue, rgb(26, 24, 24)) !important; */
     /* background: radial-gradient(rgb(168, 160, 160), rgb(51, 51, 78)) !important; */

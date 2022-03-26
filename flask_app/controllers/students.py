@@ -1,19 +1,16 @@
 import re
 from flask import render_template,redirect,session,request, flash
 from flask_app import app
-from flask_app.models import student, director, instrument
+from flask_app.models import student, director, instrument, marching_uniform, concert_uniform, account
 
 @app.route('/dashboard')
 def dashboard():
     if 'director_id' not in session:
         return redirect('/logout')
-    # data ={
-    #     'id': session['director_id'],
-    # }
     context = {
         "all_students" : student.Student.get_all_students(),
     }
-    return render_template("index.html", **context)
+    return render_template("view_student_instruments.html", **context)
 
 @app.route('/student/new')
 def new_student():
@@ -31,15 +28,29 @@ def create_student():
         "id": id,
         "student_first_name": request.form["student_first_name"],
         "student_last_name": request.form["student_last_name"],
+        "concert_instrument": request.form["concert_instrument"],
+        "marching_instrument": request.form["marching_instrument"],
+        "jazz_instrument": request.form["jazz_instrument"],
         "director_id": session["director_id"],
     }
     student_id = student.Student.add_new_student(student_info)
-    instrument_info = {
-        "primary_instrument": request.form["primary_instrument"],
-        "secondary_instrument": request.form["secondary_instrument"],
+    marching_uniform_info = {
+        "marching_jacket": request.form["marching_jacket"],
+        "marching_pants": request.form["marching_pants"],
+        "marching_pants": request.form["marching_pants"],
+        "hat": request.form["hat"],
+        "gauntlets": request.form["gauntlets"],
+        "colorguard_uniform": request.form["colorguard_uniform"],
         "student_id": student_id
     }
-    instrument.Instrument.add_new_instrument(instrument_info)
+    concert_uniform_info = {
+        "tux_coat": request.form["tux_coat"],
+        "tux_pants": request.form["tux_pants"],
+        "dress": request.form["dress"],
+        "student_id": student_id
+    }
+    concert_uniform.Concert_Uniform.add_concert_uniform_to_student(concert_uniform_info)
+    marching_uniform.Marching_Uniform.add_marching_uniform_to_student(marching_uniform_info)
     return redirect('/dashboard')
 
 @app.route('/student/edit/<int:id>')
@@ -56,23 +67,38 @@ def edit_student(id):
 
 @app.route('/student/update',methods=['POST'])
 def update_student():
-    if 'user_id' not in session:
+    if 'director_id' not in session:
         return redirect('/logout')
-    student_id = request.form['id']
+    student_id = id
     if not student.Student.validate_student(request.form):
-        return redirect(f'/student/edit/{student_id}')
+        return redirect(f'/student/edit/{student_id}') #todo LOOK INTO THIS!!!!!!!! and line 72
     student_info = {
-        "id": request.form['id'],
+        "id": id,
         "student_first_name": request.form["student_first_name"],
         "student_last_name": request.form["student_last_name"],
+        "concert_instrument": request.form["concert_instrument"],
+        "marching_instrument": request.form["marching_instrument"],
+        "jazz_instrument": request.form["jazz_instrument"],
+        "director_id": session["director_id"],
     }
-    instrument_info = {
-        "primary_instrument": request.form["primary_instrument"],
-        "secondary_instrument": request.form["secondary_instrument"],
-        "student_id": student_id
+    marching_uniform_info = {
+        "marching_jacket": request.form["marching_jacket"],
+        "marching_pants": request.form["marching_pants"],
+        "marching_pants": request.form["marching_pants"],
+        "hat": request.form["hat"],
+        "gauntlets": request.form["gauntlets"],
+        "colorguard_uniform": request.form["colorguard_uniform"],
+        "student_id": request.form["student_id"]
     }
-    instrument.Instrument.update_instrument(instrument_info)
+    concert_uniform_info = {
+        "tux_coat": request.form["tux_coat"],
+        "tux_pants": request.form["tux_pants"],
+        "dress": request.form["dress"],
+        "student_id": request.form["student_id"]
+    }
     student.Student.update_student_information(student_info)
+    marching_uniform.Marching_Uniform.update_marching_uniform_checked_out(marching_uniform_info)
+    concert_uniform.Concert_Uniform.update_concert_uniform_checked_out(concert_uniform_info)
     return redirect('/dashboard')
 
 @app.route('/student/view/<int:id>')
@@ -86,7 +112,7 @@ def view_student(id):
     context = {
         "student" : student.Student.get_one_student(data)
     }
-    return render_template("view_student.html", **context)
+    return render_template("view_one_student.html", **context)
 
 @app.route('/student/destroy/<int:id>')
 def destroy_student(id):
