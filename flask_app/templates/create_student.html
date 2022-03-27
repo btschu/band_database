@@ -17,18 +17,18 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js" defer></script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/cr-1.5.5/date-1.1.2/datatables.min.js" defer></script>
     </head>
-<body class="fixed-top">
+<body class="">
     <nav class="d-flex justify-content-between align-items-center navbar navbar-expand navbar-dark bg-dark p-3">
-        <a class="navbar-brand ps-3" href="/dashboard">South High Band</a>
+        <a class="navbar-brand ps-3" href="/view/student/instruments"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
         <div class="d-flex">
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link" id="navbarDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">Student Information</a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item text-center" href="/dashboard">Instruments</a></li>
+                        <li><a class="dropdown-item text-center" href="/view/student/instruments">Instruments</a></li>
                         <li><a class="dropdown-item text-center" href="/view_student_concert_uniforms">Concert Uniforms</a></li>
                         <li><a class="dropdown-item text-center" href="/view_student_marching_uniforms">Marching Uniforms</a></li>
-                        <li><a class="dropdown-item text-center" href="#!">Accounts</a></li>
+                        <li><a class="dropdown-item text-center" href="/accounts/view">Accounts</a></li>
                     </ul>
                 </li>
             </ul>
@@ -46,6 +46,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        {% if session.director_id == 1 %}
+                            <li><a class="dropdown-item text-center" href="/registration">Register New Director</a></li>
+                        {% endif %}
                         <p class="dropdown-header text-center text-decoration-underline">Logged in as: {{session.director_first_name}} {{session.director_last_name}}</p>
                         <li><a class="dropdown-item text-center" href="/logout">Logout</a></li>
                     </ul>

@@ -1,7 +1,7 @@
 from re import U
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-from flask_app.models import director, instrument, marching_uniform, concert_uniform
+from flask_app.models import director, instrument, marching_uniform, concert_uniform, account
 from pprint import pp, pprint
 
 db = "music_program_database"
@@ -84,6 +84,55 @@ class Student:
         return all_students
 
     @classmethod
+    def get_student_accounts(cls):
+        query = '''
+        SELECT * FROM students
+        LEFT JOIN school_instruments ON school_instruments.student_id = students.id
+        LEFT JOIN concert_uniforms ON concert_uniforms.student_id = students.id
+        LEFT JOIN marching_uniforms ON marching_uniforms.student_id = students.id
+        LEFT JOIN financial_accounts ON financial_accounts.student_id = students.id
+        LEFT JOIN lockers ON lockers.student_id = students.id'''
+        results = connectToMySQL(db).query_db(query)
+        all_students = []
+        for row in results:
+            marching_uniform_info = {
+                "id": row["marching_uniforms.id"],
+                "marching_jacket": row["marching_jacket"],
+                "marching_pants": row["marching_pants"],
+                "hat": row["hat"],
+                "gauntlets": row["gauntlets"],
+                "colorguard_uniform": row["colorguard_uniform"],
+                "created_at": row["marching_uniforms.created_at"],
+                "updated_at": row["marching_uniforms.updated_at"],
+                "student_id": row["marching_uniforms.student_id"]
+            }
+            concert_uniform_info = {
+                "id": row["concert_uniforms.id"],
+                "tux_coat": row["tux_coat"],
+                "tux_pants": row["tux_pants"],
+                "dress": row["dress"],
+                "created_at": row["concert_uniforms.created_at"],
+                "updated_at": row["concert_uniforms.updated_at"],
+                "student_id": row["concert_uniforms.student_id"]
+            }
+            account_info = {
+                'id' : row['financial_accounts.id'],
+                'item_description' : row['item_description'],
+                'item_cost' : row['item_cost'],
+                'item_payment' : row['item_payment'],
+                'created_at' : row['financial_accounts.created_at'],
+                'updated_at' : row['financial_accounts.updated_at'],
+                'student_id' : row['financial_accounts.student_id']
+            }
+            if row['financial_accounts.id']:
+                all_students.append(cls(row))
+                all_students[-1].marching_uniforms = marching_uniform.Marching_Uniform(marching_uniform_info)
+                all_students[-1].concert_uniforms = concert_uniform.Concert_Uniform(concert_uniform_info)
+                all_students[-1].financial_accounts = account.Account(account_info)
+            pprint(row, sort_dicts= False)
+        return all_students
+
+    @classmethod
     def get_one_student(cls, data):
         query = """
         SELECT * FROM students
@@ -116,9 +165,71 @@ class Student:
                 "updated_at": row["concert_uniforms.updated_at"],
                 "student_id": row["concert_uniforms.student_id"]
             }
+            account_info = {
+                'id' : row['financial_accounts.id'],
+                'item_description' : row['item_description'],
+                'item_cost' : row['item_cost'],
+                'item_payment' : row['item_payment'],
+                'created_at' : row['financial_accounts.created_at'],
+                'updated_at' : row['financial_accounts.updated_at'],
+                'student_id' : row['financial_accounts.student_id']
+            }
         all_students.append(cls(row))
         all_students[-1].marching_uniforms = marching_uniform.Marching_Uniform(marching_uniform_info)
         all_students[-1].concert_uniforms = concert_uniform.Concert_Uniform(concert_uniform_info)
+        if row['financial_accounts.student_id'] == all_students[-1].id:
+            
+            all_students[-1].financial_accounts = account.Account(account_info)
+        student = all_students[0]
+        pprint(row, sort_dicts=False)
+        return student
+
+    @classmethod
+    def get_one_charge(cls, data):
+        query = """
+        SELECT * FROM students
+        LEFT JOIN school_instruments ON school_instruments.student_id = students.id
+        LEFT JOIN concert_uniforms ON concert_uniforms.student_id = students.id
+        LEFT JOIN marching_uniforms ON marching_uniforms.student_id = students.id
+        LEFT JOIN financial_accounts ON financial_accounts.student_id = students.id
+        LEFT JOIN lockers ON lockers.student_id = students.id
+        WHERE financial_accounts.id = %(id)s;"""
+        results = connectToMySQL(db).query_db(query, data)
+        all_students = []
+        for row in results:
+            marching_uniform_info = {
+                "id": row["marching_uniforms.id"],
+                "marching_jacket": row["marching_jacket"],
+                "marching_pants": row["marching_pants"],
+                "hat": row["hat"],
+                "gauntlets": row["gauntlets"],
+                "colorguard_uniform": row["colorguard_uniform"],
+                "created_at": row["marching_uniforms.created_at"],
+                "updated_at": row["marching_uniforms.updated_at"],
+                "student_id": row["marching_uniforms.student_id"]
+            }
+            concert_uniform_info = {
+                "id": row["concert_uniforms.id"],
+                "tux_coat": row["tux_coat"],
+                "tux_pants": row["tux_pants"],
+                "dress": row["dress"],
+                "created_at": row["concert_uniforms.created_at"],
+                "updated_at": row["concert_uniforms.updated_at"],
+                "student_id": row["concert_uniforms.student_id"]
+            }
+            account_info = {
+                'id' : row['financial_accounts.id'],
+                'item_description' : row['item_description'],
+                'item_cost' : row['item_cost'],
+                'item_payment' : row['item_payment'],
+                'created_at' : row['financial_accounts.created_at'],
+                'updated_at' : row['financial_accounts.updated_at'],
+                'student_id' : row['financial_accounts.student_id']
+            }
+        all_students.append(cls(row))
+        all_students[-1].marching_uniforms = marching_uniform.Marching_Uniform(marching_uniform_info)
+        all_students[-1].concert_uniforms = concert_uniform.Concert_Uniform(concert_uniform_info)
+        all_students[-1].financial_accounts = account.Account(account_info)
         student = all_students[0]
         pprint(row, sort_dicts=False)
         return student

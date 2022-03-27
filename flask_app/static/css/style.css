@@ -46,4 +46,12 @@ body {
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover #navbarDropdown {background-color: #007bff;}
+.dropdown:hover #navbarDropdown {
+  background-color: #007bff;
+}
+
+img {
+  height: 50px;
+}
+
+

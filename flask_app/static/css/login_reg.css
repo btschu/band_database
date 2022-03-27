@@ -35,3 +35,17 @@ body {
     /* background: radial-gradient(rgb(168, 160, 160), rgb(51, 51, 78)) !important; */
     /* background-image: url(../img/red_background.jpg); */
 }
+
+/* Change color of dropdown links on hover */
+.dropdown-menu a:hover {
+    background-color: #007bff !important;
+}
+
+  /* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+    right: 0;
+}
+
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover #navbarDropdown {background-color: #007bff;}

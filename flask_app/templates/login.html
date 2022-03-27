@@ -11,6 +11,8 @@
 <body>
     <div class="d-flex justify-content-center align-items-center text-center mt-4">
         <form id="login_reg_form" class="content bg-transparent bg-opacity-25 p-3 col-5" action="/login" method="post">
+            <img src="{{ url_for('static', filename='img/music_program_logo.png') }}">
+            <!-- <h1>South High Band Database</h1> -->
             <div class="form-group p-4">
                 <div class="d-flex justify-content-center pb-3">
                     <img class="" src="{{ url_for('static', filename='img/login_icon.png') }}">
@@ -30,8 +32,15 @@
                 <input type="password" class="form-control text-center" name="password" aria-describedby="helpId" placeholder="Password">
                 <input type='submit' value='Login' class="btn btn-secondary mt-4">
             </div>
-            <p>Don't have an account? <a href="/registration">Create one here!</a></p>
+            <!-- <p>Don't have an account? <a href="/registration">Create one here!</a></p> -->
         </form>
     </div>
+    <footer class="py-4 bg-dark mt-auto fixed-bottom">
+        <div class="container-fluid px-4">
+            <div class="text-center small">
+                <div class="text-muted">Copyright &copy; Your Website 2022</div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

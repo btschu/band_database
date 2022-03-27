@@ -3,8 +3,8 @@ from flask import render_template,redirect,session,request, flash
 from flask_app import app
 from flask_app.models import student, director, instrument, marching_uniform, concert_uniform, account
 
-@app.route('/dashboard')
-def dashboard():
+@app.route('/view/student/instruments')
+def view_student_instruments():
     if 'director_id' not in session:
         return redirect('/logout')
     context = {
@@ -51,7 +51,7 @@ def create_student():
     }
     concert_uniform.Concert_Uniform.add_concert_uniform_to_student(concert_uniform_info)
     marching_uniform.Marching_Uniform.add_marching_uniform_to_student(marching_uniform_info)
-    return redirect('/dashboard')
+    return redirect('/view/student/instruments')
 
 @app.route('/student/edit/<int:id>')
 def edit_student(id):
@@ -99,7 +99,7 @@ def update_student():
     student.Student.update_student_information(student_info)
     marching_uniform.Marching_Uniform.update_marching_uniform_checked_out(marching_uniform_info)
     concert_uniform.Concert_Uniform.update_concert_uniform_checked_out(concert_uniform_info)
-    return redirect('/dashboard')
+    return redirect('/view/student/instruments')
 
 @app.route('/student/view/<int:id>')
 def view_student(id):
@@ -110,7 +110,8 @@ def view_student(id):
         "director_id":session['director_id'],
     }
     context = {
-        "student" : student.Student.get_one_student(data)
+        "student" : student.Student.get_one_student(data),
+        "all_charges" : student.Student.get_student_accounts()
     }
     return render_template("view_one_student.html", **context)
 
@@ -122,4 +123,5 @@ def destroy_student(id):
         "id":id
     }
     student.Student.delete_student(data)
-    return redirect('/dashboard')
+    return redirect('/view/student/instruments')
+

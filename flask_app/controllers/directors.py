@@ -24,14 +24,22 @@ def director_login():
     session['director_email'] = user.director_email
     session['director_first_name'] = user.director_first_name
     session['director_last_name'] = user.director_last_name
-    return redirect('/dashboard')
+    return redirect('/view/student/instruments')
 
 @app.route('/registration')
 def registration():
+    if 'director_id' not in session:
+        return redirect('/logout')
+    if session['director_id'] != 1:
+        return redirect('/logout')
     return render_template('registration.html')
 
 @app.route('/register',methods=['POST'])
 def register():
+    if 'director_id' not in session:
+        return redirect('/logout')
+    if session['director_id'] != 1:
+        return redirect('/logout')
     if not director.Director.validate_director(request.form):
         return redirect('/registration')
     data ={
@@ -45,7 +53,7 @@ def register():
     session['director_email'] = request.form['director_email']
     session['director_first_name'] = request.form['director_first_name']
     session['director_last_name'] = request.form['director_last_name']
-    return redirect('/dashboard')
+    return redirect('/view/student/instruments')
 
 @app.route('/logout')
 def logout():
