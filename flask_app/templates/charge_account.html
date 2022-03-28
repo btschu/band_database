@@ -18,68 +18,105 @@
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/cr-1.5.5/date-1.1.2/datatables.min.js" defer></script>
     </head>
 <body class="">
-    <nav class="d-flex justify-content-between align-items-center navbar navbar-expand navbar-dark bg-dark p-3">
-        <a class="navbar-brand ps-3" href="/view/student/instruments"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
-        <div class="d-flex">
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link" id="navbarDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">Student Information</a>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item text-center" href="/view/student/instruments">Instruments</a></li>
-                        <li><a class="dropdown-item text-center" href="/view_student_concert_uniforms">Concert Uniforms</a></li>
-                        <li><a class="dropdown-item text-center" href="/view_student_marching_uniforms">Marching Uniforms</a></li>
-                        <li><a class="dropdown-item text-center" href="/accounts/view">Accounts</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Databases</a>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item text-center" href="#!">Music Library</a></li>
-                        <li><a class="dropdown-item text-center" href="#!">Lockers</a></li>
-                        <li><a class="dropdown-item text-center" href="#!">School Instruments</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        {% if session.director_id == 1 %}
-                            <li><a class="dropdown-item text-center" href="/registration">Register New Director</a></li>
-                        {% endif %}
-                        <p class="dropdown-header text-center text-decoration-underline">Logged in as: {{session.director_first_name}} {{session.director_last_name}}</p>
-                        <li><a class="dropdown-item text-center" href="/logout">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
+
+<!-- navbar -->
+<nav class="d-flex justify-content-between align-items-center navbar navbar-expand navbar-dark bg-dark p-3">
+    <a class="navbar-brand ps-3" href="/view/student/instruments"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
+    <div class="d-flex">
+
+<!-- Navbar Search-->
+    <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
         </div>
-    </nav>
+    </form> -->
+
+<!-- view menu -->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link" id="navbarDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">Student Information</a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item text-center" href="/view/students/all">All Students</a></li>
+                    <li><a class="dropdown-item text-center" href="/accounts/view">Accounts</a></li>
+                    <li><a class="dropdown-item text-center" href="/view/student/instruments">Instruments</a></li>
+                    <li><a class="dropdown-item text-center" href="/view_student_concert_uniforms">Concert Uniforms</a></li>
+                    <li><a class="dropdown-item text-center" href="/view_student_marching_uniforms">Marching Uniforms</a></li>
+                </ul>
+            </li>
+        </ul>
+
+<!-- database menu -->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Databases</a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item text-center" href="#!">Music Library</a></li>
+                    <li><a class="dropdown-item text-center" href="#!">Lockers</a></li>
+                    <li><a class="dropdown-item text-center" href="#!">School Instruments</a></li>
+                </ul>
+            </li>
+        </ul>
+
+<!-- add new student -->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-plus fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
+                    <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
+                    <li><a class="dropdown-item text-center" href="/student/new">Music to Library</a></li>
+                    <li><a class="dropdown-item text-center" href="/student/new">School Instrument</a></li>
+                    <li><a class="dropdown-item text-center" href="/student/new">Locker</a></li>
+                </ul>
+            </li>
+        </ul>
+
+<!-- logout and add new director -->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <p class="dropdown-header text-center text-decoration-underline">Logged in as: {{session.director_first_name}} {{session.director_last_name}}</p>
+                    {% if session.director_id == 1 %}
+                        <li><a class="dropdown-item text-center" href="/registration">Register New Director</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item text-center" href="/logout">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- main container -->
     <main>
-        <h1 class="m-3 text-center">Add New Student</h1>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="mt-4 mb-4 col-6 mx-auto alert-danger border rounded border-danger p-2">
-                    {% for message in messages %}
-                        <p class='pt-2 text-center text-danger'><em>{{ message }}</em></p>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
+
+<!-- charge account form with validation -->
         <form class="m-4" action="/student/charge" method="post">
             <div class="row d-flex justify-content-center m-4">
-                <div class="col p-3 me-3 ms-3 card">
-                    <h3 class="text-center text-decoration-underline mb-3">Add Item to Student Account</h3>
+                <div class="col-5 p-3 me-3 ms-3 card">
+                    <h3 class="text-center text-decoration-underline mb-3">Add Item to {{student.student_full_name()}}'s Account</h3>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <div class="mt-4 mb-4 col-6 mx-auto alert-danger border rounded border-danger p-2">
+                                {% for message in messages %}
+                                    <p class='pt-2 text-center text-danger'><em>{{ message }}</em></p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
                     <input type="hidden" name="student_id" value="{{student.id}}">
                     <input type="text" class="form-control-sm mb-3" name="item_description" placeholder="Item Description" value="">
                     <input type="text" class="form-control-sm mb-3" name="item_cost" placeholder="Cost of Item" value="">
                     <input type="hidden" class="form-control-sm mb-3" name="item_payment" placeholder="" value="0">
+                    <input type='submit' value="Charge {{student.student_first_name}}'s Account" class="btn btn-primary">
+                    <a href="/account/view/{{student.id}}" class="btn btn-danger mt-3">Cancel</a>
                 </div>
             </div>
-            <input type='submit' value='Add Student' class="btn btn-primary float-end me-5">
         </form>
     </main>
+
+<!-- footer -->
     <footer class="py-4 bg-dark mt-auto fixed-bottom">
         <div class="container-fluid px-4">
             <div class="text-center small">

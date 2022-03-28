@@ -10,6 +10,11 @@ $(document).ready( function () {
     });
 });
 
+// go back button
+function goBack() {
+    window.history.back();
+}
+
 // Toggle the side navigation
 
 // window.addEventListener('DOMContentLoaded', event => {

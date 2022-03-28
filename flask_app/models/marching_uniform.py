@@ -30,5 +30,5 @@ class Marching_Uniform:
         query = """
         UPDATE marching_uniforms
         SET marching_jacket=%(marching_jacket)s, marching_pants=%(marching_pants)s, hat=%(hat)s, gauntlets=%(gauntlets)s, colorguard_uniform=%(colorguard_uniform)s, student_id=%(student_id)s
-        WHERE id = %(student_id)s;"""
+        WHERE student_id = %(student_id)s;"""
         return connectToMySQL(db).query_db(query,data)

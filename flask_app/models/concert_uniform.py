@@ -28,5 +28,5 @@ class Concert_Uniform:
         query = """
         UPDATE concert_uniforms
         SET tux_coat=%(tux_coat)s, tux_pants=%(tux_pants)s, dress=%(dress)s, student_id=%(student_id)s
-        WHERE id = %(student_id)s;"""
+        WHERE student_id = %(student_id)s;"""
         return connectToMySQL(db).query_db(query,data)

@@ -3,14 +3,14 @@ from flask import render_template,redirect,session,request, flash
 from flask_app import app
 from flask_app.models import student, director, instrument, marching_uniform, concert_uniform, account
 
-@app.route('/view/student/instruments')
-def view_student_instruments():
+@app.route('/view/students/all')
+def view_all_students():
     if 'director_id' not in session:
         return redirect('/logout')
     context = {
         "all_students" : student.Student.get_all_students(),
     }
-    return render_template("view_student_instruments.html", **context)
+    return render_template("view_all_students.html", **context)
 
 @app.route('/student/new')
 def new_student():
@@ -61,7 +61,7 @@ def edit_student(id):
         "id":id
     }
     context = {
-        "edit" : student.Student.get_one_student(data),
+        "edit" : student.Student.get_one_student(data)
     }
     return render_template("edit_student.html", **context)
 
@@ -69,11 +69,11 @@ def edit_student(id):
 def update_student():
     if 'director_id' not in session:
         return redirect('/logout')
-    student_id = id
-    if not student.Student.validate_student(request.form):
-        return redirect(f'/student/edit/{student_id}') #todo LOOK INTO THIS!!!!!!!! and line 72
+    # student_id = id
+    # if not student.Student.validate_student(request.form):
+    #     return redirect(f'/student/edit/{student_id}') #todo LOOK INTO THIS!!!!!!!! and line 72
     student_info = {
-        "id": id,
+        "id": request.form['id'],
         "student_first_name": request.form["student_first_name"],
         "student_last_name": request.form["student_last_name"],
         "concert_instrument": request.form["concert_instrument"],
@@ -99,21 +99,7 @@ def update_student():
     student.Student.update_student_information(student_info)
     marching_uniform.Marching_Uniform.update_marching_uniform_checked_out(marching_uniform_info)
     concert_uniform.Concert_Uniform.update_concert_uniform_checked_out(concert_uniform_info)
-    return redirect('/view/student/instruments')
-
-@app.route('/student/view/<int:id>')
-def view_student(id):
-    if 'director_id' not in session:
-        return redirect('/logout')
-    data = {
-        "id":id,
-        "director_id":session['director_id'],
-    }
-    context = {
-        "student" : student.Student.get_one_student(data),
-        "all_charges" : student.Student.get_student_accounts()
-    }
-    return render_template("view_one_student.html", **context)
+    return redirect('/view/students/all')
 
 @app.route('/student/destroy/<int:id>')
 def destroy_student(id):
