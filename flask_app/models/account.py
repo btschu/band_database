@@ -15,12 +15,11 @@ class Account:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.student_id = data['student_id']
-        # self.financial_accounts = None
 
-    # def account_balance(self):
-    #     account_balance = 0
-    #     self.item_cost += account_balance
-    #     return account_balance
+    def account_balance(self):
+        account_balance = 0
+        self.item_cost += account_balance
+        return account_balance
 
     @classmethod
     def charge_account(cls,data):
@@ -57,7 +56,7 @@ class Account:
         }
         this_charge = cls(results[0])
         this_charge.financial_accounts = student.Student(student_info)
-        pprint(student_info)
+        pprint(results)
         pprint(this_charge.financial_accounts)
         return this_charge
 
@@ -83,11 +82,38 @@ class Account:
             }
             this_charge.append(cls(row))
             this_charge[-1].financial_accounts = (student.Student(student_info))
-            # if len(this_charge) == 0:
-            # if financial_accounts['id'] and financial_accounts['id'] != this_charge[-1].id:
-            #     this_charge.append(cls(row))
-            # if *****['*****_*****.id'] and len(this_charge[-1].financial_accounts) == 0:
-            # if *****['*****_id'] and this_charge[-1].financial_accounts[-1] != *****['*****.id']:
-            #     this_charge[-1].financial_accounts.append(student.Student(student_info))
             pprint(row,sort_dicts = False)
         return this_charge
+
+    @classmethod
+    def get_total_amount_owed(cls,data):
+        item_cost = query  = '''
+        SELECT SUM(item_cost)
+        FROM financial_accounts;
+        WHERE id = %(id)s;'''
+        item_payment = query = '''
+        SELECT SUM(item_payment)
+        FROM financial_accounts;
+        WHERE id = %(id)s;'''
+        connectToMySQL(db).query_db(query,data)
+        amount_owed = (item_cost - item_payment)
+        pprint(amount_owed,sort_dicts = False)
+        return amount_owed
+
+    @classmethod
+    def get_sum_item_payment(cls,data):
+        query  = '''
+        SELECT SUM(item_payment)
+        FROM financial_accounts;'''
+        result = connectToMySQL(db).query_db(query,data)
+        print(result)
+        return result
+
+    @classmethod
+    def get_sum_item_cost(cls,data):
+        query  = '''
+        SELECT SUM(item_cost)
+        FROM financial_accounts;;'''
+        result = connectToMySQL(db).query_db(query,data)
+        print(result)
+        return result

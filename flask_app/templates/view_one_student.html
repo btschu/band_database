@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>View Marching Uniforms Checked Out</title>
+        <title>Edit Student</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/cr-1.5.5/date-1.1.2/datatables.min.css"/>        <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.5/datatables.min.js" defer></script>
@@ -21,7 +21,7 @@
 
 <!-- navbar -->
 <nav class="d-flex justify-content-between align-items-center navbar navbar-expand navbar-dark bg-dark p-3">
-    <a class="navbar-brand ps-3" href="/view/student/instruments"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
+    <a class="navbar-brand ps-3" href="/view/students/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
     <div class="d-flex">
 
 <!-- Navbar Search-->
@@ -33,7 +33,7 @@
     </form> -->
 
 <!-- view menu -->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">Student Information</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
@@ -41,9 +41,10 @@
                     <li><a class="dropdown-item text-center" href="/accounts/view">Accounts</a></li>
                     <li><a class="dropdown-item text-center" href="/view/student/instruments">Instruments</a></li>
                     <li><a class="dropdown-item text-center" href="/view_student_concert_uniforms">Concert Uniforms</a></li>
+                    <li><a class="dropdown-item text-center" href="/view_student_marching_uniforms">Marching Uniforms</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
 
 <!-- database menu -->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -89,65 +90,99 @@
 
 <!-- main container -->
     <main>
-        <div class="container-fluid px-4">
-            <div class="card mt-5">
 
-<!-- table header -->
-                <div class="d-flex justify-content-between align-items-center p-3">
-                    <div>
-                        <i class="fas fa-table me-1"></i>
-                        Marching Uniforms
-                    </div>
-                </div>
-                <div class="card-body">
+<!-- page title -->
+        <h1 class="m-3 text-center">{{edit.student_full_name()}}</h1>
 
-<!-- table -->
-                    <table id="datatablesSimple" class="table table-striped table-hover table-secondary table-bordered pt-3 pb-3">
-                        <thead>
-                            <tr>
-                                <!-- <th>Full Name</th> -->
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Marching Jacket</th>
-                                <th>Marching Pants</th>
-                                <th>Marching Hat</th>
-                                <th>Gauntlets</th>
-                                <th>Colorguard Uniform</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for student in all_students %}
-                                <tr>
-                                    <!-- <td><a href="/student/view/{{student.id}}">{{student.student_full_name()}}</a></td> -->
-                                    <td>{{student.student_first_name}}</td>
-                                    <td>{{student.student_last_name}}</td>
-                                    <td>{{student.marching_uniforms.marching_jacket}}</td>
-                                    <td>{{student.marching_uniforms.marching_pants}}</td>
-                                    <td>{{student.marching_uniforms.hat}}</td>
-                                    <td>{{student.marching_uniforms.gauntlets}}</td>
-                                    <td>{{student.marching_uniforms.colorguard_uniform}}</td>
-                                    <td>
-                                        <a class="btn-sm text-decoration-none btn-primary" href="/student/edit/{{student.id}}">Student Info</a>
-                                        <a class="btn-sm text-decoration-none btn-primary" href="/account/view/{{student.id}}">Account</a>
-                                        <a class="btn-sm text-decoration-none btn-danger" href="/student/destroy/{{student.id}}">Delete Student</a>
-                                    </td>
-                                </tr>
+<!-- edit student FORM with validation -->
+        <form class="" action="/student/update" method="post">
+            <div class="row d-flex justify-content-around me-4 ms-4">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="mt-4 mb-4 col-6 mx-auto alert-danger border rounded border-danger p-2">
+                            {% for message in messages %}
+                                <p class='pt-2 text-center text-danger'><em>{{ message }}</em></p>
                             {% endfor %}
-                        </tbody>
-                    </table>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+    <!-- Edit Student Name -->
+                <div class="col p-3 me-3 ms-3 card">
+                    <h3 class="text-center text-decoration-underline mb-3">Name</h3>
+                    <input type="hidden" name="student_id" value={{edit.id}}>
+                    <input type="hidden" name="id" value={{edit.id}}>
+                    <label for="student_first_name" class="form-label">Student First Name:</label>
+                    <input type="text" class="form-control-sm mb-3" name="student_first_name" value="{{ edit.student_first_name }}">
+
+                    <label for="student_last_name" class="form-label">Student Last Name:</label>
+                    <input type="text" class="form-control-sm mb-3" name="student_last_name" value="{{ edit.student_last_name }}">
+                </div>
+
+    <!-- Edit instrument info -->
+                <div class="col p-3 me-3 ms-3 card">
+                    <h3 class="text-center text-decoration-underline mb-3">Instruments</h3>
+                    <label for="concert_instrument" class="form-label">Concert Instrument:</label>
+                    <input type="text" class="form-control-sm mb-3" name="concert_instrument" value="{{ edit.concert_instrument }}">
+
+                    <label for="marching_instrument" class="form-label">Marching Instrument:</label>
+                    <input type="text" class="form-control-sm mb-3" name="marching_instrument" value="{{ edit.marching_instrument }}">
+
+                    <label for="jazz_instrument" class="form-label">Jazz Instrument:</label>
+                    <input type="text" class="form-control-sm mb-3" name="jazz_instrument" value="{{ edit.jazz_instrument }}">
+                </div>
+
+    <!-- Edit Concert Uniform info -->
+                <div class="col p-3 me-3 ms-3 card">
+                    <h3 class="text-center text-decoration-underline mb-3">Concert Uniform</h3>
+                    <label for="tux_coat" class="form-label">Tuxedo Jacket:</label>
+                    <input type="text" class="form-control-sm mb-3" name="tux_coat" value="{{ edit.concert_uniforms.tux_coat }}">
+
+                    <label for="tux_pants" class="form-label">Tuxedo Pants:</label>
+                    <input type="text" class="form-control-sm mb-3" name="tux_pants" value="{{ edit.concert_uniforms.tux_coat }}">
+
+                    <label for="dress" class="form-label">Concert Dress:</label>
+                    <input type="text" class="form-control-sm mb-3" name="dress" value="{{ edit.concert_uniforms.dress }}">
+                </div>
+
+    <!-- Edit Marching Uniform info -->
+                <div class="col p-3 me-3 ms-3 card">
+                    <h3 class="text-center text-decoration-underline mb-3">Marching Uniform</h3>
+                    <label for="marching_jacket" class="form-label">Marching Jacket:</label>
+                    <input type="text" class="form-control-sm mb-3" name="marching_jacket" value="{{ edit.marching_uniforms.marching_jacket }}">
+
+                    <label for="marching_pants" class="form-label">Marching Pants:</label>
+                    <input type="text" class="form-control-sm mb-3" name="marching_pants" value="{{ edit.marching_uniforms.marching_pants }}">
+
+                    <label for="hat" class="form-label">Marching Hat:</label>
+                    <input type="text" class="form-control-sm mb-3" name="hat" value="{{ edit.marching_uniforms.hat }}">
+
+                    <label for="gauntlets" class="form-label">Gauntlets:</label>
+                    <input type="text" class="form-control-sm mb-3" name="gauntlets" value="{{ edit.marching_uniforms.gauntlets }}">
+
+                    <label for="colorguard_uniform" class="form-label">Colorguard Uniform:</label>
+                    <input type="text" class="form-control-sm mb-3" name="colorguard_uniform" value="{{ edit.marching_uniforms.colorguard_uniform }}">
                 </div>
             </div>
-        </div>
+
+<!-- buttons -->
+            <div class="float-end mt-3 mb-5 me-5">
+                <!-- <button class="btn btn-primary" onclick="goBack()">Go Back</button> -->
+                <a href="/view/students/all" class="btn btn-secondary">Home</a>
+                <a href="/account/view/{{edit.id}}" class="btn btn-primary">View {{edit.student_first_name}}'s Account</a>
+                <input type='submit' value='Update' class="btn btn-success ">
+                <a class="btn btn-danger" href="/student/destroy/{{edit.id}}">Delete {{edit.student_full_name()}}</a>
+            </div>
+        </form>
     </main>
 
 <!-- footer -->
-    <footer class="py-4 bg-dark mt-auto fixed-bottom">
+    <!-- <footer class="py-4 bg-dark mt-auto fixed-bottom">
         <div class="container-fluid px-4">
             <div class="text-center small">
                 <div class="text-muted">Copyright &copy; Your Website 2022</div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 </body>
 </html>

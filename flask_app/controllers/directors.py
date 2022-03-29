@@ -26,6 +26,7 @@ def director_login():
     session['director_last_name'] = user.director_last_name
     return redirect('/view/student/instruments')
 
+# register director
 @app.route('/registration')
 def registration():
     if 'director_id' not in session:
@@ -55,6 +56,7 @@ def register():
     session['director_last_name'] = request.form['director_last_name']
     return redirect('/view/student/instruments')
 
+# logout
 @app.route('/logout')
 def logout():
     session.clear()

@@ -21,7 +21,7 @@
 
 <!-- navbar -->
 <nav class="d-flex justify-content-between align-items-center navbar navbar-expand navbar-dark bg-dark p-3">
-    <a class="navbar-brand ps-3" href="/view/student/instruments"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
+    <a class="navbar-brand ps-3" href="/view/students/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
     <div class="d-flex">
 
 <!-- Navbar Search-->
@@ -33,7 +33,7 @@
     </form> -->
 
 <!-- view menu -->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">Student Information</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
@@ -44,7 +44,7 @@
                     <li><a class="dropdown-item text-center" href="/view_student_marching_uniforms">Marching Uniforms</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
 
 <!-- database menu -->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -104,18 +104,19 @@
                         </div>
                     {% endif %}
                 {% endwith %}
-                <h3 class="text-center text-decoration-underline mb-3">Edit Student Account or Add Payment</h3>
-                <input type="hidden" name="id" value="{{edit.financial_accounts.id}}">
-                <input type="hidden" name="student_id" value="{{edit.id}}">
-                <label for="item_description" class="form-label">Item Description</label>
+                <h3 class="text-center text-decoration-underline mb-3">Edit or Add Payment for {{edit.financial_accounts.student_first_name}}</h3>
+                <input type="hidden" name="id" value="{{edit.id}}">
+                <input type="hidden" name="student_id" value="{{edit.student_id}}">
+                <label for="item_description" class="form-label">Item Description:</label>
                 <input type="text" class="form-control-sm mb-3" name="item_description" placeholder="Item Description" value="{{edit.item_description}}">
                 <label for="item_cost" class="form-label">Cost:</label>
                 <input type="text" class="form-control-sm mb-3" name="item_cost" placeholder="Cost of Item" value="{{edit.item_cost}}">
                 <label for="item_payment" class="form-label">Payment Amount:</label>
                 <input type="number" class="form-control-sm mb-3" name="item_payment" placeholder="" value="{{edit.item_payment}}">
-                <input type='submit' value='Update' class="btn btn-primary mt-2 mb-2">
-                <!-- <button class="btn btn-danger" onclick="goBack()">Cancel</button> -->
-                <a href="/accounts/view" class="btn btn-danger mt-3">Cancel</a>
+                <div class="d-flex justify-content-center">
+                    <a href="/account/view/{{edit.student_id}}" class="btn btn-danger mx-1">Cancel</a>
+                    <input type='submit' value='Update' class="btn btn-success me-1">
+                </div>
             </div>
         </div>
     </form>

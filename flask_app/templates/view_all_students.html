@@ -21,7 +21,7 @@
 
 <!-- navbar -->
 <nav class="d-flex justify-content-between align-items-center navbar navbar-expand navbar-dark bg-dark p-3">
-    <a class="navbar-brand ps-3" href="/view/student/instruments"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
+    <a class="navbar-brand ps-3" href="/view/students/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
     <div class="d-flex">
 
 <!-- Navbar Search-->
@@ -33,7 +33,7 @@
     </form> -->
 
 <!-- view menu -->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">Student Information</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
@@ -43,7 +43,7 @@
                     <li><a class="dropdown-item text-center" href="/view_student_marching_uniforms">Marching Uniforms</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
 
 <!-- database menu -->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -98,15 +98,31 @@
                         <i class="fas fa-table me-1"></i>
                         All Students
                     </div>
+                    <div>
+                        <a class="btn-sm text-decoration-none btn-primary" href="/accounts/view">View Student Accounts</a>
+                        <a class="btn-sm text-decoration-none btn-success" href="/student/new">Add New Student</a>
+                    </div>
                 </div>
+
                 <div class="card-body">
 <!-- table -->
-                    <table id="datatablesSimple" class="table table-striped table-hover table-secondary table-bordered pt-3 pb-3">
+                    <table id="datatablesSimple" class="table table-striped table-hover table-light table-bordered pt-3 pb-3">
                         <thead>
                             <tr>
                                 <!-- <th>Full Name</th> -->
                                 <th>First Name</th>
                                 <th>Last Name</th>
+                                <th>Concert Instrument</th>
+                                <th>Marching Instrument</th>
+                                <th>Jazz Instrument</th>
+                                <th>Tuxedo Jacket</th>
+                                <th>Tuxedo Pants</th>
+                                <th>Concert Dress</th>
+                                <th>Marching Jacket</th>
+                                <th>Marching Pants</th>
+                                <th>Marching Hat</th>
+                                <th>Gauntlets</th>
+                                <th>Colorguard Uniform</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -116,14 +132,46 @@
                                     <!-- <td><a href="/student/view/{{student.id}}">{{student.student_full_name()}}</a></td> -->
                                     <td>{{student.student_first_name}}</td>
                                     <td>{{student.student_last_name}}</td>
-                                    <td>
+                                    <td>{{student.concert_instrument}}</td>
+                                    <td>{{student.marching_instrument}}</td>
+                                    <td>{{student.jazz_instrument}}</td>
+                                    <td>{{student.concert_uniforms.tux_coat}}</td>
+                                    <td>{{student.concert_uniforms.tux_pants}}</td>
+                                    <td>{{student.concert_uniforms.dress}}</td>
+                                    <td>{{student.marching_uniforms.marching_jacket}}</td>
+                                    <td>{{student.marching_uniforms.marching_pants}}</td>
+                                    <td>{{student.marching_uniforms.hat}}</td>
+                                    <td>{{student.marching_uniforms.gauntlets}}</td>
+                                    <td>{{student.marching_uniforms.colorguard_uniform}}</td>
+                                    <td class="text-right">
                                         <a class="btn-sm text-decoration-none btn-primary" href="/student/edit/{{student.id}}">Student Info</a>
                                         <a class="btn-sm text-decoration-none btn-primary" href="/account/view/{{student.id}}">Account</a>
+                                        <a class="btn-sm text-decoration-none btn-success" href="/student/charge/{{student.id}}">Charge Account</a>
+                                        <!-- <a class="btn-sm text-decoration-none btn-success" href="/charge/edit/{{student.financial_accounts.id}}">Edit/Add Payment</a> -->
                                         <a class="btn-sm text-decoration-none btn-danger" href="/student/destroy/{{student.id}}">Delete Student</a>
                                     </td>
                                 </tr>
                             {% endfor %}
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <!-- <th>Full Name</th> -->
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Concert Instrument</th>
+                                <th>Marching Instrument</th>
+                                <th>Jazz Instrument</th>
+                                <th>Tuxedo Jacket</th>
+                                <th>Tuxedo Pants</th>
+                                <th>Concert Dress</th>
+                                <th>Marching Jacket</th>
+                                <th>Marching Pants</th>
+                                <th>Marching Hat</th>
+                                <th>Gauntlets</th>
+                                <th>Colorguard Uniform</th>
+                                <th>Actions</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -131,12 +179,12 @@
     </main>
 
 <!-- footer -->
-    <footer class="py-4 bg-dark mt-auto fixed-bottom">
+    <!-- <footer class="py-4 bg-dark mt-auto fixed-bottom">
         <div class="container-fluid px-4">
             <div class="text-center small">
                 <div class="text-muted">Copyright &copy; Your Website 2022</div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 </body>
 </html>

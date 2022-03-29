@@ -3,15 +3,8 @@ from flask import render_template,redirect,session,request, flash
 from flask_app import app
 from flask_app.models import student, director, instrument, marching_uniform, concert_uniform, account
 
-@app.route('/view/students/all')
-def view_all_students():
-    if 'director_id' not in session:
-        return redirect('/logout')
-    context = {
-        "all_students" : student.Student.get_all_students(),
-    }
-    return render_template("view_all_students.html", **context)
 
+# create new student with instruments and uniform information
 @app.route('/student/new')
 def new_student():
     if 'director_id' not in session:
@@ -22,6 +15,7 @@ def new_student():
 def create_student():
     if 'director_id' not in session:
         return redirect('/logout')
+    # todo add more validation
     if not student.Student.validate_student(request.form):
         return redirect('/student/new')
     student_info = {
@@ -53,6 +47,7 @@ def create_student():
     marching_uniform.Marching_Uniform.add_marching_uniform_to_student(marching_uniform_info)
     return redirect('/view/student/instruments')
 
+# edit student, instruments and uniform info
 @app.route('/student/edit/<int:id>')
 def edit_student(id):
     if 'director_id' not in session:
@@ -63,13 +58,13 @@ def edit_student(id):
     context = {
         "edit" : student.Student.get_one_student(data)
     }
-    return render_template("edit_student.html", **context)
+    return render_template("view_one_student.html", **context)
 
 @app.route('/student/update',methods=['POST'])
 def update_student():
     if 'director_id' not in session:
         return redirect('/logout')
-    # student_id = id
+    # todo add validation
     # if not student.Student.validate_student(request.form):
     #     return redirect(f'/student/edit/{student_id}') #todo LOOK INTO THIS!!!!!!!! and line 72
     student_info = {
@@ -101,6 +96,17 @@ def update_student():
     concert_uniform.Concert_Uniform.update_concert_uniform_checked_out(concert_uniform_info)
     return redirect('/view/students/all')
 
+# view all students
+@app.route('/view/students/all')
+def view_all_students():
+    if 'director_id' not in session:
+        return redirect('/logout')
+    context = {
+        "all_students" : student.Student.get_all_students(),
+    }
+    return render_template("view_all_students.html", **context)
+
+# delete student and all information associated with it
 @app.route('/student/destroy/<int:id>')
 def destroy_student(id):
     if 'director_id' not in session:
