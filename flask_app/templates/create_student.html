@@ -24,34 +24,23 @@
     <a class="navbar-brand ps-3" href="/view/students/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
     <div class="d-flex">
 
-<!-- Navbar Search-->
-    <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-        </div>
-    </form> -->
-
 <!-- view menu -->
-        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">Student Information</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item text-center" href="/view/students/all">All Students</a></li>
                     <li><a class="dropdown-item text-center" href="/accounts/view">Accounts</a></li>
-                    <li><a class="dropdown-item text-center" href="/view/student/instruments">Instruments</a></li>
-                    <li><a class="dropdown-item text-center" href="/view_student_concert_uniforms">Concert Uniforms</a></li>
-                    <li><a class="dropdown-item text-center" href="/view_student_marching_uniforms">Marching Uniforms</a></li>
                 </ul>
             </li>
-        </ul> -->
+        </ul>
 
 <!-- database menu -->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Databases</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item text-center" href="#!">Music Library</a></li>
+                    <li><a class="dropdown-item text-center" href="/library/view/all">Music Library</a></li>
                     <li><a class="dropdown-item text-center" href="#!">Lockers</a></li>
                     <li><a class="dropdown-item text-center" href="#!">School Instruments</a></li>
                 </ul>
@@ -65,7 +54,7 @@
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
-                    <li><a class="dropdown-item text-center" href="/student/new">Music to Library</a></li>
+                    <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
                     <li><a class="dropdown-item text-center" href="/student/new">School Instrument</a></li>
                     <li><a class="dropdown-item text-center" href="/student/new">Locker</a></li>
                 </ul>
@@ -111,67 +100,41 @@
 
 <!-- name and hidden student_id -->
                     <input type="hidden" name="student_id">
-                    <!-- <label for="student_first_name" class="form-label">Student First Name:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="student_first_name" placeholder="First Name" value="">
-                    <!-- <label for="student_last_name" class="form-label">Student Last Name:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="student_last_name" placeholder="Last Name" value="">
                 </div>
 
-<!-- instument information -->
+<!-- instrument information -->
                 <div class="col p-3 me-3 ms-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Instruments</h3>
-                    <!-- <label for="concert_instrument" class="form-label">Concert Instrument:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="concert_instrument" placeholder="Concert Instrument" value="">
-                    <!-- <label for="marching_instrument" class="form-label">Marching Instrument:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="marching_instrument" placeholder="Marching Instrument" value="">
-                    <!-- <label for="jazz_instrument" class="form-label">Jazz Instrument:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="jazz_instrument" placeholder="Jazz Instrument" value="">
                 </div>
 
 <!-- concert uniform information -->
                 <div class="col p-3 me-3 ms-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Concert Uniform</h3>
-                    <!-- <label for="tux_coat" class="form-label">Tuxedo Jacket:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="tux_coat" placeholder="Tuxedo Jacket #" value="">
-                    <!-- <label for="tux_pants" class="form-label">Tuxedo Pants:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="tux_pants" placeholder="Tuxedo Pants #" value="">
-                    <!-- <label for="dress" class="form-label">Concert Dress:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="dress" placeholder="Concert Dress #" value="">
                 </div>
 
 <!-- marching uniform information -->
                 <div class="col p-3 me-3 ms-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Marching Uniform</h3>
-                    <!-- <label for="marching_jacket" class="form-label">Marching Jacket:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="marching_jacket" placeholder="Marching Jacket #"value="">
-
-                    <!-- <label for="marching_pants" class="form-label">Marching Pants:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="marching_pants" placeholder="Marching Pants #" value="">
-
-                    <!-- <label for="hat" class="form-label">Marching Hat:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="hat" placeholder="Marching Hat #" value="">
-
-                    <!-- <label for="gauntlets" class="form-label">Gauntlets:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="gauntlets" placeholder="Gauntlets #" value="">
-
-                    <!-- <label for="colorguard_uniform" class="form-label">Colorguard Uniform:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="colorguard_uniform" placeholder="Colorguard Uniform #" value="">
                 </div>
             </div>
             <div class="float-end me-5">
-                <a href="/view/students/all" class="btn btn-secondary">Home</a>
+                <a href="/view/students/all" class="btn btn-danger">Cancel</a>
                 <input type='submit' value='Add Student' class="btn btn-success">
             </div>
         </form>
     </main>
-
-<!-- footer -->
-    <footer class="py-4 bg-dark mt-auto fixed-bottom">
-        <div class="container-fluid px-4">
-            <div class="text-center small">
-                <div class="text-muted">Copyright &copy; Your Website 2022</div>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>

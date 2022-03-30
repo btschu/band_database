@@ -24,34 +24,23 @@
     <a class="navbar-brand ps-3" href="/view/students/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
     <div class="d-flex">
 
-<!-- Navbar Search-->
-    <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-        </div>
-    </form> -->
-
 <!-- view menu -->
-        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">Student Information</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item text-center" href="/view/students/all">All Students</a></li>
                     <li><a class="dropdown-item text-center" href="/accounts/view">Accounts</a></li>
-                    <li><a class="dropdown-item text-center" href="/view/student/instruments">Instruments</a></li>
-                    <li><a class="dropdown-item text-center" href="/view_student_concert_uniforms">Concert Uniforms</a></li>
-                    <li><a class="dropdown-item text-center" href="/view_student_marching_uniforms">Marching Uniforms</a></li>
                 </ul>
             </li>
-        </ul> -->
+        </ul>
 
 <!-- database menu -->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Databases</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item text-center" href="#!">Music Library</a></li>
+                    <li><a class="dropdown-item text-center" href="/library/view/all">Music Library</a></li>
                     <li><a class="dropdown-item text-center" href="#!">Lockers</a></li>
                     <li><a class="dropdown-item text-center" href="#!">School Instruments</a></li>
                 </ul>
@@ -65,7 +54,7 @@
         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
             <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
             <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
-            <li><a class="dropdown-item text-center" href="/student/new">Music to Library</a></li>
+            <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
             <li><a class="dropdown-item text-center" href="/student/new">School Instrument</a></li>
             <li><a class="dropdown-item text-center" href="/student/new">Locker</a></li>
         </ul>
@@ -112,21 +101,10 @@
             <input type="text" class="text-center form-control mb-4" name="director_email" aria-describedby="helpId" placeholder="Email Address">
             <input type="password" class="text-center form-control mb-4" name="password" aria-describedby="helpId" placeholder="Password">
             <input type="password" class="text-center form-control mb-4" name="confirm" aria-describedby="helpId" placeholder="Confirm Password">
-            <!-- <button class="btn btn-danger" onclick="goBack()">Go Back</button> -->
             <a href="/view/students/all" class="btn btn-danger">Cancel</a>
             <input type='submit' value='Register' class="btn btn-success">
             </div>
-            <!-- <p>Already have an account? <a href="/" class="">Click here to login!</a></p> -->
         </form>
     </div>
-
-<!-- footer -->
-    <!-- <footer class="py-4 bg-dark mt-auto fixed-bottom">
-        <div class="container-fluid px-4">
-            <div class="text-center small">
-                <div class="text-muted">Copyright &copy; Your Website 2022</div>
-            </div>
-        </div>
-    </footer> -->
 </body>
 </html>

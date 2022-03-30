@@ -21,6 +21,7 @@ def charge_account(id):
 def create_student_charge():
     if 'director_id' not in session:
         return redirect('/logout')
+    student_id = request.form['student_id']
     # todo Add validation
     # if not *****.validate_*****(request.form):
     #     return redirect('/*****/new')
@@ -31,8 +32,7 @@ def create_student_charge():
         'student_id': request.form['student_id']
     }
     account.Account.charge_account(data)
-    return redirect('/accounts/view')
-
+    return redirect(f'/account/view/{student_id}')
 
 # edit charge and add payment
 @app.route('/charge/edit/<int:id>')
@@ -86,8 +86,17 @@ def view_one_account(id):
     }
     context = {
         'charges' : account.Account.get_all_charges_for_one_student(data),
-        'student' : student.Student.get_one_student(data),
-        "cost" : account.Account.get_sum_item_cost(data),
-        "payment" : account.Account.get_sum_item_payment(data)
+        'student' : student.Student.get_one_student(data)
     }
     return render_template('view_one_account.html', **context)
+
+# delete transaction
+@app.route('/charge/destroy/<int:id>')
+def destroy_charge(id):
+    if 'director_id' not in session:
+        return redirect('/logout')
+    data = {
+        "id":id
+    }
+    account.Account.delete_charge(data)
+    return redirect('/accounts/view')

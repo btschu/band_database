@@ -3,7 +3,6 @@ from flask import render_template,redirect,session,request, flash
 from flask_app import app
 from flask_app.models import student, director, instrument, marching_uniform, concert_uniform, account
 
-
 # create new student with instruments and uniform information
 @app.route('/student/new')
 def new_student():
@@ -45,7 +44,7 @@ def create_student():
     }
     concert_uniform.Concert_Uniform.add_concert_uniform_to_student(concert_uniform_info)
     marching_uniform.Marching_Uniform.add_marching_uniform_to_student(marching_uniform_info)
-    return redirect('/view/student/instruments')
+    return redirect('/view/students/all')
 
 # edit student, instruments and uniform info
 @app.route('/student/edit/<int:id>')

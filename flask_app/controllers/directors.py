@@ -4,6 +4,7 @@ from flask_app.models import director, student, instrument
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
+# login
 @app.route('/')
 def login():
     return render_template('login.html')
@@ -24,7 +25,7 @@ def director_login():
     session['director_email'] = user.director_email
     session['director_first_name'] = user.director_first_name
     session['director_last_name'] = user.director_last_name
-    return redirect('/view/student/instruments')
+    return redirect('/view/students/all')
 
 # register director
 @app.route('/registration')
@@ -54,7 +55,7 @@ def register():
     session['director_email'] = request.form['director_email']
     session['director_first_name'] = request.form['director_first_name']
     session['director_last_name'] = request.form['director_last_name']
-    return redirect('/view/student/instruments')
+    return redirect('/view/students/all')
 
 # logout
 @app.route('/logout')

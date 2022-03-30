@@ -43,11 +43,6 @@ class Student:
         return connectToMySQL(db).query_db(query,data)
 
     @classmethod
-    def delete_student(cls,data):
-        query = "DELETE FROM students WHERE id = %(id)s;"
-        return connectToMySQL(db).query_db(query,data)
-
-    @classmethod
     def get_all_students(cls):
         query = '''
         SELECT * FROM students
@@ -183,6 +178,11 @@ class Student:
         student = all_students[0]
         pprint(row, sort_dicts=False)
         return student
+
+    @classmethod
+    def delete_student(cls,data):
+        query = "DELETE FROM students WHERE id = %(id)s;"
+        return connectToMySQL(db).query_db(query,data)
 
     @staticmethod
     def validate_student(student):

@@ -1,7 +1,7 @@
 // Table functionality on everything except viewing accounts
 
 $(document).ready( function () {
-    $('#datatablesSimple').DataTable({
+    $('#datatable_students').DataTable({
         paging: false,
         dom: 'Bfrtip',
         buttons: [
@@ -40,12 +40,6 @@ $(document).ready( function () {
                             columns: [':visible :not(:last-child)']
                         }
                     },
-                    // {
-                    //     extend: 'csv',
-                    //     exportOptions: {
-                    //         columns: [':visible :not(:last-child)']
-                    //     }
-                    // },
                     {
                         extend: 'excel',
                         exportOptions: {
@@ -66,7 +60,6 @@ $(document).ready( function () {
                     }
                 ]
             },
-            // 'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         columnDefs: [
             {
@@ -80,8 +73,10 @@ $(document).ready( function () {
 // Table functionality for accounts
 
 $(document).ready( function () {
-    $('#datatablesSimple2').DataTable({
+    $('#datatable_accounts').DataTable({
         paging: false,
+        // bInfo: false,
+        // ordering: false,
         dom: 'Bfrtip',
         buttons: [
             {
@@ -95,12 +90,6 @@ $(document).ready( function () {
                             columns: [':visible :not(:last-child)']
                         }
                     },
-                    // {
-                    //     extend: 'csv',
-                    //     exportOptions: {
-                    //         columns: [':visible :not(:last-child)']
-                    //     }
-                    // },
                     {
                         extend: 'excel',
                         exportOptions: {
@@ -121,7 +110,50 @@ $(document).ready( function () {
                     }
                 ]
             },
-            // 'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+    });
+});
+
+// Table functionality for music library
+
+$(document).ready( function () {
+    $('#datatable_library').DataTable({
+        paging: false,
+        // bInfo: false,
+        // ordering: false,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'collection',
+                text: 'Export',
+                className: 'custom-html-collection',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        exportOptions: {
+                            columns: [':visible :not(:last-child)']
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [':visible :not(:last-child)']
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: [':visible :not(:last-child)']
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns:  [':visible :not(:last-child)']
+                        }
+                    },
+                ]
+            },
         ],
     });
 });

@@ -64,7 +64,7 @@ class Account:
     def get_all_charges_for_one_student(cls, data):
         query = '''
         SELECT * FROM financial_accounts
-        JOIN students ON students.id = financial_accounts.student_id
+        LEFT JOIN students ON students.id = financial_accounts.student_id
         WHERE students.id = %(id)s;'''
         results = connectToMySQL(db).query_db(query, data)
         this_charge = []
@@ -86,34 +86,6 @@ class Account:
         return this_charge
 
     @classmethod
-    def get_total_amount_owed(cls,data):
-        item_cost = query  = '''
-        SELECT SUM(item_cost)
-        FROM financial_accounts;
-        WHERE id = %(id)s;'''
-        item_payment = query = '''
-        SELECT SUM(item_payment)
-        FROM financial_accounts;
-        WHERE id = %(id)s;'''
-        connectToMySQL(db).query_db(query,data)
-        amount_owed = (item_cost - item_payment)
-        pprint(amount_owed,sort_dicts = False)
-        return amount_owed
-
-    @classmethod
-    def get_sum_item_payment(cls,data):
-        query  = '''
-        SELECT SUM(item_payment)
-        FROM financial_accounts;'''
-        result = connectToMySQL(db).query_db(query,data)
-        print(result)
-        return result
-
-    @classmethod
-    def get_sum_item_cost(cls,data):
-        query  = '''
-        SELECT SUM(item_cost)
-        FROM financial_accounts;;'''
-        result = connectToMySQL(db).query_db(query,data)
-        print(result)
-        return result
+    def delete_charge(cls,data):
+        query = "DELETE FROM financial_accounts WHERE id = %(id)s;"
+        return connectToMySQL(db).query_db(query,data)
