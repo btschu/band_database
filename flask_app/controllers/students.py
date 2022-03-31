@@ -101,7 +101,7 @@ def view_all_students():
     if 'director_id' not in session:
         return redirect('/logout')
     context = {
-        "all_students" : student.Student.get_all_students(),
+        "all_students" : student.Student.get_all_students()
     }
     return render_template("view_all_students.html", **context)
 

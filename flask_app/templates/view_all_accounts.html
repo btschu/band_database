@@ -40,7 +40,7 @@
                 <a class="nav-link" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Databases</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item text-center" href="/library/view/all">Music Library</a></li>
-                    <li><a class="dropdown-item text-center" href="#!">Lockers</a></li>
+                    <li><a class="dropdown-item text-center" href="/locker/view/all">Lockers</a></li>
                     <li><a class="dropdown-item text-center" href="#!">School Instruments</a></li>
                 </ul>
             </li>
@@ -55,7 +55,7 @@
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
                     <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
                     <li><a class="dropdown-item text-center" href="/student/new">School Instrument</a></li>
-                    <li><a class="dropdown-item text-center" href="/student/new">Locker</a></li>
+                    <li><a class="dropdown-item text-center" href="/locker/new">Locker</a></li>
                 </ul>
             </li>
         </ul>
@@ -102,6 +102,7 @@
                                 <th>Item Description</th>
                                 <th>Charge Amount</th>
                                 <th>Payment Amount</th>
+                                <th>Total Owed</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -113,10 +114,11 @@
                                     <td>{{student.financial_accounts.item_description}}</td>
                                     <td>${{student.financial_accounts.item_cost}}</td>
                                     <td>${{student.financial_accounts.item_payment}}</td>
+                                    <td>${{student.financial_accounts.item_cost - student.financial_accounts.item_payment}}</td>
                                     <td>
-                                        <a class="btn-sm text-decoration-none btn-primary" href="/student/edit/{{student.id}}">Student Info</a>
-                                        <a class="btn-sm text-decoration-none btn-primary" href="/account/view/{{student.id}}">Account</a>
-                                        <a class="btn-sm text-decoration-none btn-success" href="/student/charge/{{student.id}}">Charge Account</a>
+                                        <!-- <a class="btn-sm text-decoration-none btn-primary" href="/student/edit/{{student.id}}">Student Info</a> -->
+                                        <!-- <a class="btn-sm text-decoration-none btn-primary" href="/account/view/{{student.id}}">Account</a> -->
+                                        <!-- <a class="btn-sm text-decoration-none btn-success" href="/student/charge/{{student.id}}">Charge Account</a> -->
                                         <a class="btn-sm text-decoration-none btn-success" href="/charge/edit/{{student.financial_accounts.id}}">Edit Transaction</a>
                                         <a class="btn-sm text-decoration-none btn-danger" href="/charge/destroy/{{student.financial_accounts.id}}">Delete Transaction</a>
                                     </td>
@@ -125,12 +127,13 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Item Description</th>
-                                <th>Charge Amount</th>
-                                <th>Payment Amount</th>
-                                <th>Actions</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th class="text-end">Total Owed:</th>
+                                <th>${{(all_students | sum (attribute="financial_accounts.item_cost")) - (all_students | sum (attribute="financial_accounts.item_payment"))}}</th>
+                                <th></th>
                             </tr>
                         </tfoot>
                     </table>

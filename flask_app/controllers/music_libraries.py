@@ -56,10 +56,10 @@ def update_library():
         "composer_first_name": request.form["composer_first_name"],
         "composer_last_name": request.form["composer_last_name"],
         "arranger_first_name": request.form["arranger_first_name"],
-        "arranger_last_name": session["arranger_last_name"],
-        "difficulty_level": session["difficulty_level"],
-        "genre": session["genre"],
-        "ensemble_type": session["ensemble_type"],
+        "arranger_last_name": request.form["arranger_last_name"],
+        "difficulty_level": request.form["difficulty_level"],
+        "genre": request.form["genre"],
+        "ensemble_type": request.form["ensemble_type"],
     }
     music_library.Music_Library.update_library(library_info)
     return redirect('/library/view/all')
@@ -71,7 +71,7 @@ def view_full_library():
     context = {
         'all_titles' : music_library.Music_Library.get_all_titles(),
     }
-    return render_template('view_all_music_libraries.html', **context)
+    return render_template('view_all_databases.html', **context)
 
 @app.route('/library/destroy/<int:id>')
 def destroy_library(id):

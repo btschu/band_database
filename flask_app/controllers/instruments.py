@@ -3,12 +3,11 @@ from flask import render_template,redirect,session,request, flash
 from flask_app import app
 from flask_app.models import student, director, instrument
 
-# view instruments that students play
-# @app.route('/view/student/instruments')
-# def view_student_instruments():
-#     if 'director_id' not in session:
-#         return redirect('/logout')
-#     context = {
-#         "all_students" : student.Student.get_all_students(),
-#     }
-#     return render_template("view_student_instruments.html", **context)
+@app.route('/view/instruments/all')
+def view_all_instruments():
+    if 'director_id' not in session:
+        return redirect('/logout')
+    context = {
+        "all_instruments" : instrument.Instrument.get_all_instruments(),
+    }
+    return render_template("view_all_databases.html", **context)

@@ -41,7 +41,7 @@
                 <a class="nav-link" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Databases</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item text-center" href="/library/view/all">Music Library</a></li>
-                    <li><a class="dropdown-item text-center" href="#!">Lockers</a></li>
+                    <li><a class="dropdown-item text-center" href="/locker/view/all">Lockers</a></li>
                     <li><a class="dropdown-item text-center" href="#!">School Instruments</a></li>
                 </ul>
             </li>
@@ -56,7 +56,7 @@
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
                     <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
                     <li><a class="dropdown-item text-center" href="/student/new">School Instrument</a></li>
-                    <li><a class="dropdown-item text-center" href="/student/new">Locker</a></li>
+                    <li><a class="dropdown-item text-center" href="/locker/new">Locker</a></li>
                 </ul>
             </li>
         </ul>
@@ -105,7 +105,8 @@
                             <th>Item Cost</th>
                             <th>Payment Amount</th>
                             <th>Total Owed</th>
-                            <th>Actions<a class="btn-sm text-decoration-none btn-success float-end" href="/student/charge/{{student.id}}">New Charge</a>
+                            <th>Actions
+                                <a class="btn-sm text-decoration-none btn-success float-end" href="/student/charge/{{student.id}}">New Charge</a>
                             </th>
                         </tr>
                     </thead>

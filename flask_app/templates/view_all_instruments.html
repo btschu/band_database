@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Edit Title</title>
+        <title>School Instruments</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/cr-1.5.5/date-1.1.2/datatables.min.css"/>        <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.5/datatables.min.js" defer></script>
@@ -16,6 +16,7 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js" defer></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js" defer></script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/cr-1.5.5/date-1.1.2/datatables.min.js" defer></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/sp-2.0.0/datatables.min.js" defer></script>
     </head>
 <body class="">
 
@@ -42,7 +43,6 @@
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item text-center" href="/library/view/all">Music Library</a></li>
                     <li><a class="dropdown-item text-center" href="/locker/view/all">Lockers</a></li>
-                    <li><a class="dropdown-item text-center" href="#!">School Instruments</a></li>
                 </ul>
             </li>
         </ul>
@@ -78,64 +78,66 @@
 </nav>
 
 <!-- main container -->
-<div class="mt-3 mx-5">
-    <a href="/library/view/all" class="btn-sm text-decoration-none btn-secondary">All Titles</a>
-    <a class="btn-sm text-decoration-none btn-danger" href="/library/destroy/{{edit.id}}">Delete {{edit.song_title}}</a>
-</div>
     <main>
+        <div class="container-fluid px-4">
 
-<!-- title -->
-        <h1 class="m-3 text-center">Edit {{edit.song_title}}</h1>
-
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="mt-4 mb-4 col-6 mx-auto alert-danger border rounded border-danger p-2">
-                    {% for message in messages %}
-                        <p class='pt-2 text-center text-danger'><em>{{ message }}</em></p>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
-
-<!-- edit student form with validation -->
-        <form class="m-4" action="/library/update" method="post">
-            <div class="row d-flex justify-content-center m-4">
-                <div class="col p-3 me-3 ms-3 card">
-                    <input type="text" class="form-control-sm mb-3" name="number" placeholder="Library Number" value="{{edit.number}}">
-                    <input type="text" class="form-control-sm mb-3" name="song_title" placeholder="Title" value="{{edit.song_title}}">
-                </div>
-
-                <div class="col p-3 me-3 ms-3 card">
-                    <input type="hidden" class="form-control-sm mb-3" name="id" placeholder="" value="{{edit.id}}">
-                    <input type="text" class="form-control-sm mb-3" name="composer_first_name" placeholder="Composer First Name" value="{{edit.composer_first_name}}">
-                    <input type="text" class="form-control-sm mb-3" name="composer_last_name" placeholder="Composer Last Name" value="{{edit.composer_last_name}}">
-                    <input type="text" class="form-control-sm mb-3" name="arranger_first_name" placeholder="Arranger First Name" value="{{edit.arranger_first_name}}">
-                    <input type="text" class="form-control-sm mb-3" name="arranger_last_name" placeholder="Arranger Last Name" value="{{edit.arranger_last_name}}">
-                </div>
-
-                <div class="col p-3 me-3 ms-3 card">
-                    <input type="text" class="form-control-sm mb-3" name="difficulty_level" placeholder="Difficulty Level" value="{{edit.difficulty_level}}">
-                    <select class="form-control-sm mb-3" name="genre" id="" placeholder="" value="{{edit.genre}}">
-                        <option value="">{{edit.genre}}</option>
-                        <option value="March">March</option>
-                        <option value="Christmas">Christmas</option>
-                        <option value="Ballad">Ballad</option>
-                        <option value="Festival">Festival</option>
-                        <option value="Marching">Marching</option>
-                    </select>
-                    <select class="form-control-sm mb-3" name="ensemble_type" id="" placeholder="Ensemble" value="{{edit.ensemble_type}}">
-                        <option value="">{{edit.ensemble_type}}</option>
-                        <option value="Concert Band">Concert Band</option>
-                        <option value="Jazz Band">Jazz Band</option>
-                        <option value="Percussion Ensemble">Percussion Ensemble</option>
-                        <option value="Marching Band">Marching Band</option>
-                        <option value="Pep Band">Pep Band</option>
-                    </select>
+<!-- table header -->
+            <div class="card mt-5">
+                <div class="d-flex justify-content-between align-items-center p-3">
                     <div>
-                        <input type='submit' value='Update' class="btn btn-success float-end">
+                        <i class="fas fa-table me-1"></i>
+                        All Lockers
                     </div>
                 </div>
-            </form>
-        </main>
+
+<!-- table -->
+                <div class="card-body">
+                    <table id="datatable_instruments" class="table table-striped table-hover table-light table-bordered pt-3 pb-3 w-100">
+                        <thead>
+                            <tr>
+                                <th>Type of Instrument</th>
+                                <th>Serial Number</th>
+                                <th>Combination</th>
+                                <th>Student</th>
+                                <th>Instrument Type</th>
+                                <th>Serial Number</th>
+                                <th>Instrument Owner</th>
+                                <th>Actions <a class="btn-sm text-decoration-none btn-success float-end me-3" href="/locker/new">Add New Locker</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for locker in all_lockers %}
+                                <tr>
+                                    <td>{{locker.locker_number}}</td>
+                                    <td>{{locker.lock_number}}</td>
+                                    <td>{{locker.combination}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right">
+                                        <a class="btn-sm text-decoration-none btn-primary" href="/locker/edit/{{locker.id}}">Edit</a>
+                                        <a class="btn-sm text-decoration-none btn-danger" href="/locker/destroy/{{locker.id}}">Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Locker Number</th>
+                                <th>Lock Number</th>
+                                <th>Combination</th>
+                                <th>Student</th>
+                                <th>Instrument Type</th>
+                                <th>Serial Number</th>
+                                <th>Instrument Owner</th>
+                                <th>Actions</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
