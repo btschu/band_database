@@ -12,9 +12,8 @@ def new_library():
 def create_library():
     if 'director_id' not in session:
         return redirect('/logout')
-    # todo add validation
-    # if not *****.validate_*****(request.form):
-    #     return redirect('/*****/new')
+    if not music_library.Music_Library.validate_library(request.form):
+        return redirect('/library/new')
     data = {
         'number': request.form['number'],
         'song_title': request.form['song_title'],
@@ -45,9 +44,9 @@ def edit_library(id):
 def update_library():
     if 'director_id' not in session:
         return redirect('/logout')
-    # todo add validation
-    # if not student.Student.validate_student(request.form):
-    #     return redirect(f'/student/edit/{student_id}') #todo LOOK INTO THIS!!!!!!!! and line 72
+    id = request.form['id']
+    if not music_library.Music_Library.validate_library(request.form):
+        return redirect(f'/library/edit/{id}')
     library_info = {
         "id": request.form['id'],
         "number": request.form["number"],

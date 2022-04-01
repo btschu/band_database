@@ -20,9 +20,8 @@ def create_student_charge():
     if 'director_id' not in session:
         return redirect('/logout')
     student_id = request.form['student_id']
-    # todo Add validation
-    # if not *****.validate_*****(request.form):
-    #     return redirect('/*****/new')
+    if not account.Account.validate_account(request.form):
+        return redirect(f'/student/charge/{student_id}')
     data = {
         'item_description': request.form['item_description'],
         'item_cost': request.form['item_cost'],
@@ -49,9 +48,9 @@ def edit_charge(id):
 def update_charge():
     if 'director_id' not in session:
         return redirect('/logout')
-    # todo add validation
-    # if not student.Student.validate_student(request.form):
-    #     return redirect(f'/student/edit/{student_id}') #todo LOOK INTO THIS!!!!!!!!
+    id = request.form['id']
+    if not account.Account.validate_account(request.form):
+        return redirect(f'/charge/edit/{id}')
     student_id = request.form['student_id']
     account_info = {
         'id' : request.form['id'],

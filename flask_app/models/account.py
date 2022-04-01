@@ -83,3 +83,14 @@ class Account:
     def delete_charge(cls,data):
         query = "DELETE FROM financial_accounts WHERE id = %(id)s;"
         return connectToMySQL(db).query_db(query,data)
+
+    @staticmethod
+    def validate_account(account):
+        is_valid = True
+        if len(account['item_description']) < 1:
+            is_valid = False
+            flash("Please enter an ITEM.","account")
+        if len(account['item_cost']) < 1:
+            is_valid = False
+            flash("How much does this item COST?","account")
+        return is_valid

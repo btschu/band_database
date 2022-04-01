@@ -99,41 +99,42 @@
             <div class="row d-flex justify-content-center m-4">
 
 <!-- first card -->
-                <div class="col p-3 me-3 ms-3 card">
+                <div class="col-3 p-3 me-3 ms-3 card">
                     <input type="text" class="form-control-sm mb-3" name="number" placeholder="Library Number" value="">
                     <input type="text" class="form-control-sm mb-3" name="song_title" placeholder="Title" value="">
-                </div>
-
-<!-- second card -->
-                <div class="col p-3 me-3 ms-3 card">
-                    <input type="text" class="form-control-sm mb-3" name="composer_first_name" placeholder="Composer First Name" value="">
-                    <input type="text" class="form-control-sm mb-3" name="composer_last_name" placeholder="Composer Last Name" value="">
-                    <input type="text" class="form-control-sm mb-3" name="arranger_first_name" placeholder="Arranger First Name" value="">
-                    <input type="text" class="form-control-sm mb-3" name="arranger_last_name" placeholder="Arranger Last Name" value="">
-                </div>
-
-<!-- third card -->
-                <div class="col p-3 me-3 ms-3 card">
                     <input type="text" class="form-control-sm mb-3" name="difficulty_level" placeholder="Difficulty Level" value="">
+                    <label for="genre" class="form-label">Style:</label>
                     <select class="form-control-sm mb-3" name="genre" id="" placeholder="Style">
+                        <option value=""></option>
                         <option value="March">March</option>
                         <option value="Christmas">Christmas</option>
                         <option value="Ballad">Ballad</option>
                         <option value="Festival">Festival</option>
                         <option value="Marching">Marching</option>
                     </select>
+                    <label for="ensemble_type" class="form-label">Ensemble:</label>
                     <select class="form-control-sm mb-3" name="ensemble_type" id="" placeholder="Ensemble">
+                        <option value=""></option>
                         <option value="Concert Band">Concert Band</option>
                         <option value="Jazz Band">Jazz Band</option>
                         <option value="Percussion Ensemble">Percussion Ensemble</option>
                         <option value="Marching Band">Marching Band</option>
                         <option value="Pep Band">Pep Band</option>
                     </select>
-                    <div class="float-end">
-                        <a href="/library/view/all" class="btn btn-danger">Cancel</a>
-                        <input type='submit' value='Add to Library' class="btn btn-success">
+                </div>
+                
+                <!-- second card -->
+                <div class="col-3 p-3 me-3 ms-3 card">
+                    <input type="text" class="form-control-sm mb-3" name="composer_first_name" placeholder="Composer First Name" value="">
+                    <input type="text" class="form-control-sm mb-3" name="composer_last_name" placeholder="Composer Last Name" value="">
+                    <input type="text" class="form-control-sm mb-3" name="arranger_first_name" placeholder="Arranger First Name" value="">
+                    <input type="text" class="form-control-sm mb-3" name="arranger_last_name" placeholder="Arranger Last Name" value="">
+                    <div class="">
+                        <input type='submit' value='Add to Library' class="btn btn-success float-end mx-1">
+                        <a href="/library/view/all" class="btn btn-danger float-end me-1">Cancel</a>
                     </div>
                 </div>
+
             </form>
         </main>
 </body>

@@ -16,7 +16,6 @@ def new_student():
 def create_student():
     if 'director_id' not in session:
         return redirect('/logout')
-    # todo add more validation
     if not student.Student.validate_student(request.form):
         return redirect('/student/new')
     student_info = {
@@ -71,9 +70,9 @@ def edit_student(id):
 def update_student():
     if 'director_id' not in session:
         return redirect('/logout')
-    # todo add validation
-    # if not student.Student.validate_student(request.form):
-    #     return redirect(f'/student/edit/{student_id}') #todo LOOK INTO THIS!!!!!!!! and line 72
+    id = request.form['id']
+    if not student.Student.validate_student(request.form):
+        return redirect(f'/student/edit/{id}')
     student_info = {
         "id": request.form['id'],
         "student_first_name": request.form["student_first_name"],

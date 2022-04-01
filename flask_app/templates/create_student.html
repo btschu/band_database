@@ -83,21 +83,21 @@
 
 <!-- title -->
         <h1 class="m-3 text-center">Add New Student</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="mt-4 mb-4 col-6 mx-auto alert-danger border rounded border-danger p-2">
+                    {% for message in messages %}
+                        <p class='pt-2 text-center text-danger'><em>{{ message }}</em></p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
 
 <!-- create student form with validation -->
         <form class="m-4" action="/student/create" method="post">
             <div class="row d-flex justify-content-center m-4">
                 <div class="col p-3 me-3 ms-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Student Name</h3>
-                    {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                            <div class="mt-4 mb-4 col-6 mx-auto alert-danger border rounded border-danger p-2">
-                                {% for message in messages %}
-                                    <p class='pt-2 text-center text-danger'><em>{{ message }}</em></p>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    {% endwith %}
 
 <!-- name and hidden student_id -->
                     <input type="hidden" name="student_id">
@@ -108,28 +108,80 @@
 <!-- instrument information -->
                 <div class="col p-3 me-3 ms-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Instruments</h3>
-                    <input type="text" class="form-control-sm mb-3" name="concert_instrument" placeholder="Concert Instrument" value="">
-                    <input type="text" class="form-control-sm mb-3" name="marching_instrument" placeholder="Marching Instrument" value="">
-                    <input type="text" class="form-control-sm mb-3" name="jazz_instrument" placeholder="Jazz Instrument" value="">
-                    <label class = "form-label" for="instrument_type">School Instrument:</label>
-                        <select name="instrument_type" id="">
-                            <option value=""></option>
-                            <option value="Piccolo">Piccolo</option>
-                            <option value="Flute">Flute</option>
-                            <option value="Oboe">Oboe</option>
-                            <option value="Bassoon">Bassoon</option>
-                            <option value="Clarinet">Clarinet</option>
-                            <option value="Bass Clarinet">Bass Clarinet</option>
-                            <option value="Alto Sax">Alto Sax</option>
-                            <option value="Tenor Sax">Tenor Sax</option>
-                            <option value="Bari Sax">Bari Sax</option>
-                            <option value="French Horn">French Horn</option>
-                            <option value="Trumpet">Trumpet</option>
-                            <option value="Trombone">Trombone</option>
-                            <option value="Baritone">Baritone</option>
-                            <option value="Tuba">Tuba</option>
-                        </select>
-                    <input type="text" class="form-control-sm mb-3 mt-3" name="instrument_serial_number" placeholder="School Instrument Serial Number" value="">
+                    <label for="concert_instrument" class="form-label">Concert Instrument:</label>
+                    <select class="form-control-sm mb-3" name="concert_instrument" id="">
+                        <option value=""></option>
+                        <option value="Piccolo">Piccolo</option>
+                        <option value="Flute">Flute</option>
+                        <option value="Oboe">Oboe</option>
+                        <option value="Bassoon">Bassoon</option>
+                        <option value="Clarinet">Clarinet</option>
+                        <option value="Bass Clarinet">Bass Clarinet</option>
+                        <option value="Alto Sax">Alto Sax</option>
+                        <option value="Tenor Sax">Tenor Sax</option>
+                        <option value="Bari Sax">Bari Sax</option>
+                        <option value="French Horn">French Horn</option>
+                        <option value="Trumpet">Trumpet</option>
+                        <option value="Trombone">Trombone</option>
+                        <option value="Baritone">Baritone</option>
+                        <option value="Tuba">Tuba</option>
+                        <option value="Tuba">Percussion</option>
+                    </select>
+
+                    <label for="marching_instrument" class="form-label">Marching Instrument:</label>
+                    <select class="form-control-sm mb-3" name="marching_instrument" id="">
+                        <option value=""></option>
+                        <option value="Piccolo">Piccolo</option>
+                        <option value="Flute">Flute</option>
+                        <option value="Clarinet">Clarinet</option>
+                        <option value="Bass Clarinet">Bass Clarinet</option>
+                        <option value="Alto Sax">Alto Sax</option>
+                        <option value="Tenor Sax">Tenor Sax</option>
+                        <option value="Bari Sax">Bari Sax</option>
+                        <option value="French Horn">Mellophone</option>
+                        <option value="Trumpet">Trumpet</option>
+                        <option value="Trombone">Trombone</option>
+                        <option value="Baritone">Baritone</option>
+                        <option value="Tuba">Sousaphone</option>
+                        <option value="Tuba">Snare</option>
+                        <option value="Tuba">Quints</option>
+                        <option value="Tuba">Bass Drum</option>
+                        <option value="Tuba">Cymbals/Front Ensemble</option>
+                    </select>
+
+                    <label for="jazz_instrument" class="form-label">Jazz Instrument:</label>
+                    <select class="form-control-sm mb-3" name="jazz_instrument" id="">
+                        <option value=""></option>
+                        <option value="Alto Sax">Alto Sax</option>
+                        <option value="Tenor Sax">Tenor Sax</option>
+                        <option value="Bari Sax">Bari Sax</option>
+                        <option value="Trumpet">Trumpet</option>
+                        <option value="Trombone">Trombone</option>
+                        <option value="Tuba">Piano</option>
+                        <option value="Tuba">Guitar</option>
+                        <option value="Tuba">Bass Guitar</option>
+                        <option value="Tuba">Percussion</option>
+                    </select>
+
+                    <label for="instrument_type" class="form-label">School Instrument:</label>
+                    <select class="form-control-sm mb-3" name="instrument_type" id="">
+                        <option value=""></option>
+                        <option value="Piccolo">Piccolo</option>
+                        <option value="Flute">Flute</option>
+                        <option value="Oboe">Oboe</option>
+                        <option value="Bassoon">Bassoon</option>
+                        <option value="Clarinet">Clarinet</option>
+                        <option value="Bass Clarinet">Bass Clarinet</option>
+                        <option value="Alto Sax">Alto Sax</option>
+                        <option value="Tenor Sax">Tenor Sax</option>
+                        <option value="Bari Sax">Bari Sax</option>
+                        <option value="French Horn">French Horn</option>
+                        <option value="Trumpet">Trumpet</option>
+                        <option value="Trombone">Trombone</option>
+                        <option value="Baritone">Baritone</option>
+                        <option value="Tuba">Tuba</option>
+                    </select>
+                    <input type="text" class="form-control-sm mb-3" name="instrument_serial_number" placeholder="School Instrument Serial Number" value="">
                 </div>
 
 <!-- concert uniform information -->

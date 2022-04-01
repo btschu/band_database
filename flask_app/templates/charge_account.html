@@ -82,23 +82,26 @@
     <main>
 
 <!-- charge account form with validation -->
+        <h1 class="text-center text-decoration-underline mb-3 mt-3">Add Item to {{student.student_full_name()}}'s Account</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="mt-4 mb-4 col-5 mx-auto alert-danger border rounded border-danger p-2">
+                    {% for message in messages %}
+                        <p class='pt-2 text-center text-danger'><em>{{ message }}</em></p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
         <form class="m-4" action="/student/charge" method="post">
             <div class="row d-flex justify-content-center m-4">
                 <div class="col-5 p-3 me-3 ms-3 card">
-                    <h3 class="text-center text-decoration-underline mb-3">Add Item to {{student.student_full_name()}}'s Account</h3>
-                    {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                            <div class="mt-4 mb-4 col-6 mx-auto alert-danger border rounded border-danger p-2">
-                                {% for message in messages %}
-                                    <p class='pt-2 text-center text-danger'><em>{{ message }}</em></p>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    {% endwith %}
                     <input type="hidden" name="student_id" value="{{student.id}}">
+                    <label for="item_description" class="form-label">Item Description:</label>
                     <input type="text" class="form-control-sm mb-3" name="item_description" placeholder="Item Description" value="">
-                    <input type="text" class="form-control-sm mb-3" name="item_cost" placeholder="Cost of Item" value="">
-                    <input type="hidden" class="form-control-sm mb-3" name="item_payment" placeholder="" value="0">
+                    <label for="item_description" class="form-label">Item Cost:</label>
+                    <input type="number" class="form-control-sm mb-3" name="item_cost" placeholder="Cost of Item" value="">
+                    <label for="item_description" class="form-label">Payment Amount:</label>
+                    <input type="number" class="form-control-sm mb-3" name="item_payment" placeholder="" value="0">
                     <div class=" d-flex justify-content-center">
                         <a href="/account/view/{{student.id}}" class="btn btn-secondary me-1">Back</a>
                         <input type='submit' value="Charge {{student.student_first_name}}'s Account" class="btn btn-success mx-1">

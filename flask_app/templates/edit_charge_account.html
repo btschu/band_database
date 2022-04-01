@@ -82,19 +82,19 @@
 <main>
 
 <!-- edit charge form with validation -->
+    <h1 class="text-center text-decoration-underline mb-3 mt-3">Edit or Add Payment for {{edit.financial_accounts.student_first_name}}</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="mt-4 mb-4 col-5 mx-auto alert-danger border rounded border-danger p-2">
+                {% for message in messages %}
+                    <p class='pt-2 text-center text-danger'><em>{{ message }}</em></p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
     <form class="m-4" action="/charge/update" method="post">
         <div class="row d-flex justify-content-center m-4">
             <div class="col-6 p-3 me-3 ms-3 card">
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        <div class="mt-4 mb-4 col-6 mx-auto alert-danger border rounded border-danger p-2">
-                            {% for message in messages %}
-                                <p class='pt-2 text-center text-danger'><em>{{ message }}</em></p>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                {% endwith %}
-                <h3 class="text-center text-decoration-underline mb-3">Edit or Add Payment for {{edit.financial_accounts.student_first_name}}</h3>
                 <input type="hidden" name="id" value="{{edit.id}}">
                 <input type="hidden" name="student_id" value="{{edit.student_id}}">
                 <label for="item_description" class="form-label">Item Description:</label>

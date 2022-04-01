@@ -203,7 +203,7 @@ class Student:
         if len(student['student_first_name']) < 1:
             is_valid = False
             flash("Please enter a FIRST NAME.","student")
-        if len(student['student_last_name']) == "":
+        if len(student['student_last_name']) < 1:
             is_valid = False
             flash("Please enter a LAST NAME.","student")
         return is_valid

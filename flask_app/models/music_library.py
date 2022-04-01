@@ -56,3 +56,17 @@ class Music_Library:
     def destroy_library(cls,data):
         query = 'DELETE FROM music_libraries WHERE id = %(id)s;'
         return connectToMySQL(db).query_db(query,data)
+
+    @staticmethod
+    def validate_library(library):
+        is_valid = True
+        if len(library['number']) < 1:
+            is_valid = False
+            flash("Please enter a LIBRARY NUMBER.","library")
+        if len(library['song_title']) < 1:
+            is_valid = False
+            flash("Please enter a SONG TITLE.","library")
+        if len(library['ensemble_type']) < 1:
+            is_valid = False
+            flash("Please enter an ENSEMBLE TYPE.","library")
+        return is_valid
