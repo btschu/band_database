@@ -21,31 +21,34 @@
 
 <!-- navbar -->
 <nav class="d-flex justify-content-between align-items-center navbar navbar-expand navbar-dark bg-dark p-3">
-    <a class="navbar-brand ps-3" href="/view/students/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
-    <div class="d-flex">
+    <a class="navbar-brand ps-3" href="/students/view/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
+    <div class="d-flex navbar-nav">
+        <a href="/students/view/all" class="nav-link  me-3 me-lg-4">Student Information</a>
+        <a href="/accounts/view/all" class="nav-link  me-3 me-lg-4">Student Accounts</a>
+        <a href="/library/view/all" class="nav-link  me-3 me-lg-4">Music Library</a>
 
 <!-- view menu -->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">Student Information</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item text-center" href="/view/students/all">All Students</a></li>
-                    <li><a class="dropdown-item text-center" href="/accounts/view">Accounts</a></li>
+                    <li><a class="dropdown-item text-center" href="/students/view/all">All Students</a></li>
+                    <li><a class="dropdown-item text-center" href="/accounts/view/all">Accounts</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
 
 <!-- database menu -->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Databases</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item text-center" href="/library/view/all">Music Library</a></li>
                     <li><a class="dropdown-item text-center" href="/locker/view/all">Lockers</a></li>
-                    <li><a class="dropdown-item text-center" href="#!">School Instruments</a></li>
+                    <li><a class="dropdown-item text-center" href="/instruments/view/all">School Instruments</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
 
 <!-- add new student -->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -55,8 +58,6 @@
                     <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
                     <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
-                    <li><a class="dropdown-item text-center" href="/student/new">School Instrument</a></li>
-                    <li><a class="dropdown-item text-center" href="/locker/new">Locker</a></li>
                 </ul>
             </li>
         </ul>

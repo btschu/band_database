@@ -1,8 +1,7 @@
-from re import U
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-from flask_app.models import director, instrument, marching_uniform, concert_uniform, account
-from pprint import pp, pprint
+from flask_app.models import instrument, marching_uniform, concert_uniform, account
+from pprint import pprint
 
 db = "music_program_database"
 
@@ -18,7 +17,6 @@ class Student:
         self.updated_at = data['updated_at']
         self.director_id = data['director_id']
         self.school_instruments = None
-        self.lockers = None
         self.concert_uniforms = None
         self.marching_uniforms = None
         self.financial_accounts = None
@@ -48,8 +46,7 @@ class Student:
         SELECT * FROM students
         LEFT JOIN school_instruments ON school_instruments.student_id = students.id
         LEFT JOIN concert_uniforms ON concert_uniforms.student_id = students.id
-        LEFT JOIN marching_uniforms ON marching_uniforms.student_id = students.id
-        LEFT JOIN lockers ON lockers.student_id = students.id'''
+        LEFT JOIN marching_uniforms ON marching_uniforms.student_id = students.id'''
         results = connectToMySQL(db).query_db(query)
         all_students = []
         for row in results:
@@ -73,9 +70,18 @@ class Student:
                 "updated_at": row["concert_uniforms.updated_at"],
                 "student_id": row["concert_uniforms.student_id"]
             }
+            school_instrument_info = {
+                'id' : row['school_instruments.id'],
+                'instrument_type' : row['instrument_type'],
+                'instrument_serial_number' : row['instrument_serial_number'],
+                'created_at' : row['school_instruments.created_at'],
+                'updated_at' : row['school_instruments.updated_at'],
+                'student_id' : row['student_id']
+            }
             all_students.append(cls(row))
             all_students[-1].marching_uniforms = marching_uniform.Marching_Uniform(marching_uniform_info)
             all_students[-1].concert_uniforms = concert_uniform.Concert_Uniform(concert_uniform_info)
+            all_students[-1].school_instruments = instrument.Instrument(school_instrument_info)
             pprint(row, sort_dicts= False)
         return all_students
 
@@ -86,8 +92,7 @@ class Student:
         LEFT JOIN school_instruments ON school_instruments.student_id = students.id
         LEFT JOIN concert_uniforms ON concert_uniforms.student_id = students.id
         LEFT JOIN marching_uniforms ON marching_uniforms.student_id = students.id
-        LEFT JOIN financial_accounts ON financial_accounts.student_id = students.id
-        LEFT JOIN lockers ON lockers.student_id = students.id'''
+        LEFT JOIN financial_accounts ON financial_accounts.student_id = students.id'''
         results = connectToMySQL(db).query_db(query)
         all_students = []
         for row in results:
@@ -136,7 +141,6 @@ class Student:
         LEFT JOIN concert_uniforms ON concert_uniforms.student_id = students.id
         LEFT JOIN marching_uniforms ON marching_uniforms.student_id = students.id
         LEFT JOIN financial_accounts ON financial_accounts.student_id = students.id
-        LEFT JOIN lockers ON lockers.student_id = students.id
         WHERE students.id = %(id)s;"""
         results = connectToMySQL(db).query_db(query, data)
         all_students = []
@@ -170,9 +174,18 @@ class Student:
                 'updated_at' : row['financial_accounts.updated_at'],
                 'student_id' : row['financial_accounts.student_id']
             }
+            school_instrument_info = {
+                'id' : row['school_instruments.id'],
+                'instrument_type' : row['instrument_type'],
+                'instrument_serial_number' : row['instrument_serial_number'],
+                'created_at' : row['school_instruments.created_at'],
+                'updated_at' : row['school_instruments.updated_at'],
+                'student_id' : row['student_id']
+            }
         all_students.append(cls(row))
         all_students[-1].marching_uniforms = marching_uniform.Marching_Uniform(marching_uniform_info)
         all_students[-1].concert_uniforms = concert_uniform.Concert_Uniform(concert_uniform_info)
+        all_students[-1].school_instruments = instrument.Instrument(school_instrument_info)
         if row['financial_accounts.student_id'] == all_students[-1].id:
             all_students[-1].financial_accounts = account.Account(account_info)
         student = all_students[0]

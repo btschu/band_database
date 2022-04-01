@@ -21,31 +21,34 @@
 
 <!-- navbar -->
 <nav class="d-flex justify-content-between align-items-center navbar navbar-expand navbar-dark bg-dark p-3">
-    <a class="navbar-brand ps-3" href="/view/students/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
-    <div class="d-flex">
+    <a class="navbar-brand ps-3" href="/students/view/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
+    <div class="d-flex navbar-nav">
+        <a href="/students/view/all" class="nav-link  me-3 me-lg-4">Student Information</a>
+        <a href="/accounts/view/all" class="nav-link  me-3 me-lg-4">Student Accounts</a>
+        <a href="/library/view/all" class="nav-link  me-3 me-lg-4">Music Library</a>
 
 <!-- view menu -->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">Student Information</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item text-center" href="/view/students/all">All Students</a></li>
-                    <li><a class="dropdown-item text-center" href="/accounts/view">Accounts</a></li>
+                    <li><a class="dropdown-item text-center" href="/students/view/all">All Students</a></li>
+                    <li><a class="dropdown-item text-center" href="/accounts/view/all">Accounts</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
 
 <!-- database menu -->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Databases</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item text-center" href="/library/view/all">Music Library</a></li>
                     <li><a class="dropdown-item text-center" href="/locker/view/all">Lockers</a></li>
-                    <li><a class="dropdown-item text-center" href="#!">School Instruments</a></li>
+                    <li><a class="dropdown-item text-center" href="/instruments/view/all">School Instruments</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
 
 <!-- add new student -->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -55,8 +58,6 @@
                     <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
                     <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
-                    <li><a class="dropdown-item text-center" href="/student/new">School Instrument</a></li>
-                    <li><a class="dropdown-item text-center" href="/locker/new">Locker</a></li>
                 </ul>
             </li>
         </ul>
@@ -110,28 +111,47 @@
                     <input type="text" class="form-control-sm mb-3" name="concert_instrument" placeholder="Concert Instrument" value="">
                     <input type="text" class="form-control-sm mb-3" name="marching_instrument" placeholder="Marching Instrument" value="">
                     <input type="text" class="form-control-sm mb-3" name="jazz_instrument" placeholder="Jazz Instrument" value="">
+                    <label class = "form-label" for="instrument_type">School Instrument:</label>
+                        <select name="instrument_type" id="">
+                            <option value=""></option>
+                            <option value="Piccolo">Piccolo</option>
+                            <option value="Flute">Flute</option>
+                            <option value="Oboe">Oboe</option>
+                            <option value="Bassoon">Bassoon</option>
+                            <option value="Clarinet">Clarinet</option>
+                            <option value="Bass Clarinet">Bass Clarinet</option>
+                            <option value="Alto Sax">Alto Sax</option>
+                            <option value="Tenor Sax">Tenor Sax</option>
+                            <option value="Bari Sax">Bari Sax</option>
+                            <option value="French Horn">French Horn</option>
+                            <option value="Trumpet">Trumpet</option>
+                            <option value="Trombone">Trombone</option>
+                            <option value="Baritone">Baritone</option>
+                            <option value="Tuba">Tuba</option>
+                        </select>
+                    <input type="text" class="form-control-sm mb-3 mt-3" name="instrument_serial_number" placeholder="School Instrument Serial Number" value="">
                 </div>
 
 <!-- concert uniform information -->
                 <div class="col p-3 me-3 ms-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Concert Uniform</h3>
-                    <input type="text" class="form-control-sm mb-3" name="tux_coat" placeholder="Tuxedo Jacket #" value="">
-                    <input type="text" class="form-control-sm mb-3" name="tux_pants" placeholder="Tuxedo Pants #" value="">
-                    <input type="text" class="form-control-sm mb-3" name="dress" placeholder="Concert Dress #" value="">
+                    <input type="number" class="form-control-sm mb-3" name="tux_coat" placeholder="Tuxedo Jacket #" value="">
+                    <input type="number" class="form-control-sm mb-3" name="tux_pants" placeholder="Tuxedo Pants #" value="">
+                    <input type="number" class="form-control-sm mb-3" name="dress" placeholder="Concert Dress #" value="">
                 </div>
 
 <!-- marching uniform information -->
                 <div class="col p-3 me-3 ms-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Marching Uniform</h3>
-                    <input type="text" class="form-control-sm mb-3" name="marching_jacket" placeholder="Marching Jacket #"value="">
-                    <input type="text" class="form-control-sm mb-3" name="marching_pants" placeholder="Marching Pants #" value="">
-                    <input type="text" class="form-control-sm mb-3" name="hat" placeholder="Marching Hat #" value="">
-                    <input type="text" class="form-control-sm mb-3" name="gauntlets" placeholder="Gauntlets #" value="">
-                    <input type="text" class="form-control-sm mb-3" name="colorguard_uniform" placeholder="Colorguard Uniform #" value="">
+                    <input type="number" class="form-control-sm mb-3" name="marching_jacket" placeholder="Marching Jacket #"value="">
+                    <input type="number" class="form-control-sm mb-3" name="marching_pants" placeholder="Marching Pants #" value="">
+                    <input type="number" class="form-control-sm mb-3" name="hat" placeholder="Marching Hat #" value="">
+                    <input type="number" class="form-control-sm mb-3" name="gauntlets" placeholder="Gauntlets #" value="">
+                    <input type="number" class="form-control-sm mb-3" name="colorguard_uniform" placeholder="Colorguard Uniform #" value="">
                 </div>
             </div>
             <div class="float-end me-5">
-                <a href="/view/students/all" class="btn btn-danger">Cancel</a>
+                <a href="/students/view/all" class="btn btn-danger">Cancel</a>
                 <input type='submit' value='Add Student' class="btn btn-success">
             </div>
         </form>

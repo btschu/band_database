@@ -1,7 +1,6 @@
-from re import U
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-from flask_app.models import student, director, instrument, marching_uniform, concert_uniform
+from flask_app.models import student
 from pprint import pprint
 
 db = "music_program_database"
@@ -15,11 +14,6 @@ class Account:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.student_id = data['student_id']
-
-    def account_balance(self):
-        account_balance = 0
-        self.item_cost += account_balance
-        return account_balance
 
     @classmethod
     def charge_account(cls,data):

@@ -1,6 +1,6 @@
 from flask import render_template,redirect,session,request, flash
 from flask_app import app
-from flask_app.models import director, student, instrument
+from flask_app.models import director
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -25,7 +25,7 @@ def director_login():
     session['director_email'] = user.director_email
     session['director_first_name'] = user.director_first_name
     session['director_last_name'] = user.director_last_name
-    return redirect('/view/students/all')
+    return redirect('/students/view/all')
 
 # register director
 @app.route('/registration')
@@ -55,7 +55,7 @@ def register():
     session['director_email'] = request.form['director_email']
     session['director_first_name'] = request.form['director_first_name']
     session['director_last_name'] = request.form['director_last_name']
-    return redirect('/view/students/all')
+    return redirect('/students/view/all')
 
 # logout
 @app.route('/logout')

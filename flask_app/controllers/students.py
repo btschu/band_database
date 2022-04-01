@@ -1,14 +1,16 @@
-import re
 from flask import render_template,redirect,session,request, flash
 from flask_app import app
-from flask_app.models import student, director, instrument, marching_uniform, concert_uniform, account
+from flask_app.models import student, instrument, marching_uniform, concert_uniform
 
 # create new student with instruments and uniform information
 @app.route('/student/new')
 def new_student():
     if 'director_id' not in session:
         return redirect('/logout')
-    return render_template('create_student.html')
+    context = {
+        'all_students' : student.Student.get_all_students()
+    }
+    return render_template('create_student.html', **context)
 
 @app.route('/student/create',methods=['POST'])
 def create_student():
@@ -42,9 +44,15 @@ def create_student():
         "dress": request.form["dress"],
         "student_id": student_id
     }
+    school_instrument_info = {
+        "instrument_type": request.form["instrument_type"],
+        "instrument_serial_number": request.form["instrument_serial_number"],
+        "student_id": student_id
+    }
     concert_uniform.Concert_Uniform.add_concert_uniform_to_student(concert_uniform_info)
     marching_uniform.Marching_Uniform.add_marching_uniform_to_student(marching_uniform_info)
-    return redirect('/view/students/all')
+    instrument.Instrument.add_new_instrument(school_instrument_info)
+    return redirect('/students/view/all')
 
 # edit student, instruments and uniform info
 @app.route('/student/edit/<int:id>')
@@ -90,13 +98,19 @@ def update_student():
         "dress": request.form["dress"],
         "student_id": request.form["student_id"]
     }
+    school_instrument_info = {
+        "instrument_type": request.form["instrument_type"],
+        "instrument_serial_number": request.form["instrument_serial_number"],
+        "student_id": request.form["student_id"]
+    }
     student.Student.update_student_information(student_info)
     marching_uniform.Marching_Uniform.update_marching_uniform_checked_out(marching_uniform_info)
     concert_uniform.Concert_Uniform.update_concert_uniform_checked_out(concert_uniform_info)
-    return redirect('/view/students/all')
+    instrument.Instrument.update_instrument(school_instrument_info)
+    return redirect('/students/view/all')
 
 # view all students
-@app.route('/view/students/all')
+@app.route('/students/view/all')
 def view_all_students():
     if 'director_id' not in session:
         return redirect('/logout')
@@ -114,5 +128,5 @@ def destroy_student(id):
         "id":id
     }
     student.Student.delete_student(data)
-    return redirect('/view/student/instruments')
+    return redirect('/students/view/all')
 

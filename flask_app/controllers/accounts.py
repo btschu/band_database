@@ -1,8 +1,6 @@
-import re
-from turtle import st
 from flask import render_template,redirect,session,request, flash
 from flask_app import app
-from flask_app.models import student, director, instrument, marching_uniform, concert_uniform, account
+from flask_app.models import student, account
 
 # charge student account
 @app.route('/student/charge/<int:id>')
@@ -67,7 +65,7 @@ def update_charge():
     return redirect(f'/account/view/{student_id}')
 
 # view all accounts
-@app.route('/accounts/view')
+@app.route('/accounts/view/all')
 def view_accounts():
     if 'director_id' not in session:
         return redirect('/logout')
@@ -99,4 +97,4 @@ def destroy_charge(id):
         "id":id
     }
     account.Account.delete_charge(data)
-    return redirect('/accounts/view')
+    return redirect('/accounts/view/all')

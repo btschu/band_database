@@ -1,7 +1,6 @@
-import re
 from flask import render_template,redirect,session,request, flash
 from flask_app import app
-from flask_app.models import student, director, instrument, music_library
+from flask_app.models import music_library
 
 @app.route('/library/new')
 def new_library():
@@ -71,7 +70,7 @@ def view_full_library():
     context = {
         'all_titles' : music_library.Music_Library.get_all_titles(),
     }
-    return render_template('view_all_databases.html', **context)
+    return render_template('view_all_music_libraries.html', **context)
 
 @app.route('/library/destroy/<int:id>')
 def destroy_library(id):
