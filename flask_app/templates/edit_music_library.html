@@ -105,11 +105,11 @@
             <div class="row d-flex justify-content-center m-4">
                 <div class="col-3 p-3 me-3 ms-3 card">
                     <input type="text" class="form-control-sm mb-3" name="number" placeholder="Library Number" value="{{edit.number}}">
-                    <input type="text" class="form-control-sm mb-3" name="song_title" placeholder="Title" value="{{edit.song_title | upper}}">
-                    <input type="text" class="form-control-sm mb-3" name="difficulty_level" placeholder="Difficulty Level" value="{{edit.difficulty_level | upper}}">
+                    <input type="text" class="form-control-sm mb-3" name="song_title" placeholder="Title" value="{{edit.song_title }}">
+                    <input type="text" class="form-control-sm mb-3" name="difficulty_level" placeholder="Difficulty Level" value="{{edit.difficulty_level}}">
                     <label for="genre">Style:</label>
                     <select class="form-control-sm mb-3" name="genre" id="" placeholder="Style" value="{{edit.genre}}">
-                        <option selected value="{{edit.genre}}">{{edit.genre | upper}}</option>
+                        <option selected value="{{edit.genre}}">{{edit.genre}}</option>
                         <option value="March">March</option>
                         <option value="Christmas">Christmas</option>
                         <option value="Ballad">Ballad</option>
@@ -118,7 +118,7 @@
                     </select>
                     <label for="genre">Ensemble:</label>
                     <select class="form-control-sm mb-3" name="ensemble_type" id="" placeholder="Ensemble" value="{{edit.ensemble_type}}">
-                        <option selected value="{{edit.ensemble_type}}">{{edit.ensemble_type | upper}}</option>
+                        <option selected value="{{edit.ensemble_type}}">{{edit.ensemble_type}}</option>
                         <option value="Concert Band">Concert Band</option>
                         <option value="Jazz Band">Jazz Band</option>
                         <option value="Percussion Ensemble">Percussion Ensemble</option>

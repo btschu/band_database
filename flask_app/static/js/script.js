@@ -60,6 +60,7 @@ $(document).ready( function () {
                     },
                 ]
             },
+            'colvis',
             {
                 extend: 'collection',
                 text: 'Export',
@@ -110,6 +111,7 @@ $(document).ready( function () {
         // ordering: false,
         dom: 'Bfrtip',
         buttons: [
+            'colvis',
             {
                 extend: 'collection',
                 text: 'Export',
