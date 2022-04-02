@@ -58,6 +58,12 @@
                     <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
                     <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
+                    <select class="dropdown-item text-center" name="" id="" onchange="location = this.value;">
+                        <option value="">Charge Account</option>
+                        {% for student in all_students | sort(attribute="student_first_name") %}
+                            <option value="/student/charge/{{student.id}}">{{student.student_full_name()}}</option>
+                        {% endfor %}
+                    </select>
                 </ul>
             </li>
         </ul>
@@ -79,10 +85,6 @@
 </nav>
 
 <!-- main container -->
-<div class="mt-3 mx-5">
-    <a href="/library/view/all" class="btn-sm text-decoration-none btn-secondary">All Titles</a>
-    <a class="btn-sm text-decoration-none btn-danger" href="/library/destroy/{{edit.id}}">Delete {{edit.song_title}}</a>
-</div>
     <main>
 
 <!-- title -->
@@ -103,11 +105,11 @@
             <div class="row d-flex justify-content-center m-4">
                 <div class="col-3 p-3 me-3 ms-3 card">
                     <input type="text" class="form-control-sm mb-3" name="number" placeholder="Library Number" value="{{edit.number}}">
-                    <input type="text" class="form-control-sm mb-3" name="song_title" placeholder="Title" value="{{edit.song_title}}">
-                    <input type="text" class="form-control-sm mb-3" name="difficulty_level" placeholder="Difficulty Level" value="{{edit.difficulty_level}}">
+                    <input type="text" class="form-control-sm mb-3" name="song_title" placeholder="Title" value="{{edit.song_title | upper}}">
+                    <input type="text" class="form-control-sm mb-3" name="difficulty_level" placeholder="Difficulty Level" value="{{edit.difficulty_level | upper}}">
                     <label for="genre">Style:</label>
                     <select class="form-control-sm mb-3" name="genre" id="" placeholder="Style" value="{{edit.genre}}">
-                        <option selected value="{{edit.genre}}">{{edit.genre}}</option>
+                        <option selected value="{{edit.genre}}">{{edit.genre | upper}}</option>
                         <option value="March">March</option>
                         <option value="Christmas">Christmas</option>
                         <option value="Ballad">Ballad</option>
@@ -116,7 +118,7 @@
                     </select>
                     <label for="genre">Ensemble:</label>
                     <select class="form-control-sm mb-3" name="ensemble_type" id="" placeholder="Ensemble" value="{{edit.ensemble_type}}">
-                        <option selected value="{{edit.ensemble_type}}">{{edit.ensemble_type}}</option>
+                        <option selected value="{{edit.ensemble_type}}">{{edit.ensemble_type | upper}}</option>
                         <option value="Concert Band">Concert Band</option>
                         <option value="Jazz Band">Jazz Band</option>
                         <option value="Percussion Ensemble">Percussion Ensemble</option>
@@ -132,7 +134,8 @@
                     <input type="text" class="form-control-sm mb-3" name="arranger_first_name" placeholder="Arranger First Name" value="{{edit.arranger_first_name}}">
                     <input type="text" class="form-control-sm mb-3" name="arranger_last_name" placeholder="Arranger Last Name" value="{{edit.arranger_last_name}}">
                     <div>
-                        <input type='submit' value='Update' class="btn btn-success float-end">
+                        <input type='submit' value='Update' class="btn btn-primary float-end mx-2">
+                        <a href="/library/view/all" class="btn btn-danger float-end">Cancel</a>
                     </div>
                 </div>
 

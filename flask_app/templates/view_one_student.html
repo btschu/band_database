@@ -58,6 +58,12 @@
                     <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
                     <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
+                    <select class="dropdown-item text-center" name="" id="" onchange="location = this.value;">
+                        <option value="">Charge Account</option>
+                        {% for student in all_students | sort(attribute="student_first_name") %}
+                            <option value="/student/charge/{{student.id}}">{{student.student_full_name()}}</option>
+                        {% endfor %}
+                    </select>
                 </ul>
             </li>
         </ul>
@@ -81,11 +87,6 @@
 <!-- main container -->
 
 <!-- navigation buttons -->
-    <div class="mt-3 mx-5">
-        <a href="/students/view/all" class="btn-sm text-decoration-none btn-secondary">All Students</a>
-        <a href="/account/view/{{edit.id}}" class="btn-sm text-decoration-none btn-primary">View {{edit.student_first_name}}'s Account</a>
-        <a class="btn-sm text-decoration-none btn-danger" href="/student/destroy/{{edit.id}}">Delete {{edit.student_full_name()}}</a>
-    </div>
     <main>
 
 <!-- page title -->
@@ -110,10 +111,10 @@
                     <input type="hidden" name="student_id" value={{edit.id}}>
                     <input type="hidden" name="id" value={{edit.id}}>
                     <label for="student_first_name" class="form-label">Student First Name:</label>
-                    <input type="text" class="form-control-sm mb-3" name="student_first_name" value="{{ edit.student_first_name }}">
+                    <input type="text" class="form-control-sm mb-3" name="student_first_name" value="{{ edit.student_first_name | upper }}">
 
                     <label for="student_last_name" class="form-label">Student Last Name:</label>
-                    <input type="text" class="form-control-sm mb-3" name="student_last_name" value="{{ edit.student_last_name }}">
+                    <input type="text" class="form-control-sm mb-3" name="student_last_name" value="{{ edit.student_last_name | upper }}">
                 </div>
 
 <!-- Edit instrument info -->
@@ -121,7 +122,7 @@
                     <h3 class="text-center text-decoration-underline mb-3">Instruments</h3>
                     <label for="concert_instrument" class="form-label">Concert Instrument:</label>
                     <select class="form-control-sm mb-3" name="concert_instrument" id="">
-                        <option value="{{edit.concert_instrument}}">{{edit.concert_instrument}}</option>
+                        <option selected value="{{edit.concert_instrument}}">{{edit.concert_instrument | upper}}</option>
                         <option value="Piccolo">Piccolo</option>
                         <option value="Flute">Flute</option>
                         <option value="Oboe">Oboe</option>
@@ -141,7 +142,7 @@
 
                     <label for="marching_instrument" class="form-label">Marching Instrument:</label>
                     <select class="form-control-sm mb-3" name="marching_instrument" id="">
-                        <option value="{{edit.marching_instrument}}">{{edit.marching_instrument}}</option>
+                        <option selected value="{{edit.marching_instrument}}">{{edit.marching_instrument | upper}}</option>
                         <option value="Piccolo">Piccolo</option>
                         <option value="Flute">Flute</option>
                         <option value="Clarinet">Clarinet</option>
@@ -162,7 +163,7 @@
 
                     <label for="jazz_instrument" class="form-label">Jazz Instrument:</label>
                     <select class="form-control-sm mb-3" name="jazz_instrument" id="">
-                        <option value="{{edit.jazz_instrument}}">{{edit.jazz_instrument}}</option>
+                        <option selected value="{{edit.jazz_instrument}}">{{edit.jazz_instrument | upper}}</option>
                         <option value="Alto Sax">Alto Sax</option>
                         <option value="Tenor Sax">Tenor Sax</option>
                         <option value="Bari Sax">Bari Sax</option>
@@ -176,7 +177,7 @@
 
                     <label for="instrument_type" class="form-label">School Instrument:</label>
                     <select class="form-control-sm mb-3" name="instrument_type" id="">
-                        <option value="{{edit.school_instruments.instrument_type}}">{{edit.school_instruments.instrument_type}}</option>
+                        <option selected value="{{edit.school_instruments.instrument_type}}">{{edit.school_instruments.instrument_type | upper}}</option>
                         <option value="Piccolo">Piccolo</option>
                         <option value="Flute">Flute</option>
                         <option value="Oboe">Oboe</option>
@@ -232,7 +233,7 @@
 
 <!-- Submit button -->
             <div class="float-end mt-3 mb-5 me-5">
-                <input type='submit' value='Update' class="btn btn-success"><br>
+                <input type='submit' value='Update' class="btn btn-primary"><br>
             </div>
         </form>
     </main>

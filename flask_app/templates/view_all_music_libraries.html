@@ -58,6 +58,12 @@
                     <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
                     <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
+                    <select class="dropdown-item text-center" name="" id="" onchange="location = this.value;">
+                        <option value="">Charge Account</option>
+                        {% for student in all_students | sort(attribute="student_first_name") %}
+                            <option value="/student/charge/{{student.id}}">{{student.student_full_name()}}</option>
+                        {% endfor %}
+                    </select>
                 </ul>
             </li>
         </ul>
@@ -109,13 +115,13 @@
                         <tbody>
                             {% for title in all_titles %}
                                 <tr>
-                                    <td>{{title.number}}</td>
-                                    <td>{{title.song_title}}</td>
-                                    <td>{{title.composer_first_name}} {{title.composer_last_name}}</td>
-                                    <td>{{title.arranger_first_name}} {{title.arranger_last_name}}</td>
-                                    <td>{{title.difficulty_level}}</td>
-                                    <td>{{title.genre}}</td>
-                                    <td>{{title.ensemble_type}}</td>
+                                    <td>{{title.number | upper}}</td>
+                                    <td>{{title.song_title | upper }}</td>
+                                    <td>{{title.composer_first_name | upper}} {{title.composer_last_name | upper}}</td>
+                                    <td>{{title.arranger_first_name | upper}} {{title.arranger_last_name | upper}}</td>
+                                    <td>{{title.difficulty_level | upper}}</td>
+                                    <td>{{title.genre | upper}}</td>
+                                    <td>{{title.ensemble_type | upper}}</td>
                                     <td class="text-right">
                                         <a class="btn-sm text-decoration-none btn-primary" href="/library/edit/{{title.id}}">Edit</a>
                                         <a class="btn-sm text-decoration-none btn-danger" href="/library/destroy/{{title.id}}">Delete</a>

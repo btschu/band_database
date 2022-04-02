@@ -58,6 +58,12 @@
                     <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
                     <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
+                    <select class="dropdown-item text-center" name="" id="" onchange="location = this.value;">
+                        <option value="">Charge Account</option>
+                        {% for student in all_students | sort(attribute="student_first_name") %}
+                            <option value="/student/charge/{{student.id}}">{{student.student_full_name()}}</option>
+                        {% endfor %}
+                    </select>
                 </ul>
             </li>
         </ul>
@@ -103,8 +109,9 @@
                     <label for="item_description" class="form-label">Payment Amount:</label>
                     <input type="number" class="form-control-sm mb-3" name="item_payment" placeholder="" value="0">
                     <div class=" d-flex justify-content-center">
-                        <a href="/account/view/{{student.id}}" class="btn btn-secondary me-1">Back</a>
-                        <input type='submit' value="Charge {{student.student_first_name}}'s Account" class="btn btn-success mx-1">
+                        <a href="/accounts/view/all" class="btn btn-danger me-1">All Accounts</a>
+                        <a href="/account/view/{{student.id}}" class="btn btn-danger mx-1 me-1">{{student.student_first_name}}'s' Account</a>
+                        <input type='submit' value="Charge {{student.student_first_name}}" class="btn btn-primary mx-1">
                     </div>
                 </div>
             </div>

@@ -58,6 +58,12 @@
                     <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
                     <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
+                    <select class="dropdown-item text-center" name="" id="" onchange="location = this.value;">
+                        <option value="">Charge Account</option>
+                        {% for student in all_students | sort(attribute="student_first_name") %}
+                            <option value="/student/charge/{{student.id}}">{{student.student_full_name()}}</option>
+                        {% endfor %}
+                    </select>
                 </ul>
             </li>
         </ul>
@@ -130,7 +136,7 @@
                     <input type="text" class="form-control-sm mb-3" name="arranger_first_name" placeholder="Arranger First Name" value="">
                     <input type="text" class="form-control-sm mb-3" name="arranger_last_name" placeholder="Arranger Last Name" value="">
                     <div class="">
-                        <input type='submit' value='Add to Library' class="btn btn-success float-end mx-1">
+                        <input type='submit' value='Add to Library' class="btn btn-primary float-end mx-1">
                         <a href="/library/view/all" class="btn btn-danger float-end me-1">Cancel</a>
                     </div>
                 </div>

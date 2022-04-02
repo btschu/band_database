@@ -56,6 +56,12 @@
                     <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
                     <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
+                    <select class="dropdown-item text-center" name="" id="" onchange="location = this.value;">
+                        <option value="">Charge Account</option>
+                        {% for student in all_students | sort(attribute="student_first_name") %}
+                            <option value="/student/charge/{{student.id}}">{{student.student_full_name()}}</option>
+                        {% endfor %}
+                    </select>
                 </ul>
             </li>
         </ul>
@@ -87,9 +93,17 @@
                         <i class="fas fa-table me-1"></i>
                         Student Information
                     </div>
-                    <div>
-                        <!-- <a class="btn-sm text-decoration-none btn-primary" href="/accounts/view/all">View All Student Accounts</a> -->
-                    </div>
+                    <!-- <div>
+                        <a class="btn-sm text-decoration-none btn-primary" href="/accounts/view/all">View All Student Accounts</a>
+                    
+                        <label for="">New Charge: </label>
+                            <select name="" id="" onchange="location = this.value;">
+                                <option value=""></option>
+                                {% for student in all_students | sort(attribute="student_first_name") %}
+                                    <option value="/student/charge/{{student.id}}">{{student.student_full_name()}}</option>
+                                {% endfor %}
+                            </select>
+                    </div> -->
                 </div>
 
                 <div class="card-body">
@@ -119,11 +133,11 @@
                         <tbody>
                             {% for student in all_students %}
                                 <tr>
-                                    <td>{{student.student_first_name}}</td>
-                                    <td>{{student.student_last_name}}</td>
-                                    <td>{{student.concert_instrument}}</td>
-                                    <td>{{student.marching_instrument}}</td>
-                                    <td>{{student.jazz_instrument}}</td>
+                                    <th>{{student.student_first_name | upper}}</th>
+                                    <th>{{student.student_last_name | upper}}</th>
+                                    <td>{{student.concert_instrument | upper}}</td>
+                                    <td>{{student.marching_instrument | upper}}</td>
+                                    <td>{{student.jazz_instrument | upper}}</td>
                                     <td>{{student.concert_uniforms.tux_coat}}</td>
                                     <td>{{student.concert_uniforms.tux_pants}}</td>
                                     <td>{{student.concert_uniforms.dress}}</td>
@@ -132,12 +146,12 @@
                                     <td>{{student.marching_uniforms.hat}}</td>
                                     <td>{{student.marching_uniforms.gauntlets}}</td>
                                     <td>{{student.marching_uniforms.colorguard_uniform}}</td>
-                                    <th>{{student.school_instruments.instrument_type}}</th>
-                                    <th>{{student.school_instruments.instrument_serial_number}}</th>
+                                    <td>{{student.school_instruments.instrument_type | upper}}</td>
+                                    <td>{{student.school_instruments.instrument_serial_number | upper}}</td>
                                     <td class="text-right">
-                                        <a class="btn-sm text-decoration-none btn-primary" href="/student/edit/{{student.id}}">Student Info</a>
+                                        <a class="btn-sm text-decoration-none btn-primary" href="/student/edit/{{student.id}}">View/Edit Student Info</a>
                                         <a class="btn-sm text-decoration-none btn-primary" href="/account/view/{{student.id}}">Account</a>
-                                        <a class="btn-sm text-decoration-none btn-success" href="/student/charge/{{student.id}}">Charge Account</a>
+                                        <a class="btn-sm text-decoration-none btn-primary" href="/student/charge/{{student.id}}">Charge Account</a>
                                         <a class="btn-sm text-decoration-none btn-danger" href="/student/destroy/{{student.id}}">Delete Student</a>
                                     </td>
                                 </tr>

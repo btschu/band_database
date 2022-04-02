@@ -58,6 +58,12 @@
                     <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
                     <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
+                    <select class="dropdown-item text-center" name="" id="" onchange="location = this.value;">
+                        <option value="">Charge Account</option>
+                        {% for student in all_students | sort(attribute="student_first_name") %}
+                            <option value="/student/charge/{{student.id}}">{{student.student_full_name()}}</option>
+                        {% endfor %}
+                    </select>
                 </ul>
             </li>
         </ul>
@@ -90,10 +96,6 @@
                     <i class="fas fa-table me-1"></i>
                     {{student.student_full_name()}}'s Account
                 </div>
-                <div>
-                    <a class="btn-sm text-decoration-none btn-secondary" href="/students/view/all">All Students</a>
-                    <a class="btn-sm text-decoration-none btn-primary" href="/student/edit/{{student.id}}">{{student.student_first_name}}'s Info</a>
-                </div>
             </div>
             <div class="card-body">
 <!-- table -->
@@ -107,21 +109,21 @@
                             <th>Payment Amount</th>
                             <th>Total Owed</th>
                             <th>Actions
-                                <a class="btn-sm text-decoration-none btn-success float-end" href="/student/charge/{{student.id}}">New Charge</a>
+                                <a class="btn-sm text-decoration-none btn-primary float-end" href="/student/charge/{{student.id}}">New Charge</a>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for student in charges %}
                             <tr>
-                                <td>{{student.financial_accounts.student_first_name}}</td>
-                                <td>{{student.financial_accounts.student_last_name}}</td>
-                                <td>{{student.item_description}}</td>
+                                <td>{{student.financial_accounts.student_first_name | upper}}</td>
+                                <td>{{student.financial_accounts.student_last_name | upper}}</td>
+                                <td>{{student.item_description | upper}}</td>
                                 <td>${{student.item_cost}}</td>
                                 <td>${{student.item_payment}}</td>
                                 <td>${{student.item_cost - student.item_payment}}</td>
                                 <td>
-                                    <a class="btn-sm text-decoration-none btn-success" href="/charge/edit/{{student.financial_accounts.id}}">Edit Transaction</a>
+                                    <a class="btn-sm text-decoration-none btn-primary" href="/charge/edit/{{student.financial_accounts.id}}">Edit Transaction</a>
                                     <a class="btn-sm text-decoration-none btn-danger" href="/charge/destroy/{{student.financial_accounts.id}}">Delete Transaction</a>
                                 </td>
                             </tr>

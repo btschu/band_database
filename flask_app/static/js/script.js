@@ -12,15 +12,33 @@ $(document).ready( function () {
                 buttons: [
                     {
                         extend: 'colvisGroup',
-                        text: 'Student Names',
-                        show: [ 0, 1, 15 ],
-                        hide: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                        text: 'All Instrumentation',
+                        show: [ 0, 1, 2, 3, 4, 15 ],
+                        hide: [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
                     },
                     {
                         extend: 'colvisGroup',
-                        text: 'Instrument Info',
-                        show: [ 0, 1, 2, 3, 4, 15 ],
-                        hide: [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                        text: 'Concert Band Instrumentation',
+                        show: [ 0, 1, 2, 15 ],
+                        hide: [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                    },
+                    {
+                        extend: 'colvisGroup',
+                        text: 'Marching Band Instrumentation',
+                        show: [ 0, 1, 3, 15 ],
+                        hide: [ 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                    },
+                    {
+                        extend: 'colvisGroup',
+                        text: 'Jazz Band Instrumentation',
+                        show: [ 0, 1, 4, 15 ],
+                        hide: [ 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                    },
+                    {
+                        extend: 'colvisGroup',
+                        text: 'School Owned Instruments',
+                        show: [ 0, 1, 13, 14, 15 ],
+                        hide: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
                     },
                     {
                         extend: 'colvisGroup',
@@ -36,9 +54,9 @@ $(document).ready( function () {
                     },
                     {
                         extend: 'colvisGroup',
-                        text: 'School Instruments',
-                        show: [ 0, 1, 13, 14, 15 ],
-                        hide: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                        text: 'Student Names',
+                        show: [ 0, 1, 15 ],
+                        hide: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
                     },
                 ]
             },
@@ -76,7 +94,7 @@ $(document).ready( function () {
         ],
         columnDefs: [
             {
-                targets: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ],
+                targets: [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ],
                 visible: false,
             },
         ]

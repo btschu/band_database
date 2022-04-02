@@ -62,7 +62,8 @@ def edit_student(id):
         "id":id
     }
     context = {
-        "edit" : student.Student.get_one_student(data)
+        "edit" : student.Student.get_one_student(data),
+        'all_students' : student.Student.get_all_students()
     }
     return render_template("view_one_student.html", **context)
 

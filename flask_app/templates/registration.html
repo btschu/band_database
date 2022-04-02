@@ -58,6 +58,12 @@
             <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
             <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
             <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
+            <select class="dropdown-item text-center" name="" id="" onchange="location = this.value;">
+                <option value="">Charge Account</option>
+                {% for student in all_students | sort(attribute="student_first_name") %}
+                    <option value="/student/charge/{{student.id}}">{{student.student_full_name()}}</option>
+                {% endfor %}
+            </select>
         </ul>
     </li>
 </ul>
@@ -103,7 +109,7 @@
             <input type="password" class="text-center form-control mb-4" name="password" aria-describedby="helpId" placeholder="Password">
             <input type="password" class="text-center form-control mb-4" name="confirm" aria-describedby="helpId" placeholder="Confirm Password">
             <a href="/students/view/all" class="btn btn-danger">Cancel</a>
-            <input type='submit' value='Register' class="btn btn-success">
+            <input type='submit' value='Register' class="btn btn-primary">
             </div>
         </form>
     </div>

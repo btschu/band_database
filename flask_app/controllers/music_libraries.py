@@ -1,12 +1,15 @@
 from flask import render_template,redirect,session,request, flash
 from flask_app import app
-from flask_app.models import music_library
+from flask_app.models import music_library, student
 
 @app.route('/library/new')
 def new_library():
     if 'director_id' not in session:
         return redirect('/logout')
-    return render_template('create_music_library.html')
+    context = {
+        'all_students' : student.Student.get_all_students()
+    }
+    return render_template('create_music_library.html', **context)
 
 @app.route('/library/create',methods=['POST'])
 def create_library():
@@ -36,7 +39,8 @@ def edit_library(id):
         "id":id
     }
     context = {
-        "edit" : music_library.Music_Library.get_one_title(data)
+        "edit" : music_library.Music_Library.get_one_title(data),
+        'all_students' : student.Student.get_all_students()
     }
     return render_template("edit_music_library.html", **context)
 
@@ -68,6 +72,7 @@ def view_full_library():
         return redirect('/logout')
     context = {
         'all_titles' : music_library.Music_Library.get_all_titles(),
+        'all_students' : student.Student.get_all_students()
     }
     return render_template('view_all_music_libraries.html', **context)
 

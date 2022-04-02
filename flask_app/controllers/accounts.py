@@ -12,6 +12,7 @@ def charge_account(id):
     }
     context = {
         "student" : student.Student.get_one_student(data),
+        "all_students" : student.Student.get_all_students()
     }
     return render_template('charge_account.html', **context)
 
@@ -41,6 +42,7 @@ def edit_charge(id):
     }
     context = {
         "edit" : account.Account.get_one_charge(data),
+        "all_students" : student.Student.get_all_students()
     }
     return render_template("edit_charge_account.html", **context)
 
@@ -70,6 +72,7 @@ def view_accounts():
         return redirect('/logout')
     context = {
         'all_students' : student.Student.get_student_accounts(),
+        'names' : student.Student.get_all_students()
     }
     return render_template('view_all_accounts.html', **context)
 
@@ -83,7 +86,8 @@ def view_one_account(id):
     }
     context = {
         'charges' : account.Account.get_all_charges_for_one_student(data),
-        'student' : student.Student.get_one_student(data)
+        'student' : student.Student.get_one_student(data),
+        'all_students' : student.Student.get_all_students()
     }
     return render_template('view_one_account.html', **context)
 
