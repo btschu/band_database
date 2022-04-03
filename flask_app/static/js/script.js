@@ -4,6 +4,7 @@ $(document).ready( function () {
     $('#datatable_students').DataTable({
         paging: false,
         dom: 'Bfrtip',
+        responsive: true,
         buttons: [
             {
                 extend: 'collection',
@@ -110,6 +111,7 @@ $(document).ready( function () {
         // bInfo: false,
         // ordering: false,
         dom: 'Bfrtip',
+        responsive: true,
         buttons: [
             'colvis',
             {

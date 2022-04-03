@@ -135,12 +135,12 @@
                                     <td>${{student.financial_accounts.item_cost}}</td>
                                     <td>${{student.financial_accounts.item_payment}}</td>
                                     <td>${{student.financial_accounts.item_cost - student.financial_accounts.item_payment}}</td>
-                                    <td>
+                                    <td class="text-center d-flex">
                                         <!-- <a class="btn-sm text-decoration-none btn-primary" href="/student/edit/{{student.id}}">Student Info</a> -->
-                                        <a class="btn-sm text-decoration-none btn-primary" href="/account/view/{{student.id}}">Account</a>
-                                        <a class="btn-sm text-decoration-none btn-primary" href="/student/charge/{{student.id}}">Charge Account</a>
-                                        <a class="btn-sm text-decoration-none btn-primary" href="/charge/edit/{{student.financial_accounts.id}}">Edit Transaction</a>
-                                        <a class="btn-sm text-decoration-none btn-danger" href="/charge/destroy/{{student.financial_accounts.id}}">Delete Transaction</a>
+                                        <a class="btn-sm text-decoration-none btn-primary m-1" href="/account/view/{{student.id}}">Account</a>
+                                        <a class="btn-sm text-decoration-none btn-primary m-1" href="/student/charge/{{student.id}}">Charge Account</a>
+                                        <a class="btn-sm text-decoration-none btn-primary m-1" href="/charge/edit/{{student.financial_accounts.id}}">Edit Transaction</a>
+                                        <a class="btn-sm text-decoration-none btn-danger m-1" href="/charge/destroy/{{student.financial_accounts.id}}">Delete Transaction</a>
                                     </td>
                                 </tr>
                             {% endfor %}

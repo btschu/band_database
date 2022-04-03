@@ -86,7 +86,7 @@
 
 <!-- main container -->
     <main>
-        <div class="container-fluid px-4">
+        <div class="container-fluid px-4 mb-5">
 
 <!-- table header -->
             <div class="card mt-5">
@@ -122,9 +122,9 @@
                                     <td>{{title.difficulty_level | upper}}</td>
                                     <td>{{title.genre | upper}}</td>
                                     <td>{{title.ensemble_type | upper}}</td>
-                                    <td class="text-right">
-                                        <a class="btn-sm text-decoration-none btn-primary" href="/library/edit/{{title.id}}">Edit</a>
-                                        <a class="btn-sm text-decoration-none btn-danger" href="/library/destroy/{{title.id}}">Delete</a>
+                                    <td class="text-center d-flex">
+                                        <a class="btn-sm text-decoration-none btn-primary m-1" href="/library/edit/{{title.id}}">Edit</a>
+                                        <a class="btn-sm text-decoration-none btn-danger m-1" href="/library/destroy/{{title.id}}">Delete</a>
                                     </td>
                                 </tr>
                             {% endfor %}
