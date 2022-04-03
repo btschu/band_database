@@ -20,11 +20,11 @@
 <body>
 
 <!-- navbar -->
-<nav class="d-flex justify-content-center align-items-center navbar navbar-expand navbar-dark bg-dark p-3">
-    <a class="navbar-brand ps-3" href="/view/student/instruments"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
-    <div class="d-flex">
+<nav class="d-flex justify-content-center p-3">
+    <a class="navbar-brand" href="/view/student/instruments"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
+  
 </nav>
-    <div class="d-flex justify-content-center align-items-center text-center mt-4">
+    <div class="d-flex justify-content-center align-items-center text-center ">
 
 <!-- login form with validation -->
         <form id="login_reg_form" class="content bg-transparent bg-opacity-25 p-3 col-5" action="/login" method="post">
