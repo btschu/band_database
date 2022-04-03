@@ -90,7 +90,7 @@
 <!-- create new director form with validation -->
     <form id="login_reg_form" class="bg-transparent bg-opacity-25 p-3 col-5" action="/register" method="post">
         <div class="form-group text-left p-4">
-            <div class="d-flex justify-content-center pb-3">
+            <div class="d-flex pb-3">
                 <img class="me-2" src="{{ url_for('static', filename='img/login_icon.png') }}">
                 <h1 class="mx-2">Create Account</h1>
             </div>
@@ -103,13 +103,13 @@
             </div>
             {% endif %}
             {% endwith %}
-            <input type="text" class="text-center form-control mb-4" name="director_first_name" aria-describedby="helpId" placeholder="First Name">
-            <input type="text" class="text-center form-control mb-4" name="director_last_name" aria-describedby="helpId" placeholder="Last Name">
-            <input type="text" class="text-center form-control mb-4" name="director_email" aria-describedby="helpId" placeholder="Email Address">
-            <input type="password" class="text-center form-control mb-4" name="password" aria-describedby="helpId" placeholder="Password">
-            <input type="password" class="text-center form-control mb-4" name="confirm" aria-describedby="helpId" placeholder="Confirm Password">
-            <a href="/students/view/all" class="btn btn-danger">Cancel</a>
-            <input type='submit' value='Register' class="btn btn-primary">
+            <input type="text" class="form-control mb-4" name="director_first_name" aria-describedby="helpId" placeholder="First Name">
+            <input type="text" class="form-control mb-4" name="director_last_name" aria-describedby="helpId" placeholder="Last Name">
+            <input type="text" class="form-control mb-4" name="director_email" aria-describedby="helpId" placeholder="Email Address">
+            <input type="password" class="form-control mb-4" name="password" aria-describedby="helpId" placeholder="Password">
+            <input type="password" class="form-control mb-4" name="confirm" aria-describedby="helpId" placeholder="Confirm Password">
+            <input type='submit' value='Register' class="btn btn-primary float-end mx-2 mb-4">
+            <a href="/students/view/all" class="btn btn-danger float-end">Cancel</a>
             </div>
         </form>
     </div>

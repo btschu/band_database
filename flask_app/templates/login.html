@@ -20,16 +20,13 @@
 <body>
 
 <!-- navbar -->
-<nav class="d-flex justify-content-center p-3">
-    <a class="navbar-brand" href="/view/student/instruments"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
-  
-</nav>
-    <div class="d-flex justify-content-center align-items-center text-center ">
-
-<!-- login form with validation -->
-        <form id="login_reg_form" class="content bg-transparent bg-opacity-25 p-3 col-5" action="/login" method="post">
+<div class="d-flex justify-content-center align-items-center text-center mt-5">
+    
+    <!-- login form with validation -->
+    <form id="login_reg_form" class="content bg-transparent bg-opacity-25 p-3 col-5" action="/login" method="post">
+            <img class="float-end" src="{{ url_for('static', filename='img/music_program_logo.png') }}">
             <div class="form-group p-4">
-                <div class="d-flex justify-content-center pb-3">
+                <div class="d-flex pb-3">
                     <img class="me-2" src="{{ url_for('static', filename='img/login_icon.png') }}">
                     <h1 class=" mx-2">Sign In</h1>
                 </div>
@@ -43,9 +40,9 @@
                     {% endif %}
                 {% endwith %}
                 <input type="hidden" name="id">
-                <input type="text" class="form-control mb-4 text-center" name="director_email" aria-describedby="helpId" placeholder="Email Address">
-                <input type="password" class="form-control text-center" name="password" aria-describedby="helpId" placeholder="Password">
-                <input type='submit' value='Login' class="btn btn-primary mt-4">
+                <input type="text" class="form-control mb-4" name="director_email" aria-describedby="helpId" placeholder="Email Address">
+                <input type="password" class="form-control" name="password" aria-describedby="helpId" placeholder="Password">
+                <input type='submit' value='Login' class="btn btn-primary mt-4 float-end">
             </div>
         </form>
     </div>
