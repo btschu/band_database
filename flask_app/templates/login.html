@@ -23,13 +23,15 @@
 <div class="container d-flex justify-content-center align-items-center text-center mt-5">
     
     <!-- login form with validation -->
-    <form id="login_reg_form" class="content bg-transparent bg-opacity-25 p-3 col-xs-5 col-sm-5 col-md-5 col-lg-5" action="/login" method="post">
-            <img class="float-end" src="{{ url_for('static', filename='img/music_program_logo.png') }}">
-            <div class="form-group p-2">
-                <div class="d-flex pb-3">
+    <form id="login_reg_form" class="content bg-transparent bg-opacity-25 p-3 col-xs-12 col-sm-12 col-md-9 col-lg-6" action="/login" method="post">
+        <div class="form-group p-2">
+            <div class="d-flex justify-content-between pb-3">
+                <div class= "d-flex">
                     <img class="me-2" src="{{ url_for('static', filename='img/login_icon.png') }}">
                     <h1 class=" mx-2">Sign In</h1>
                 </div>
+                <img class="" src="{{ url_for('static', filename='img/music_program_logo.png') }}">
+            </div>
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
                     <div class="alert-danger mb-4">
