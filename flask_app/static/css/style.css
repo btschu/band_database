@@ -54,15 +54,41 @@ img {
 }
 
 /* If the screen size is 601px wide or more, set the font-size of .nav-link to 18px */
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 701px) {
   .nav-link {
     font-size: 18px;
   }
 }
 
 /* If the screen size is 600px wide or less, set the font-size of .nav-link to 10px */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .nav-link {
     font-size: 10px;
+  }
+}
+
+/* Text size for datatables */
+
+@media screen and (min-width: 951px) {
+  #datatable_accounts, #datatable_library, #datatable_students{
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  #datatable_accounts, #datatable_library, #datatable_students {
+    font-size: 8px;
+  }
+}
+
+@media screen and (min-width: 951px) {
+  #datatable_accounts a, #datatable_library a, #datatable_students a{
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  #datatable_accounts a, #datatable_library a, #datatable_students a {
+    font-size: 8px;
   }
 }

@@ -110,9 +110,9 @@
                 <label for="item_payment" class="form-label">Payment Amount:</label>
                 <input type="number" class="form-control-sm mb-3" name="item_payment" placeholder="" value="{{edit.item_payment}}">
                 <div class="d-flex justify-content-end">
-                    <a href="/accounts/view/all" class="btn-sm text-decoration-none btn-danger me-2">All Accounts</a>
-                    <a href="/account/view/{{edit.student_id}}" class="btn-sm text-decoration-none btn-danger me-2">{{edit.financial_accounts.student_first_name}}'s' Account</a>
-                    <input type='submit' value='Update' class="btn-sm text-decoration-none btn-primary">
+                    <a href="/accounts/view/all" class="btn-sm d-flex align-items-center  text-decoration-none btn-danger me-2">All Accounts</a>
+                    <a href="/account/view/{{edit.student_id}}" class="btn-sm d-flex align-items-center  text-decoration-none btn-danger me-2">{{edit.financial_accounts.student_first_name}}'s' Account</a>
+                    <input type='submit' value='Update' class="btn-sm d-flex align-items-center  text-decoration-none btn-primary">
                 </div>
             </div>
         </div>
