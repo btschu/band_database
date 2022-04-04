@@ -5,7 +5,7 @@ $(document).ready( function () {
         // paging: false,
         lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         dom: 'Blfrtip',
-        responsive: true,
+        // responsive: true,
         buttons: [
             {
                 extend: 'collection',
@@ -114,7 +114,7 @@ $(document).ready( function () {
         // bInfo: false,
         // ordering: false,
         dom: 'Blfrtip',
-        responsive: true,
+        // responsive: true,
         buttons: [
             'colvis',
             {
