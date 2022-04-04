@@ -99,8 +99,8 @@
         {% endif %}
     {% endwith %}
     <form class="m-4" action="/charge/update" method="post">
-        <div class="row d-flex justify-content-center m-4">
-            <div class="col-6 p-3 me-3 ms-3 card">
+        <div class="row d-flex justify-content-evenly m-4">
+            <div class="p-3 me-3 ms-3 card col-xs-12 col-sm-10 col-md-8 col-lg-6 mb-5">
                 <input type="hidden" name="id" value="{{edit.id}}">
                 <input type="hidden" name="student_id" value="{{edit.student_id}}">
                 <label for="item_description" class="form-label">Item Description:</label>
@@ -109,10 +109,10 @@
                 <input type="text" class="form-control-sm mb-3" name="item_cost" placeholder="Cost of Item" value="{{edit.item_cost}}">
                 <label for="item_payment" class="form-label">Payment Amount:</label>
                 <input type="number" class="form-control-sm mb-3" name="item_payment" placeholder="" value="{{edit.item_payment}}">
-                <div class="d-flex justify-content-center">
-                    <a href="/accounts/view/all" class="btn btn-danger me-1">All Accounts</a>
-                    <a href="/account/view/{{edit.student_id}}" class="btn btn-danger mx-1 me-1">{{edit.financial_accounts.student_first_name}}'s' Account</a>
-                    <input type='submit' value='Update' class="btn btn-primary me-1">
+                <div class="d-flex justify-content-end">
+                    <a href="/accounts/view/all" class="btn-sm text-decoration-none btn-danger me-2">All Accounts</a>
+                    <a href="/account/view/{{edit.student_id}}" class="btn-sm text-decoration-none btn-danger me-2">{{edit.financial_accounts.student_first_name}}'s' Account</a>
+                    <input type='submit' value='Update' class="btn-sm text-decoration-none btn-primary">
                 </div>
             </div>
         </div>

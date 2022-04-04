@@ -2,8 +2,9 @@
 
 $(document).ready( function () {
     $('#datatable_students').DataTable({
-        paging: false,
-        dom: 'Bfrtip',
+        // paging: false,
+        lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+        dom: 'Blfrtip',
         responsive: true,
         buttons: [
             {
@@ -101,16 +102,18 @@ $(document).ready( function () {
             },
         ]
     });
+    new $.fn.dataTable.FixedHeader( table );
 });
 
 // Table functionality for accounts
 
 $(document).ready( function () {
     $('#datatable_accounts, #datatable_library').DataTable({
-        paging: false,
+        // paging: true,
+        lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         // bInfo: false,
         // ordering: false,
-        dom: 'Bfrtip',
+        dom: 'Blfrtip',
         responsive: true,
         buttons: [
             'colvis',
@@ -147,6 +150,7 @@ $(document).ready( function () {
             },
         ],
     });
+    new $.fn.dataTable.FixedHeader( table );
 });
 
 // go back button

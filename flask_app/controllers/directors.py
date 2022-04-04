@@ -1,6 +1,6 @@
 from flask import render_template,redirect,session,request, flash
 from flask_app import app
-from flask_app.models import director
+from flask_app.models import director, student
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -34,7 +34,10 @@ def registration():
         return redirect('/logout')
     if session['director_id'] != 1:
         return redirect('/logout')
-    return render_template('registration.html')
+    context = {
+        'all_students' : student.Student.get_all_students()
+    }
+    return render_template('registration.html', **context)
 
 @app.route('/register',methods=['POST'])
 def register():

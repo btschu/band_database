@@ -103,7 +103,7 @@
 <!-- edit student form with validation -->
         <form class="m-4" action="/library/update" method="post">
             <div class="row d-flex justify-content-center m-4">
-                <div class="col-3 p-3 me-3 ms-3 card">
+                <div class="col-xs-6 col-sm-6 col-md-5 col-lg-4 mb-5 p-3 me-3 ms-3 card">
                     <input type="text" class="form-control-sm mb-3" name="number" placeholder="Library Number" value="{{edit.number}}">
                     <input type="text" class="form-control-sm mb-3" name="song_title" placeholder="Title" value="{{edit.song_title }}">
                     <input type="text" class="form-control-sm mb-3" name="difficulty_level" placeholder="Difficulty Level" value="{{edit.difficulty_level}}">
@@ -127,15 +127,15 @@
                     </select>
                 </div>
 
-                <div class="col-3 p-3 me-3 ms-3 card">
+                <div class="col-xs-6 col-sm-6 col-md-5 col-lg-4 mb-5 p-3 me-3 ms-3 card">
                     <input type="hidden" class="form-control-sm mb-3" name="id" placeholder="" value="{{edit.id}}">
                     <input type="text" class="form-control-sm mb-3" name="composer_first_name" placeholder="Composer First Name" value="{{edit.composer_first_name}}">
                     <input type="text" class="form-control-sm mb-3" name="composer_last_name" placeholder="Composer Last Name" value="{{edit.composer_last_name}}">
                     <input type="text" class="form-control-sm mb-3" name="arranger_first_name" placeholder="Arranger First Name" value="{{edit.arranger_first_name}}">
                     <input type="text" class="form-control-sm mb-3" name="arranger_last_name" placeholder="Arranger Last Name" value="{{edit.arranger_last_name}}">
-                    <div>
-                        <input type='submit' value='Update' class="btn btn-primary float-end mx-2">
-                        <a href="/library/view/all" class="btn btn-danger float-end">Cancel</a>
+                    <div class="d-flex justify-content-end">
+                        <input type='submit' value='Update' class="btn-sm text-decoration-none btn-primary mx-2">
+                        <a href="/library/view/all" class="btn-sm text-decoration-none btn-danger">Cancel</a>
                     </div>
                 </div>
 

@@ -102,11 +102,11 @@
         {% endwith %}
 
 <!-- edit student FORM with validation -->
-        <form class="" action="/student/update" method="post">
+        <form class="mb-5" action="/student/update" method="post">
             <div class="row d-flex justify-content-around me-4 ms-4">
 
 <!-- Edit Student Name -->
-                <div class="col p-3 me-3 ms-3 card">
+                <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-3 p-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Name</h3>
                     <input type="hidden" name="student_id" value={{edit.id}}>
                     <input type="hidden" name="id" value={{edit.id}}>
@@ -118,7 +118,7 @@
                 </div>
 
 <!-- Edit instrument info -->
-                <div class="col p-3 me-3 ms-3 card">
+                <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-3 p-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Instruments</h3>
                     <label for="concert_instrument" class="form-label">Concert Instrument:</label>
                     <select class="form-control-sm mb-3" name="concert_instrument" id="">
@@ -199,7 +199,7 @@
                 </div>
 
 <!-- Edit Concert Uniform info -->
-                <div class="col p-3 me-3 ms-3 card">
+                <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-3 p-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Concert Uniform</h3>
                     <label for="tux_coat" class="form-label">Tuxedo Jacket:</label>
                     <input type="number" class="form-control-sm mb-3" name="tux_coat" value="{{ edit.concert_uniforms.tux_coat }}">
@@ -212,7 +212,7 @@
                 </div>
 
 <!-- Edit Marching Uniform info -->
-                <div class="col p-3 me-3 ms-3 card">
+                <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-3 p-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Marching Uniform</h3>
                     <label for="marching_jacket" class="form-label">Marching Jacket:</label>
                     <input type="number" class="form-control-sm mb-3" name="marching_jacket" value="{{ edit.marching_uniforms.marching_jacket }}">
@@ -228,13 +228,13 @@
 
                     <label for="colorguard_uniform" class="form-label">Colorguard Uniform:</label>
                     <input type="number" class="form-control-sm mb-3" name="colorguard_uniform" value="{{ edit.marching_uniforms.colorguard_uniform }}">
+                    <div class="d-flex justify-content-end ">
+                        <input type='submit' value='Update' class="btn btn-primary"><br>
+                    </div>
                 </div>
             </div>
 
 <!-- Submit button -->
-            <div class="float-end mt-3 mb-5 me-5">
-                <input type='submit' value='Update' class="btn btn-primary"><br>
-            </div>
         </form>
     </main>
 </body>

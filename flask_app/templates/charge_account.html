@@ -98,9 +98,9 @@
                 </div>
             {% endif %}
         {% endwith %}
-        <form class="m-4" action="/student/charge" method="post">
+        <form class="m-4 " action="/student/charge" method="post">
             <div class="row d-flex justify-content-center m-4">
-                <div class="col-5 p-3 me-3 ms-3 card">
+                <div class=" p-3 me-3 ms-3 card col-xs-12 col-sm-10 col-md-8 col-lg-6 mb-5">
                     <input type="hidden" name="student_id" value="{{student.id}}">
                     <label for="item_description" class="form-label">Item Description:</label>
                     <input type="text" class="form-control-sm mb-3" name="item_description" placeholder="Item Description" value="">
@@ -108,10 +108,10 @@
                     <input type="number" class="form-control-sm mb-3" name="item_cost" placeholder="Cost of Item" value="">
                     <label for="item_description" class="form-label">Payment Amount:</label>
                     <input type="number" class="form-control-sm mb-3" name="item_payment" placeholder="" value="0">
-                    <div class=" d-flex justify-content-center">
-                        <a href="/accounts/view/all" class="btn btn-danger me-1">All Accounts</a>
-                        <a href="/account/view/{{student.id}}" class="btn btn-danger mx-1 me-1">{{student.student_first_name}}'s' Account</a>
-                        <input type='submit' value="Charge {{student.student_first_name}}" class="btn btn-primary mx-1">
+                    <div class=" d-flex justify-content-end">
+                        <a href="/accounts/view/all" class="btn-sm text-decoration-none btn-danger me-1">All Accounts</a>
+                        <a href="/account/view/{{student.id}}" class="btn-sm text-decoration-none btn-danger mx-1 me-1">{{student.student_first_name}}'s' Account</a>
+                        <input type='submit' value="Charge {{student.student_first_name}}" class="btn-sm text-decoration-none btn-primary mx-1">
                     </div>
                 </div>
             </div>
