@@ -51,7 +51,7 @@
         </ul> -->
 
 <!-- add new student -->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-plus fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -69,7 +69,7 @@
         </ul>
 
 <!-- logout and add new director -->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <ul class="navbar-nav me-lg-3">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -109,6 +109,8 @@
                 <input type="text" class="form-control-sm mb-3" name="item_cost" placeholder="Cost of Item" value="{{edit.item_cost}}">
                 <label for="item_payment" class="form-label">Payment Amount:</label>
                 <input type="number" class="form-control-sm mb-3" name="item_payment" placeholder="" value="{{edit.item_payment}}">
+                <label for="item_notes" class="form-label">Notes:</label>
+                <textarea cols="30" rows="5" type="text" class="form-control-sm mb-3" name="item_notes">{{edit.item_notes}}</textarea>
                 <div class="d-flex justify-content-end">
                     <a href="/accounts/view/all" class="btn-sm d-flex align-items-center  text-decoration-none btn-danger me-2">All Accounts</a>
                     <a href="/account/view/{{edit.student_id}}" class="btn-sm d-flex align-items-center  text-decoration-none btn-danger me-2">{{edit.financial_accounts.student_first_name}}'s' Account</a>

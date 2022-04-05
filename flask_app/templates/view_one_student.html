@@ -51,7 +51,7 @@
         </ul> -->
 
 <!-- add new student -->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-plus fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -69,7 +69,7 @@
         </ul>
 
 <!-- logout and add new director -->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <ul class="navbar-nav me-lg-3">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -103,10 +103,10 @@
 
 <!-- edit student FORM with validation -->
         <form class="mb-5" action="/student/update" method="post">
-            <div class="row d-flex justify-content-around me-4 ms-4">
+            <div class="row d-flex justify-content-evenly me-4 ms-4">
 
-<!-- Edit Student Name -->
-                <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-3 p-3 card">
+<!-- Edit student name and instrument info -->
+                <div class="col-xs-6 col-sm-6 col-md-5 col-lg-3 mb-3 p-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Name</h3>
                     <input type="hidden" name="student_id" value={{edit.id}}>
                     <input type="hidden" name="id" value={{edit.id}}>
@@ -115,10 +115,6 @@
 
                     <label for="student_last_name" class="form-label">Student Last Name:</label>
                     <input type="text" class="form-control-sm mb-3" name="student_last_name" value="{{ edit.student_last_name }}">
-                </div>
-
-<!-- Edit instrument info -->
-                <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-3 p-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Instruments</h3>
                     <label for="concert_instrument" class="form-label">Concert Instrument:</label>
                     <select class="form-control-sm mb-3" name="concert_instrument" id="">
@@ -195,11 +191,11 @@
                     </select>
 
                     <label for="instrument_serial_number" class="form-label">School Instrument Serial Number:</label>
-                    <input type="text" class="form-control-sm mb-3" name="instrument_serial_number" placeholder="School Instrument Serial Number" value="{{edit.school_instruments.instrument_serial_number}}">
+                    <input type="text" class="form-control-sm mb-3" name="instrument_serial_number" value="{{edit.school_instruments.instrument_serial_number}}">
                 </div>
 
 <!-- Edit Concert Uniform info -->
-                <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-3 p-3 card">
+                <div class="col-xs-6 col-sm-6 col-md-5 col-lg-3 mb-3 p-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Concert Uniform</h3>
                     <label for="tux_coat" class="form-label">Tuxedo Jacket:</label>
                     <input type="number" class="form-control-sm mb-3" name="tux_coat" value="{{ edit.concert_uniforms.tux_coat }}">
@@ -209,10 +205,21 @@
 
                     <label for="dress" class="form-label">Concert Dress:</label>
                     <input type="number" class="form-control-sm mb-3" name="dress" value="{{ edit.concert_uniforms.dress }}">
+
+                    <label for="concert_uniform_location" class="form-label">Concert Uniform Location:</label>
+                    <select class="form-control-sm mb-3" name="concert_uniform_location" id="">
+                        <option value="{{edit.concert_uniforms.concert_uniform_location}}">{{edit.concert_uniforms.concert_uniform_location}}</option>
+                        <option value="Checked Out">Checked Out</option>
+                        <option value="Checked In">Checked In</option>
+                        <option value="Partially Checked In">Partially Checked In</option>
+                    </select>
+
+                    <label for="concert_uniform_notes" class="form-label">Concert Uniform Notes:</label>
+                    <textarea cols="30" rows="5" type="text" class="form-control-sm mb-3" name="concert_uniform_notes" value="">{{edit.concert_uniforms.concert_uniform_notes}}</textarea>
                 </div>
 
 <!-- Edit Marching Uniform info -->
-                <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-3 p-3 card">
+                <div class="col-xs-6 col-sm-6 col-md-5 col-lg-3 mb-3 p-3 card">
                     <h3 class="text-center text-decoration-underline mb-3">Marching Uniform</h3>
                     <label for="marching_jacket" class="form-label">Marching Jacket:</label>
                     <input type="number" class="form-control-sm mb-3" name="marching_jacket" value="{{ edit.marching_uniforms.marching_jacket }}">
@@ -228,8 +235,21 @@
 
                     <label for="colorguard_uniform" class="form-label">Colorguard Uniform:</label>
                     <input type="number" class="form-control-sm mb-3" name="colorguard_uniform" value="{{ edit.marching_uniforms.colorguard_uniform }}">
+
+                    <label for="marching_uniform_location" class="form-label">Marching Uniform Location:</label>
+                    <select class="form-control-sm mb-3" name="marching_uniform_location" id="">
+                        <option value="{{edit.marching_uniforms.marching_uniform_location}}">{{edit.marching_uniforms.marching_uniform_location}}</option>
+                        <option value="Checked Out">Checked Out</option>
+                        <option value="Checked In">Checked In</option>
+                        <option value="Partially Checked In">Partially Checked In</option>
+                    </select>
+
+                    <label for="marching_uniform_notes" class="form-label">Marching Uniform Notes:</label>
+                    <textarea cols="30" rows="5" type="text" class="form-control-sm mb-3" name="marching_uniform_notes" value="">{{edit.marching_uniforms.marching_uniform_notes}}</textarea>
+
                     <div class="d-flex justify-content-end ">
-                        <input type='submit' value='Update' class="btn btn-primary"><br>
+                        <a href="/students/view/all" class="me-2 btn-sm d-flex text-decoration-none btn-danger">Cancel</a>
+                        <input type='submit' value='Update' class="btn-sm text-decoration-none btn-primary"><br>
                     </div>
                 </div>
             </div>

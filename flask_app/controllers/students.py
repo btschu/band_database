@@ -35,12 +35,16 @@ def create_student():
         "hat": request.form["hat"],
         "gauntlets": request.form["gauntlets"],
         "colorguard_uniform": request.form["colorguard_uniform"],
+        "marching_uniform_location": request.form["marching_uniform_location"],
+        "marching_uniform_notes": request.form["marching_uniform_notes"],
         "student_id": student_id
     }
     concert_uniform_info = {
         "tux_coat": request.form["tux_coat"],
         "tux_pants": request.form["tux_pants"],
         "dress": request.form["dress"],
+        "concert_uniform_location": request.form["concert_uniform_location"],
+        "concert_uniform_notes": request.form["concert_uniform_notes"],
         "student_id": student_id
     }
     school_instrument_info = {
@@ -90,12 +94,16 @@ def update_student():
         "hat": request.form["hat"],
         "gauntlets": request.form["gauntlets"],
         "colorguard_uniform": request.form["colorguard_uniform"],
+        "marching_uniform_location": request.form["marching_uniform_location"],
+        "marching_uniform_notes": request.form["marching_uniform_notes"],
         "student_id": request.form["student_id"]
     }
     concert_uniform_info = {
         "tux_coat": request.form["tux_coat"],
         "tux_pants": request.form["tux_pants"],
         "dress": request.form["dress"],
+        "concert_uniform_location": request.form["concert_uniform_location"],
+        "concert_uniform_notes": request.form["concert_uniform_notes"],
         "student_id": request.form["student_id"]
     }
     school_instrument_info = {

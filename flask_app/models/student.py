@@ -57,6 +57,8 @@ class Student:
                 "hat": row["hat"],
                 "gauntlets": row["gauntlets"],
                 "colorguard_uniform": row["colorguard_uniform"],
+                "marching_uniform_location": row["marching_uniform_location"],
+                "marching_uniform_notes": row["marching_uniform_notes"],
                 "created_at": row["marching_uniforms.created_at"],
                 "updated_at": row["marching_uniforms.updated_at"],
                 "student_id": row["marching_uniforms.student_id"]
@@ -66,6 +68,8 @@ class Student:
                 "tux_coat": row["tux_coat"],
                 "tux_pants": row["tux_pants"],
                 "dress": row["dress"],
+                "concert_uniform_location": row["concert_uniform_location"],
+                "concert_uniform_notes": row["concert_uniform_notes"],
                 "created_at": row["concert_uniforms.created_at"],
                 "updated_at": row["concert_uniforms.updated_at"],
                 "student_id": row["concert_uniforms.student_id"]
@@ -103,6 +107,8 @@ class Student:
                 "hat": row["hat"],
                 "gauntlets": row["gauntlets"],
                 "colorguard_uniform": row["colorguard_uniform"],
+                "marching_uniform_location": row["marching_uniform_location"],
+                "marching_uniform_notes": row["marching_uniform_notes"],
                 "created_at": row["marching_uniforms.created_at"],
                 "updated_at": row["marching_uniforms.updated_at"],
                 "student_id": row["marching_uniforms.student_id"]
@@ -112,6 +118,8 @@ class Student:
                 "tux_coat": row["tux_coat"],
                 "tux_pants": row["tux_pants"],
                 "dress": row["dress"],
+                "concert_uniform_location": row["concert_uniform_location"],
+                "concert_uniform_notes": row["concert_uniform_notes"],
                 "created_at": row["concert_uniforms.created_at"],
                 "updated_at": row["concert_uniforms.updated_at"],
                 "student_id": row["concert_uniforms.student_id"]
@@ -121,6 +129,7 @@ class Student:
                 'item_description' : row['item_description'],
                 'item_cost' : row['item_cost'],
                 'item_payment' : row['item_payment'],
+                'item_notes' : row['item_notes'],
                 'created_at' : row['financial_accounts.created_at'],
                 'updated_at' : row['financial_accounts.updated_at'],
                 'student_id' : row['financial_accounts.student_id']
@@ -152,6 +161,8 @@ class Student:
                 "hat": row["hat"],
                 "gauntlets": row["gauntlets"],
                 "colorguard_uniform": row["colorguard_uniform"],
+                "marching_uniform_location": row["marching_uniform_location"],
+                "marching_uniform_notes": row["marching_uniform_notes"],
                 "created_at": row["marching_uniforms.created_at"],
                 "updated_at": row["marching_uniforms.updated_at"],
                 "student_id": row["marching_uniforms.student_id"]
@@ -161,6 +172,8 @@ class Student:
                 "tux_coat": row["tux_coat"],
                 "tux_pants": row["tux_pants"],
                 "dress": row["dress"],
+                "concert_uniform_location": row["concert_uniform_location"],
+                "concert_uniform_notes": row["concert_uniform_notes"],
                 "created_at": row["concert_uniforms.created_at"],
                 "updated_at": row["concert_uniforms.updated_at"],
                 "student_id": row["concert_uniforms.student_id"]
@@ -170,6 +183,7 @@ class Student:
                 'item_description' : row['item_description'],
                 'item_cost' : row['item_cost'],
                 'item_payment' : row['item_payment'],
+                'item_notes' : row['item_notes'],
                 'created_at' : row['financial_accounts.created_at'],
                 'updated_at' : row['financial_accounts.updated_at'],
                 'student_id' : row['financial_accounts.student_id']

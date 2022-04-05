@@ -27,6 +27,7 @@ def create_student_charge():
         'item_description': request.form['item_description'],
         'item_cost': request.form['item_cost'],
         'item_payment': request.form['item_payment'],
+        'item_notes' : request.form['item_notes'],
         'student_id': request.form['student_id']
     }
     account.Account.charge_account(data)
@@ -59,6 +60,7 @@ def update_charge():
         'item_description' : request.form['item_description'],
         'item_cost' : request.form['item_cost'],
         'item_payment' : request.form['item_payment'],
+        'item_notes' : request.form['item_notes'],
         'student_id' : request.form['student_id']
     }
     # student.Student.update_student_information(student_info)

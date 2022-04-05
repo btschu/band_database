@@ -9,6 +9,8 @@ class Concert_Uniform:
         self.tux_coat = data['tux_coat']
         self.tux_pants = data['tux_pants']
         self.dress = data['dress']
+        self.concert_uniform_location = data['concert_uniform_location']
+        self.concert_uniform_notes = data['concert_uniform_notes']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.student_id = data['student_id']
@@ -16,14 +18,14 @@ class Concert_Uniform:
     @classmethod
     def add_concert_uniform_to_student(cls,data):
         query = '''
-        INSERT INTO concert_uniforms (tux_coat, tux_pants, dress, student_id)
-        VALUES (%(tux_coat)s, %(tux_pants)s, %(dress)s, %(student_id)s);'''
+        INSERT INTO concert_uniforms (tux_coat, tux_pants, dress, concert_uniform_location, concert_uniform_notes, student_id)
+        VALUES (%(tux_coat)s, %(tux_pants)s, %(dress)s, %(concert_uniform_location)s, %(concert_uniform_notes)s, %(student_id)s);'''
         return connectToMySQL(db).query_db(query,data)
 
     @classmethod
     def update_concert_uniform_checked_out(cls, data):
         query = """
         UPDATE concert_uniforms
-        SET tux_coat=%(tux_coat)s, tux_pants=%(tux_pants)s, dress=%(dress)s, student_id=%(student_id)s
+        SET tux_coat=%(tux_coat)s, tux_pants=%(tux_pants)s, dress=%(dress)s, concert_uniform_location=%(concert_uniform_location)s, concert_uniform_notes=%(concert_uniform_notes)s, student_id=%(student_id)s
         WHERE student_id = %(student_id)s;"""
         return connectToMySQL(db).query_db(query,data)

@@ -11,6 +11,7 @@ class Account:
         self.item_description = data['item_description']
         self.item_cost = data['item_cost']
         self.item_payment = data['item_payment']
+        self.item_notes = data['item_notes']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.student_id = data['student_id']
@@ -18,15 +19,15 @@ class Account:
     @classmethod
     def charge_account(cls,data):
         query = '''
-        INSERT INTO financial_accounts (item_description, item_cost, item_payment, student_id)
-        VALUES (%(item_description)s, %(item_cost)s, %(item_payment)s, %(student_id)s);'''
+        INSERT INTO financial_accounts (item_description, item_cost, item_payment, item_notes, student_id)
+        VALUES (%(item_description)s, %(item_cost)s, %(item_payment)s, %(item_notes)s, %(student_id)s);'''
         return connectToMySQL(db).query_db(query,data)
 
     @classmethod
     def update_charge(cls, data):
         query = '''
         UPDATE financial_accounts
-        SET item_description=%(item_description)s, item_cost=%(item_cost)s, item_payment=%(item_payment)s, student_id=%(student_id)s
+        SET item_description=%(item_description)s, item_cost=%(item_cost)s, item_payment=%(item_payment)s, item_notes=%(item_notes)s, student_id=%(student_id)s
         WHERE financial_accounts.id = %(id)s;'''
         return connectToMySQL(db).query_db(query,data)
 
