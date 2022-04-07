@@ -2,8 +2,8 @@
 
 $(document).ready( function () {
     $('#datatable_students').DataTable({
-        // paging: false,
-        lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+        paging: false,
+        // lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         dom: 'Blfrtip',
         // responsive: true,
         buttons: [
@@ -97,7 +97,7 @@ $(document).ready( function () {
         ],
         columnDefs: [
             {
-                targets: [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ],
+                targets: [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ],
                 visible: false,
             },
         ]
@@ -109,8 +109,8 @@ $(document).ready( function () {
 
 $(document).ready( function () {
     $('#datatable_accounts, #datatable_library').DataTable({
-        // paging: true,
-        lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+        paging: false,
+        // lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         // bInfo: false,
         // ordering: false,
         dom: 'Blfrtip',
