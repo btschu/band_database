@@ -115,7 +115,7 @@
 
 <!-- table -->
                 <div class="card-body hscroll">
-                    <table id="datatable_accounts" class="table table-striped table-hover table-secondary table-bordered pt-3 pb-3 w-100">
+                    <table id="datatable_accounts" class="table table-striped table-hover table-secondary table-bordered">
                         <thead>
                             <tr>
                                 <th>First Name</th>
@@ -135,7 +135,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="align-middle">
                             {% for student in all_students %}
                                 <tr>
                                     <th>{{student.student_first_name | upper}}</th>

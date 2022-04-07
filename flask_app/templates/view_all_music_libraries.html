@@ -106,7 +106,7 @@
 
 <!-- table -->
                 <div class="card-body hscroll">
-                    <table id="datatable_library" class="table table-striped table-hover table-secondary table-bordered pt-3 pb-3">
+                    <table id="datatable_library" class="table table-striped table-hover table-secondary table-bordered">
                         <thead>
                             <tr>
                                 <th>Number</th>
@@ -121,7 +121,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="align-middle">
                             {% for title in all_titles %}
                                 <tr>
                                     <td>{{title.number | upper}}</td>

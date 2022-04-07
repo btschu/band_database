@@ -3,8 +3,12 @@
 $(document).ready( function () {
     $('#datatable_students').DataTable({
         paging: false,
+        scrollY: '50vh',
+        scrollX: '50vh',
+        scrollCollapse: true,
         // lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         dom: 'Blfrtip',
+        autoHeight: false,
         // responsive: true,
         buttons: [
             {
@@ -110,6 +114,9 @@ $(document).ready( function () {
 $(document).ready( function () {
     $('#datatable_accounts, #datatable_library').DataTable({
         paging: false,
+        scrollY: '50vh',
+        scrollX: '50vh',
+        scrollCollapse: true,
         // lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         // bInfo: false,
         // ordering: false,
