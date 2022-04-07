@@ -15,50 +15,50 @@ $(document).ready( function () {
                     {
                         extend: 'colvisGroup',
                         text: 'All Instrumentation',
-                        show: [ 0, 1, 2, 3, 4, 15 ],
-                        hide: [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                        show: [ 0, 1, 2, 3, 4, 17 ],
+                        hide: [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'Concert Band Instrumentation',
-                        show: [ 0, 1, 2, 15 ],
-                        hide: [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                        show: [ 0, 1, 2, 17 ],
+                        hide: [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'Marching Band Instrumentation',
-                        show: [ 0, 1, 3, 15 ],
-                        hide: [ 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                        show: [ 0, 1, 3, 17 ],
+                        hide: [ 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'Jazz Band Instrumentation',
-                        show: [ 0, 1, 4, 15 ],
-                        hide: [ 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                        show: [ 0, 1, 4, 17 ],
+                        hide: [ 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'School Owned Instruments',
-                        show: [ 0, 1, 13, 14, 15 ],
-                        hide: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                        show: [ 0, 1, 15, 16, 17 ],
+                        hide: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'Concert Uniforms',
-                        show: [ 0, 1, 5, 6, 7, 15 ],
-                        hide: [ 2, 3, 4, 8, 9, 10, 11, 12, 13, 14 ]
+                        show: [ 0, 1, 5, 6, 7, 8, 17 ],
+                        hide: [ 2, 3, 4, 9, 10, 11, 12, 13, 14, 15, 16 ]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'Marching Uniforms',
-                        show: [ 0, 1, 8, 9, 10, 11, 12, 15 ],
-                        hide: [ 2, 3, 4, 5, 6, 7, 13, 14 ]
+                        show: [ 0, 1, 9, 10, 11, 12, 13, 14, 17 ],
+                        hide: [ 2, 3, 4, 5, 6, 7, 8, 15, 16 ]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'Student Names',
-                        show: [ 0, 1, 15 ],
-                        hide: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                        show: [ 0, 1, 17 ],
+                        hide: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
                     },
                 ]
             },

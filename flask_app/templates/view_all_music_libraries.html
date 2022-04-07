@@ -31,7 +31,7 @@
     <a class="navbar-brand px-3" href="/students/view/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
     <div class="d-flex navbar-nav">
         <a href="/students/view/all" class="nav-link">Student Information</a>
-        <a href="/accounts/view/all" class="nav-link">Student Accounts</a>
+        <!-- <a href="/accounts/view/all" class="nav-link">Student Accounts</a> -->
         <a href="/library/view/all" class="nav-link">Music Library</a>
 
 <!-- view menu -->
@@ -101,11 +101,12 @@
                         <i class="fas fa-table me-1"></i>
                         Music Library
                     </div>
+                    <a class="btn-sm align-items-center text-decoration-none btn-success float-end" href="/library/new">Add New Title</a>
                 </div>
 
 <!-- table -->
                 <div class="card-body hscroll">
-                    <table id="datatable_library" class="table table-striped table-hover table-light table-bordered pt-3 pb-3">
+                    <table id="datatable_library" class="table table-striped table-hover table-secondary table-bordered pt-3 pb-3">
                         <thead>
                             <tr>
                                 <th>Number</th>
@@ -115,14 +116,16 @@
                                 <th>Difficulty</th>
                                 <th>Style</th>
                                 <th>Ensemble</th>
-                                <th>Actions <a class="btn-sm d-flex align-items-center  text-decoration-none btn-success float-end me-3" href="/library/new">Add New Title</a></th>
+                                <th>Actions 
+                                    <!-- <a class="btn-sm d-flex align-items-center  text-decoration-none btn-success float-end me-3" href="/library/new">Add New Title</a> -->
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for title in all_titles %}
                                 <tr>
                                     <td>{{title.number | upper}}</td>
-                                    <td>{{title.song_title | upper }}</td>
+                                    <th>{{title.song_title | upper }}</th>
                                     <td>{{title.composer_first_name | upper}} {{title.composer_last_name | upper}}</td>
                                     <td>{{title.arranger_first_name | upper}} {{title.arranger_last_name | upper}}</td>
                                     <td>{{title.difficulty_level | upper}}</td>

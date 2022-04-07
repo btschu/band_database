@@ -24,7 +24,7 @@
     <a class="navbar-brand px-3" href="/students/view/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
     <div class="d-flex navbar-nav">
         <a href="/students/view/all" class="nav-link">Student Information</a>
-        <a href="/accounts/view/all" class="nav-link">Student Accounts</a>
+        <!-- <a href="/accounts/view/all" class="nav-link">Student Accounts</a> -->
         <a href="/library/view/all" class="nav-link">Music Library</a>
 
 <!-- view menu -->
@@ -105,9 +105,9 @@
                     <label for="item_description" class="form-label">Item Description:</label>
                     <input type="text" class="form-control-sm mb-3" name="item_description" placeholder="Item Description" value="">
                     <label for="item_description" class="form-label">Item Cost:</label>
-                    <input type="number" class="form-control-sm mb-3" name="item_cost" placeholder="Cost of Item" value="">
+                    <input type="text" class="form-control-sm mb-3" name="item_cost" placeholder="Cost of Item" value="">
                     <label for="item_description" class="form-label">Payment Amount:</label>
-                    <input type="number" class="form-control-sm mb-3" name="item_payment" placeholder="" value="0">
+                    <input type="text" class="form-control-sm mb-3" name="item_payment" placeholder="Payment Amount" value="0">
                     <label for="item_description" class="form-label">Notes:</label>
                     <textarea cols="30" rows="5" type="text" class="form-control-sm mb-3" name="item_notes" value="" placeholder="Notes"></textarea>
                     <div class=" d-flex justify-content-end">
