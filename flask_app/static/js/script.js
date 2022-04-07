@@ -3,6 +3,7 @@
 $(document).ready( function () {
     $('#datatable_students').DataTable({
         paging: false,
+        fixedHeader: true,
         // scrollY: '50vh',
         // scrollX: '50vh',
         // scrollCollapse: true,
@@ -114,6 +115,7 @@ $(document).ready( function () {
 $(document).ready( function () {
     $('#datatable_accounts, #datatable_library').DataTable({
         paging: false,
+        fixedHeader: true,
         // scrollY: '50vh',
         // scrollX: '50vh',
         // scrollCollapse: true,
