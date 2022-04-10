@@ -11,6 +11,10 @@ $(document).ready( function () {
         dom: 'Blfrtip',
         autoHeight: false,
         responsive: true,
+        language:{
+            search: "<i class='fa fa-search'></i>",
+            searchPlaceholder: "Search...",
+        },
         buttons: [
             {
                 extend: 'collection',
@@ -124,6 +128,10 @@ $(document).ready( function () {
         // ordering: false,
         dom: 'Blfrtip',
         responsive: true,
+        language:{
+            search: "<i class='fa fa-search'></i>",
+            searchPlaceholder: "Search...",
+        },
         buttons: [
             'colvis',
             {

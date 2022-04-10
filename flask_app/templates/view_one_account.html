@@ -98,12 +98,11 @@
 
 <!-- table header -->
         <div class="card mt-4">
-            <div class="d-flex justify-content-between align-items-center px-4 pe-4 pt-4">
+            <div class="d-flex justify-content-between align-items-center px-3 pe-3 pt-4">
                 <div>
-                    <i class="fas fa-table me-1"></i>
-                    {{student.student_full_name()}}'s Account
+                    <h3><i class="fas fa-table me-1"></i> {{student.student_full_name()}}'s Account</h3>
                 </div>
-                <a class="btn-sm align-items-center text-center text-decoration-none btn-success float-end" href="/student/charge/{{student.id}}">New Charge</a>
+                <a class="btn align-items-center btn-outline-secondary float-end" href="/student/charge/{{student.id}}"><i class="fas fa-plus fa-fw"></i> New Charge</a>
             </div>
             <div class="card-body hscroll">
 <!-- table -->
@@ -133,8 +132,8 @@
                                 <td>${{student.item_cost - student.item_payment}}</td>
                                 <td>{{student.item_notes}}</td>
                                 <td class="">
-                                    <a class="m-1" href="/charge/edit/{{student.financial_accounts.id}}">Edit Transaction</a> | 
-                                    <a class="text-danger m-1" href="/charge/destroy/{{student.financial_accounts.id}}">Delete Transaction</a>
+                                    <a class="btn btn-sm btn-primary m-1" href="/charge/edit/{{student.financial_accounts.id}}"><span title="Edit {{student.item_description}}"><i class="fas fa-edit fa-fw"></i></span></a>
+                                    <a class="btn btn-sm btn-danger m-1" href="/charge/destroy/{{student.financial_accounts.id}}"><span title="Delete {{student.item_description}}"><i class="fas fa-trash fa-fw"></i></span></a>
                                 </td>
                             </tr>
                             {% endfor %}

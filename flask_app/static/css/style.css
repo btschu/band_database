@@ -3,6 +3,7 @@
   background: rgba(255, 255, 255, 0.2) !important;
   border-radius: 16px !important;
   border: 1px solid rgba(255, 255, 255, 0.589) !important;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 body {
@@ -77,18 +78,28 @@ img {
 
 @media screen and (max-width: 950px) {
   #datatable_accounts, #datatable_library, #datatable_students {
-    font-size: 8px;
+    font-size: 10px;
   }
 }
 
-@media screen and (min-width: 951px) {
-  #datatable_accounts a, #datatable_library a, #datatable_students a{
-    font-size: 11px;
-  }
+.dataTables_filter {
+  position: relative;
 }
 
-@media screen and (max-width: 950px) {
-  #datatable_accounts a, #datatable_library a, #datatable_students a {
-    font-size: 8px;
-  }
+.dataTables_filter input {
+  width: 250px;
+  height: 32px;
+  background: #fcfcfc;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+  text-indent: 10px;
+  margin-bottom: 20px;
+}
+
+.dataTables_filter .fa-search {
+  position: absolute;
+  top: 10px;
+  left: auto;
+  right: 10px;
 }
