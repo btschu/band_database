@@ -92,11 +92,11 @@
 
 <!-- main container -->
     <main>
-        <div class="container-fluid px-4 mb-5">
+        <div class="container-fluid px-4 pe-4 mb-4">
 
 <!-- table header -->
-            <div class="card mt-5">
-                <div class="d-flex justify-content-between align-items-center p-3">
+            <div class="card mt-4">
+                <div class="d-flex justify-content-between align-items-center px-4 pe-4 pt-4">
                     <div>
                         <i class="fas fa-table me-1"></i>
                         Music Library
@@ -131,9 +131,9 @@
                                     <td>{{title.difficulty_level | upper}}</td>
                                     <td>{{title.genre | upper}}</td>
                                     <td>{{title.ensemble_type | upper}}</td>
-                                    <td class="text-center d-flex">
-                                        <a class="btn-sm d-flex align-items-center  text-decoration-none btn-primary m-1" href="/library/edit/{{title.id}}">Edit</a>
-                                        <a class="btn-sm d-flex align-items-center  text-decoration-none btn-danger m-1" href="/library/destroy/{{title.id}}">Delete</a>
+                                    <td class="">
+                                        <a class="m-1" href="/library/edit/{{title.id}}">Edit</a> | 
+                                        <a class="text-danger m-1" href="/library/destroy/{{title.id}}">Delete</a>
                                     </td>
                                 </tr>
                             {% endfor %}

@@ -10,12 +10,12 @@ $(document).ready( function () {
         // lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         dom: 'Blfrtip',
         autoHeight: false,
-        // responsive: true,
+        responsive: true,
         buttons: [
             {
                 extend: 'collection',
                 text: 'Student Info',
-                className: 'customn-html-collection',
+                className: 'custom-html-collection',
                 buttons: [
                     {
                         extend: 'colvisGroup',
@@ -123,7 +123,7 @@ $(document).ready( function () {
         // bInfo: false,
         // ordering: false,
         dom: 'Blfrtip',
-        // responsive: true,
+        responsive: true,
         buttons: [
             'colvis',
             {
