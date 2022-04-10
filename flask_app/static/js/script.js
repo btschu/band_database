@@ -4,6 +4,7 @@ $(document).ready( function () {
     $('#datatable_students').DataTable({
         paging: false,
         fixedHeader: true,
+        autoWidth: false,
         // scrollY: '50vh',
         // scrollX: '50vh',
         // scrollCollapse: true,
@@ -12,7 +13,8 @@ $(document).ready( function () {
         autoHeight: false,
         responsive: true,
         language:{
-            search: "<i class='fa fa-search'></i>",
+            // search: "<i class='fa fa-search'></i>",
+            search: "",
             searchPlaceholder: "Search...",
         },
         buttons: [
@@ -23,51 +25,57 @@ $(document).ready( function () {
                 buttons: [
                     {
                         extend: 'colvisGroup',
+                        text: 'Student Names (SORT)',
+                        show: [ 1, 2, 18 ],
+                        hide: [ 0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+                    },
+                    {
+                        extend: 'colvisGroup',
+                        text: 'All Information',
+                        show: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 ],
+                        // hide: [ 1, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+                    },
+                    {
+                        extend: 'colvisGroup',
                         text: 'All Instrumentation',
-                        show: [ 0, 1, 2, 3, 4, 17 ],
-                        hide: [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
+                        show: [ 0, 3, 4, 5, 18 ],
+                        hide: [ 1, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'Concert Band Instrumentation',
-                        show: [ 0, 1, 2, 17 ],
-                        hide: [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
+                        show: [ 0, 3, 18 ],
+                        hide: [ 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'Marching Band Instrumentation',
-                        show: [ 0, 1, 3, 17 ],
-                        hide: [ 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
+                        show: [ 0, 4, 18 ],
+                        hide: [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'Jazz Band Instrumentation',
-                        show: [ 0, 1, 4, 17 ],
-                        hide: [ 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
+                        show: [ 0, 5, 18 ],
+                        hide: [ 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'School Owned Instruments',
-                        show: [ 0, 1, 15, 16, 17 ],
-                        hide: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                        show: [ 0, 16, 17, 18 ],
+                        hide: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'Concert Uniforms',
-                        show: [ 0, 1, 5, 6, 7, 8, 17 ],
-                        hide: [ 2, 3, 4, 9, 10, 11, 12, 13, 14, 15, 16 ]
+                        show: [ 0, 6, 7, 8, 9, 18 ],
+                        hide: [ 1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15, 16, 17 ]
                     },
                     {
                         extend: 'colvisGroup',
                         text: 'Marching Uniforms',
-                        show: [ 0, 1, 9, 10, 11, 12, 13, 14, 17 ],
-                        hide: [ 2, 3, 4, 5, 6, 7, 8, 15, 16 ]
-                    },
-                    {
-                        extend: 'colvisGroup',
-                        text: 'Student Names',
-                        show: [ 0, 1, 17 ],
-                        hide: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
+                        show: [ 0, 10, 11, 12, 13, 14, 15, 18 ],
+                        hide: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 16, 17 ]
                     },
                 ]
             },
@@ -106,9 +114,12 @@ $(document).ready( function () {
         ],
         columnDefs: [
             {
-                targets: [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ],
+                targets: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ],
                 visible: false,
             },
+            // { 
+            //     width: "20%", "targets": 0 
+            // }
         ]
     });
     new $.fn.dataTable.FixedHeader( table );
@@ -120,6 +131,7 @@ $(document).ready( function () {
     $('#datatable_accounts, #datatable_library').DataTable({
         paging: false,
         fixedHeader: true,
+        // autoWidth: false,
         // scrollY: '50vh',
         // scrollX: '50vh',
         // scrollCollapse: true,
@@ -129,7 +141,8 @@ $(document).ready( function () {
         dom: 'Blfrtip',
         responsive: true,
         language:{
-            search: "<i class='fa fa-search'></i>",
+            // search: "<i class='fa fa-search'></i>",
+            search: "",
             searchPlaceholder: "Search...",
         },
         buttons: [

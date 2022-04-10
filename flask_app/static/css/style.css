@@ -82,12 +82,25 @@ img {
   }
 }
 
+@media screen and (max-width: 950px) {
+  h3{
+    font-size: 13px !important;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .btn {
+    font-size: 8px !important;
+  }
+}
+
 .dataTables_filter {
   position: relative;
 }
 
 .dataTables_filter input {
-  width: 250px;
+  max-width: 275px;
+  width: 100%;
   height: 32px;
   background: #fcfcfc;
   border: 1px solid #aaa;
@@ -97,9 +110,9 @@ img {
   margin-bottom: 20px;
 }
 
-.dataTables_filter .fa-search {
+/* .dataTables_filter .fa-search {
   position: absolute;
-  top: 10px;
+  top: 8px;
   left: auto;
   right: 10px;
-}
+} */
