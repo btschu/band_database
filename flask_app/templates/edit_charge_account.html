@@ -24,31 +24,7 @@
     <a class="navbar-brand px-3" href="/students/view/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
     <div class="d-flex navbar-nav">
         <a href="/students/view/all" class="nav-link">Student Information</a>
-        <!-- <a href="/accounts/view/all" class="nav-link">Student Accounts</a> -->
         <a href="/library/view/all" class="nav-link">Music Library</a>
-
-<!-- view menu -->
-        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link" id="navbarDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">Student Information</a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item text-center" href="/students/view/all">All Students</a></li>
-                    <li><a class="dropdown-item text-center" href="/accounts/view/all">Accounts</a></li>
-                </ul>
-            </li>
-        </ul> -->
-
-<!-- database menu -->
-        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Databases</a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item text-center" href="/library/view/all">Music Library</a></li>
-                    <li><a class="dropdown-item text-center" href="/locker/view/all">Lockers</a></li>
-                    <li><a class="dropdown-item text-center" href="/instruments/view/all">School Instruments</a></li>
-                </ul>
-            </li>
-        </ul> -->
 
 <!-- add new student -->
         <ul class="navbar-nav">
@@ -112,7 +88,6 @@
                 <label for="item_notes" class="form-label">Notes:</label>
                 <textarea cols="30" rows="5" type="text" class="form-control-sm mb-3" name="item_notes">{{edit.item_notes}}</textarea>
                 <div class="d-flex justify-content-end">
-                    <!-- <a href="/accounts/view/all" class="btn-sm d-flex align-items-center  text-decoration-none btn-danger me-2">All Accounts</a> -->
                     <a href="/account/view/{{edit.student_id}}" class="btn-sm d-flex align-items-center  text-decoration-none btn-danger me-2">{{edit.financial_accounts.student_first_name}}'s' Account</a>
                     <input type='submit' value='Update' class="btn-sm d-flex align-items-center  text-decoration-none btn-primary">
                 </div>

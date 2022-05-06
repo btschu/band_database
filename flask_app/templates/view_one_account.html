@@ -31,31 +31,7 @@
     <a class="navbar-brand px-3" href="/students/view/all"><img src="{{ url_for('static', filename='img/music_program_logo.png') }}"></a>
     <div class="d-flex navbar-nav">
         <a href="/students/view/all" class="nav-link">Student Information</a>
-        <!-- <a href="/accounts/view/all" class="nav-link">Student Accounts</a> -->
         <a href="/library/view/all" class="nav-link">Music Library</a>
-
-<!-- view menu -->
-        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link" id="navbarDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">Student Information</a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item text-center" href="/students/view/all">All Students</a></li>
-                    <li><a class="dropdown-item text-center" href="/accounts/view/all">Accounts</a></li>
-                </ul>
-            </li>
-        </ul> -->
-
-<!-- database menu -->
-        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Databases</a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item text-center" href="/library/view/all">Music Library</a></li>
-                    <li><a class="dropdown-item text-center" href="/locker/view/all">Lockers</a></li>
-                    <li><a class="dropdown-item text-center" href="/instruments/view/all">School Instruments</a></li>
-                </ul>
-            </li>
-        </ul> -->
 
 <!-- add new student -->
         <ul class="navbar-nav ">
@@ -109,21 +85,17 @@
                 <table id="datatable_accounts" class="table table-striped table-hover table-secondary table-bordered nowrap w-100">
                     <thead>
                         <tr>
-                            <!-- <th>Full Name</th> -->
                             <th>Item Description</th>
                             <th>Item Cost</th>
                             <th>Payment Amount</th>
                             <th>Total Owed</th>
                             <th>Notes</th>
-                            <th>Actions
-                                <!-- <a class="btn-sm d-flex align-items-center  text-decoration-none btn-primary float-end" href="/student/charge/{{student.id}}">New Charge</a> -->
-                            </th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="align-middle">
                         {% for student in charges %}
                             <tr>
-                                <!-- <th>{{student.financial_accounts.student_full_name() | upper}}</th> -->
                                 <th>{{student.item_description | upper}}</th>
                                 <td>${{student.item_cost}}</td>
                                 <td>${{student.item_payment}}</td>
@@ -136,17 +108,6 @@
                             </tr>
                             {% endfor %}
                         </tbody>
-                        <!-- <tfoot>
-                            <tr>
-                                <th></th>
-                                <th class="text-end">Total Owed:</th>
-                                <th>${{(charges | sum (attribute="item_cost")) - (charges | sum (attribute="item_payment"))}}</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </tfoot> -->
                     </table>
                     {% if (charges | sum (attribute="item_cost")) > (charges | sum (attribute="item_payment")) %}
                         <h3 class="text-center pt-2 pe-2">Total Owed: <span class="text-danger">${{(charges | sum (attribute="item_cost")) - (charges | sum (attribute="item_payment"))}}</span></h3>
