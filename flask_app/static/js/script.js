@@ -2,16 +2,18 @@
 
 $(document).ready( function () {
     $('#datatable_students').DataTable({
-        paging: false,
-        fixedHeader: true,
-        autoWidth: false,
-        // scrollY: '50vh',
-        // scrollX: '50vh',
-        // scrollCollapse: true,
+        // fixedHeader: true,
         // lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+        // responsive: true,
+        dom: 't',
+        scrollCollapse: true,
+        fixedColumns: true,
+        paging: false,
+        autoWidth: false,
+        scrollY: '45vh',
+        scrollX: true,
         dom: 'Blfrtip',
         autoHeight: false,
-        responsive: true,
         language:{
             // search: "<i class='fa fa-search'></i>",
             search: "",
@@ -112,15 +114,12 @@ $(document).ready( function () {
                 ]
             },
         ],
-        columnDefs: [
-            {
-                targets: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ],
-                visible: false,
-            },
-            // { 
-            //     width: "20%", "targets": 0 
-            // }
-        ]
+        // columnDefs: [
+        //     {
+        //         targets: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ],
+        //         visible: false,
+        //     },
+        // ]
     });
     new $.fn.dataTable.FixedHeader( table );
 });

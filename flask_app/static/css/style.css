@@ -71,13 +71,13 @@ img {
 /* Text size for datatables */
 
 @media screen and (min-width: 951px) {
-  #datatable_accounts, #datatable_library, #datatable_students{
+  #datatable_accounts, #datatable_library, #datatable_students, th{
     font-size: 16px;
   }
 }
 
 @media screen and (max-width: 950px) {
-  #datatable_accounts, #datatable_library, #datatable_students {
+  #datatable_accounts, #datatable_library, #datatable_students, th {
     font-size: 10px;
   }
 }
@@ -115,4 +115,17 @@ img {
   top: 8px;
   left: auto;
   right: 10px;
+} */
+
+/* .rotate {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 } */

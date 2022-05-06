@@ -30,10 +30,11 @@ def director_login():
 # register director
 @app.route('/registration')
 def registration():
-    if 'director_id' not in session:
-        return redirect('/logout')
-    if session['director_id'] != 1:
-        return redirect('/logout')
+    # todo uncomment these four lines and use registration_copy.html if using live
+    # if 'director_id' not in session:
+    #     return redirect('/logout')
+    # if session['director_id'] != 1:
+    #     return redirect('/logout')
     context = {
         'all_students' : student.Student.get_all_students()
     }
@@ -41,10 +42,11 @@ def registration():
 
 @app.route('/register',methods=['POST'])
 def register():
-    if 'director_id' not in session:
-        return redirect('/logout')
-    if session['director_id'] != 1:
-        return redirect('/logout')
+    # todo uncomment these four lines and use registration_copy.html if using live
+    # if 'director_id' not in session:
+    #     return redirect('/logout')
+    # if session['director_id'] != 1:
+    #     return redirect('/logout')
     if not director.Director.validate_director(request.form):
         return redirect('/registration')
     data ={
