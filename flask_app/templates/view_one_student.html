@@ -34,7 +34,7 @@
                     <p class="dropdown-header text-center text-decoration-underline">Add New:</p>
                     <li><a class="dropdown-item text-center" href="/student/new">Student</a></li>
                     <li><a class="dropdown-item text-center" href="/library/new">Music to Library</a></li>
-                    <select class="dropdown-item text-center" name="" id="" onchange="location = this.value;">
+                    <select class="dropdown-item text-center form-select" name="" id="" onchange="location = this.value;">
                         <option value="">Charge Account</option>
                         {% for student in all_students | sort(attribute="student_first_name") %}
                             <option value="/student/charge/{{student.id}}">{{student.student_full_name()}}</option>
@@ -50,9 +50,9 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <p class="dropdown-header text-center text-decoration-underline">Logged in as: {{session.director_first_name}} {{session.director_last_name}}</p>
-                    {% if session.director_id == 1 %}
+                    <!-- {% if session.director_id == 1 %}
                         <li><a class="dropdown-item text-center" href="/registration">Register New Director</a></li>
-                    {% endif %}
+                    {% endif %} -->
                     <li><a class="dropdown-item text-center" href="/logout">Logout</a></li>
                 </ul>
             </li>

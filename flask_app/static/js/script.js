@@ -3,7 +3,6 @@
 $(document).ready( function () {
     $('#datatable_students').DataTable({
         scrollCollapse: true,
-        fixedColumns: true,
         paging: false,
         scrollY: '45vh',
         scrollX: true,
@@ -16,7 +15,7 @@ $(document).ready( function () {
         buttons: [
             {
                 extend: 'collection',
-                text: 'Student Info',
+                text: 'Custom Views',
                 className: 'custom-html-collection',
                 buttons: [
                     {
@@ -74,7 +73,11 @@ $(document).ready( function () {
                     },
                 ]
             },
-            'colvis',
+            {
+                extend: 'colvis',
+                text: "Column Visibility",
+                className: 'custom-html-collection'
+            },
             {
                 extend: 'collection',
                 text: 'Export',
@@ -117,20 +120,26 @@ $(document).ready( function () {
     new $.fn.dataTable.FixedHeader( table );
 });
 
-// Table functionality for accounts
+// Table functionality for accounts and music library
 
 $(document).ready( function () {
     $('#datatable_accounts, #datatable_library').DataTable({
+        scrollCollapse: true,
         paging: false,
-        fixedHeader: true,
+        scrollY: '45vh',
+        scrollX: true,
         dom: 'Blfrtip',
-        responsive: true,
+        autoHeight: false,
         language:{
             search: "",
             searchPlaceholder: "Search...",
         },
         buttons: [
-            'colvis',
+            {
+                extend: 'colvis',
+                text: "Column Visibility",
+                className: 'custom-html-collection'
+            },
             {
                 extend: 'collection',
                 text: 'Export',
