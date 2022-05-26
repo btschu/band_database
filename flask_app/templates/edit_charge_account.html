@@ -64,7 +64,7 @@
 <main>
 
 <!-- edit charge form with validation -->
-    <h1 class="text-center text-decoration-underline mb-3 mt-3">Edit or Add Payment for {{edit.financial_accounts.student_first_name}}</h1>
+    <h1 class="text-light text-center text-decoration-underline mb-3 mt-3">Edit or Add Payment for {{edit.financial_accounts.student_first_name}}</h1>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="mt-4 mb-4 col-5 mx-auto alert-danger border rounded border-danger p-2">
@@ -79,17 +79,17 @@
             <div class="p-3 me-3 ms-3 card col-xs-12 col-sm-10 col-md-8 col-lg-6 mb-5">
                 <input type="hidden" name="id" value="{{edit.id}}">
                 <input type="hidden" name="student_id" value="{{edit.student_id}}">
-                <label for="item_description" class="form-label">Item Description:</label>
+                <label for="item_description" class="text-light form-label">Item Description:</label>
                 <input type="text" class="form-control-sm mb-3" name="item_description" placeholder="Item Description" value="{{edit.item_description}}">
-                <label for="item_cost" class="form-label">Cost:</label>
+                <label for="item_cost" class="text-light form-label">Cost:</label>
                 <input type="text" class="form-control-sm mb-3" name="item_cost" placeholder="Cost of Item" value="{{edit.item_cost}}">
-                <label for="item_payment" class="form-label">Payment Amount:</label>
+                <label for="item_payment" class="text-light form-label">Payment Amount:</label>
                 <input type="text" class="form-control-sm mb-3" name="item_payment" placeholder="" value="{{edit.item_payment}}">
-                <label for="item_notes" class="form-label">Notes:</label>
+                <label for="item_notes" class="text-light form-label">Notes:</label>
                 <textarea cols="30" rows="5" type="text" class="form-control-sm mb-3" name="item_notes">{{edit.item_notes}}</textarea>
                 <div class="d-flex justify-content-end">
-                    <a href="/account/view/{{edit.student_id}}" class="btn-sm d-flex align-items-center  text-decoration-none btn-danger me-2">{{edit.financial_accounts.student_first_name}}'s' Account</a>
-                    <input type='submit' value='Update' class="btn-sm d-flex align-items-center  text-decoration-none btn-primary">
+                    <a href="/account/view/{{edit.student_id}}" class="btn d-flex align-items-center btn-danger me-2">{{edit.financial_accounts.student_first_name}}'s' Account</a>
+                    <input type='submit' value='Update' class="btn d-flex align-items-center btn-primary">
                 </div>
             </div>
         </div>

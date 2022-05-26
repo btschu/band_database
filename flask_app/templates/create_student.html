@@ -63,7 +63,7 @@
 <!-- main container -->
 <main>
 <!-- title -->
-        <h1 class="mt-3 mb-3 text-center">Add New Student</h1>
+        <h1 class="text-light mt-3 mb-3 text-center">Add New Student</h1>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <div class="mt-4 mb-4 col-6 mx-auto alert-danger border rounded border-danger p-2">
@@ -80,12 +80,12 @@
 
 <!-- name and instrument information -->
                 <div class="col-xs-6 col-sm-6 col-md-5 col-lg-3 mb-3 p-3 card">
-                    <h3 class="text-center text-decoration-underline mb-3">Student Name</h3>
+                    <h3 class="text-light text-center text-decoration-underline mb-3">Student Name</h3>
                     <input type="hidden" name="student_id">
                     <input type="text" class="form-control-sm mb-3" name="student_first_name" placeholder="First Name" value="">
                     <input type="text" class="form-control-sm mb-3" name="student_last_name" placeholder="Last Name" value="">
-                    <h3 class="text-center text-decoration-underline mb-3">Instrument Info</h3>
-                    <label for="concert_instrument" class="form-label">Concert Instrument:</label>
+                    <h3 class="text-light text-center text-decoration-underline mb-3">Instrument Info</h3>
+                    <label for="concert_instrument" class="text-light form-label">Concert Instrument:</label>
                     <select class="form-control-sm mb-3" name="concert_instrument" id="">
                         <option value=""></option>
                         <option value="Piccolo">Piccolo</option>
@@ -105,7 +105,7 @@
                         <option value="Percussion">Percussion</option>
                     </select>
 
-                    <label for="marching_instrument" class="form-label">Marching Instrument:</label>
+                    <label for="marching_instrument" class="text-light form-label">Marching Instrument:</label>
                     <select class="form-control-sm mb-3" name="marching_instrument" id="">
                         <option value=""></option>
                         <option value="Piccolo">Piccolo</option>
@@ -128,7 +128,7 @@
                         <option value="Drum Major">Drum Major</option>
                     </select>
 
-                    <label for="jazz_instrument" class="form-label">Jazz Instrument:</label>
+                    <label for="jazz_instrument" class="text-light form-label">Jazz Instrument:</label>
                     <select class="form-control-sm mb-3" name="jazz_instrument" id="">
                         <option value=""></option>
                         <option value="Alto Sax">Alto Sax</option>
@@ -142,7 +142,7 @@
                         <option value="Percussion">Percussion</option>
                     </select>
 
-                    <label for="instrument_type" class="form-label">School Instrument:</label>
+                    <label for="instrument_type" class="text-light form-label">School Instrument:</label>
                     <select class="form-control-sm mb-3" name="instrument_type" id="">
                         <option value=""></option>
                         <option value="Piccolo">Piccolo</option>
@@ -165,11 +165,11 @@
 
 <!-- concert uniform information -->
                 <div class="col-xs-6 col-sm-6 col-md-5 col-lg-3 mb-3 p-3 card">
-                    <h3 class="text-center text-decoration-underline mb-3">Concert Uniform</h3>
+                    <h3 class="text-light text-center text-decoration-underline mb-3">Concert Uniform</h3>
                     <input type="number" class="form-control-sm mb-3" name="tux_coat" placeholder="Tuxedo Jacket #" value="">
                     <input type="number" class="form-control-sm mb-3" name="tux_pants" placeholder="Tuxedo Pants #" value="">
                     <input type="number" class="form-control-sm mb-3" name="dress" placeholder="Concert Dress #" value="">
-                    <label for="concert_uniform_location" class="form-label">Concert Uniform Location:</label>
+                    <label for="concert_uniform_location" class="text-light form-label">Concert Uniform Location:</label>
                     <select class="form-control-sm mb-3" name="concert_uniform_location" id="">
                         <option value=""></option>
                         <option value="Checked Out">Checked Out</option>
@@ -181,13 +181,13 @@
 
 <!-- marching uniform information -->
                 <div class="col-xs-6 col-sm-6 col-md-5 col-lg-3 mb-3 p-3 card">
-                    <h3 class="text-center text-decoration-underline mb-3">Marching Uniform</h3>
+                    <h3 class="text-light text-center text-decoration-underline mb-3">Marching Uniform</h3>
                     <input type="number" class="form-control-sm mb-3" name="marching_jacket" placeholder="Marching Jacket #"value="">
                     <input type="number" class="form-control-sm mb-3" name="marching_pants" placeholder="Marching Pants #" value="">
                     <input type="number" class="form-control-sm mb-3" name="hat" placeholder="Marching Hat #" value="">
                     <input type="number" class="form-control-sm mb-3" name="gauntlets" placeholder="Gauntlets #" value="">
                     <input type="number" class="form-control-sm mb-3" name="colorguard_uniform" placeholder="Colorguard Uniform #" value="">
-                    <label for="marching_uniform_location" class="form-label">Marching Uniform Location:</label>
+                    <label for="marching_uniform_location" class="text-light form-label">Marching Uniform Location:</label>
                     <select class="form-control-sm mb-3" name="marching_uniform_location" id="">
                         <option value=""></option>
                         <option value="Checked Out">Checked Out</option>
@@ -196,8 +196,8 @@
                     </select>
                     <textarea cols="30" rows="5" type="text" class="form-control-sm mb-3" name="marching_uniform_notes" value="" placeholder="Marching Uniform Notes"></textarea>
                     <div class="d-flex justify-content-end">
-                        <a href="/students/view/all" class="me-2 btn-sm d-flex align-items-center  text-decoration-none btn-danger">Cancel</a>
-                        <input type='submit' value='Add Student' class="btn-sm d-flex align-items-center  text-decoration-none btn-primary">
+                        <a href="/students/view/all" class="me-2 btn d-flex align-items-center btn-danger">Cancel</a>
+                        <input type='submit' value='Add Student' class="btn d-flex align-items-center btn-primary">
                     </div>
                 </div>
             </div>

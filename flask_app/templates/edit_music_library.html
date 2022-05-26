@@ -64,7 +64,7 @@
     <main>
 
 <!-- title -->
-        <h1 class="m-3 text-center">Edit {{edit.song_title}}</h1>
+        <h1 class="text-light m-3 text-center">Edit {{edit.song_title}}</h1>
 
         {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -80,10 +80,13 @@
         <form class="m-4" action="/library/update" method="post">
             <div class="row d-flex justify-content-center m-4">
                 <div class="col-xs-6 col-sm-6 col-md-5 col-lg-4 mb-5 p-3 me-3 ms-3 card">
+                    <label class="text-light" for="genre">Library Number:</label>
                     <input type="text" class="form-control-sm mb-3" name="number" placeholder="Library Number" value="{{edit.number}}">
+                    <label class="text-light" for="genre">Title:</label>
                     <input type="text" class="form-control-sm mb-3" name="song_title" placeholder="Title" value="{{edit.song_title }}">
+                    <label class="text-light" for="genre">Difficulty Level:</label>
                     <input type="text" class="form-control-sm mb-3" name="difficulty_level" placeholder="Difficulty Level" value="{{edit.difficulty_level}}">
-                    <label for="genre">Style:</label>
+                    <label class="text-light" for="genre">Style:</label>
                     <select class="form-control-sm mb-3" name="genre" id="" placeholder="Style" value="{{edit.genre}}">
                         <option selected value="{{edit.genre}}">{{edit.genre}}</option>
                         <option value="March">March</option>
@@ -92,7 +95,7 @@
                         <option value="Festival">Festival</option>
                         <option value="Marching">Marching</option>
                     </select>
-                    <label for="genre">Ensemble:</label>
+                    <label class="text-light" for="genre">Ensemble:</label>
                     <select class="form-control-sm mb-3" name="ensemble_type" id="" placeholder="Ensemble" value="{{edit.ensemble_type}}">
                         <option selected value="{{edit.ensemble_type}}">{{edit.ensemble_type}}</option>
                         <option value="Concert Band">Concert Band</option>
@@ -105,13 +108,17 @@
 
                 <div class="col-xs-6 col-sm-6 col-md-5 col-lg-4 mb-5 p-3 me-3 ms-3 card">
                     <input type="hidden" class="form-control-sm mb-3" name="id" placeholder="" value="{{edit.id}}">
+                    <label class="text-light" for="genre">Composer First Name:</label>
                     <input type="text" class="form-control-sm mb-3" name="composer_first_name" placeholder="Composer First Name" value="{{edit.composer_first_name}}">
+                    <label class="text-light" for="genre">Composer Last Name:</label>
                     <input type="text" class="form-control-sm mb-3" name="composer_last_name" placeholder="Composer Last Name" value="{{edit.composer_last_name}}">
+                    <label class="text-light" for="genre">Arranger First Name:</label>
                     <input type="text" class="form-control-sm mb-3" name="arranger_first_name" placeholder="Arranger First Name" value="{{edit.arranger_first_name}}">
+                    <label class="text-light" for="genre">Arranger Last Name:</label>
                     <input type="text" class="form-control-sm mb-3" name="arranger_last_name" placeholder="Arranger Last Name" value="{{edit.arranger_last_name}}">
                     <div class="d-flex justify-content-end">
-                        <a href="/library/view/all" class="btn-sm d-flex align-items-center  text-decoration-none btn-danger">Cancel</a>
-                        <input type='submit' value='Update' class="btn-sm d-flex align-items-center  text-decoration-none btn-primary mx-2">
+                        <a href="/library/view/all" class="btn d-flex align-items-center btn-danger">Cancel</a>
+                        <input type='submit' value='Update' class="btn d-flex align-items-center btn-primary mx-2">
                     </div>
                 </div>
 

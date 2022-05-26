@@ -26,7 +26,7 @@
         <div class="form-group text-left p-4">
             <div class="d-flex pb-3">
                 <img id="login" class="me-2 rotate" src="{{ url_for('static', filename='img/login_icon.png') }}">
-                <h1 class="mx-2">Create Account</h1>
+                <h1 class="text-light mx-2">Create Account</h1>
             </div>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -42,7 +42,7 @@
             <input type="text" class="form-control mb-4" name="director_email" aria-describedby="helpId" placeholder="Email Address">
             <input type="password" class="form-control mb-4" name="password" aria-describedby="helpId" placeholder="Password">
             <input type="password" class="form-control" name="confirm" aria-describedby="helpId" placeholder="Confirm Password">
-            <p>Already have an account? <a href="/" class="">Click here to login!</a></p>
+            <p class="text-light">Already have an account? <a href="/" class="">Click here to login!</a></p>
             <input type='submit' value='Register' class="btn d-flex align-items-center  text-decoration-none btn-primary float-end mx-2 mb-2">
             </div>
         </form>

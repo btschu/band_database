@@ -28,7 +28,7 @@
             <div class="d-flex justify-content-between pb-3">
                 <div class= "d-flex">
                     <img id="login" class="me-2 rotate" src="{{ url_for('static', filename='img/login_icon.png') }}">
-                    <h1 class=" mx-2">Sign In</h1>
+                    <h1 class="text-light mx-2">Sign In</h1>
                 </div>
                 <img class="" src="{{ url_for('static', filename='img/music_program_logo.png') }}">
             </div>
@@ -44,7 +44,7 @@
                 <input type="hidden" name="id">
                 <input type="text" class="form-control mb-4" name="director_email" aria-describedby="helpId" placeholder="Email Address">
                 <input type="password" class="form-control" name="password" aria-describedby="helpId" placeholder="Password">
-                <p>Don't have an account? <a href="/registration">Create one here!</a></p>
+                <p class="text-light">Don't have an account? <a href="/registration">Create one here!</a></p>
                 <input type='submit' value='Login' class="btn d-flex align-items-center text-decoration-none btn-primary float-end">
             </div>
         </form>

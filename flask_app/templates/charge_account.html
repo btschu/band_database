@@ -64,7 +64,7 @@
     <main>
 
 <!-- charge account form with validation -->
-        <h1 class="text-center text-decoration-underline mb-3 mt-3">Add Item to {{student.student_full_name()}}'s Account</h1>
+        <h1 class="text-light text-center text-decoration-underline mb-3 mt-3">Add Item to {{student.student_full_name()}}'s Account</h1>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <div class="mt-4 mb-4 col-5 mx-auto alert-danger border rounded border-danger p-2">
@@ -78,18 +78,18 @@
             <div class="row d-flex justify-content-center m-4">
                 <div class=" p-3 me-3 ms-3 card col-xs-12 col-sm-10 col-md-8 col-lg-6 mb-5">
                     <input type="hidden" name="student_id" value="{{student.id}}">
-                    <label for="item_description" class="form-label">Item Description:</label>
+                    <label for="item_description" class="text-light form-label">Item Description:</label>
                     <input type="text" class="form-control-sm mb-3" name="item_description" placeholder="Item Description" value="">
-                    <label for="item_description" class="form-label">Item Cost:</label>
+                    <label for="item_description" class="text-light form-label">Item Cost:</label>
                     <input type="text" class="form-control-sm mb-3" name="item_cost" placeholder="Cost of Item" value="">
-                    <label for="item_description" class="form-label">Payment Amount:</label>
+                    <label for="item_description" class="text-light form-label">Payment Amount:</label>
                     <input type="text" class="form-control-sm mb-3" name="item_payment" placeholder="Payment Amount" value="0">
-                    <label for="item_description" class="form-label">Notes:</label>
+                    <label for="item_description" class="text-light form-label">Notes:</label>
                     <textarea cols="30" rows="5" type="text" class="form-control-sm mb-3" name="item_notes" value="" placeholder="Notes"></textarea>
                     <div class=" d-flex justify-content-end">
-                        <a href="/accounts/view/all" class="btn-sm d-flex align-items-center  text-decoration-none btn-danger me-1">All Accounts</a>
-                        <a href="/account/view/{{student.id}}" class="btn-sm d-flex align-items-center  text-decoration-none btn-danger mx-1 me-1">{{student.student_first_name}}'s' Account</a>
-                        <input type='submit' value="Charge {{student.student_first_name}}" class="btn-sm d-flex align-items-center  text-decoration-none btn-primary mx-1">
+                        <a href="/accounts/view/all" class="btn d-flex align-items-center btn-danger me-1">All Accounts</a>
+                        <a href="/account/view/{{student.id}}" class="btn d-flex align-items-center btn-danger mx-1 me-1">{{student.student_first_name}}'s' Account</a>
+                        <input type='submit' value="Charge {{student.student_first_name}}" class="btn d-flex align-items-center btn-primary mx-1">
                     </div>
                 </div>
             </div>

@@ -64,7 +64,7 @@
     <main>
 
 <!-- title -->
-        <h1 class="m-3 text-center">Add New Title</h1>
+        <h1 class="text-light m-3 text-center">Add New Title</h1>
 
         {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -82,10 +82,13 @@
 
 <!-- first card -->
                 <div class="col-xs-6 col-sm-6 col-md-5 col-lg-4 mb-5 p-3 me-3 ms-3 card">
+                    <!-- <label for="ensemble_type" class="text-light form-label">Library Number:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="number" placeholder="Library Number" value="">
+                    <!-- <label for="ensemble_type" class="text-light form-label">Title:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="song_title" placeholder="Title" value="">
+                    <!-- <label for="ensemble_type" class="text-light form-label">Difficulty Level:</label> -->
                     <input type="text" class="form-control-sm mb-3" name="difficulty_level" placeholder="Difficulty Level" value="">
-                    <label for="genre" class="form-label">Style:</label>
+                    <label for="genre" class="text-light form-label">Style:</label>
                     <select class="form-control-sm mb-3" name="genre" id="" placeholder="Style">
                         <option value=""></option>
                         <option value="March">March</option>
@@ -105,7 +108,7 @@
                         <option value="Bossa">Bossa</option>
                         <option value="Mambo">Mambo</option>
                     </select>
-                    <label for="ensemble_type" class="form-label">Ensemble:</label>
+                    <label for="ensemble_type" class="text-light form-label">Ensemble:</label>
                     <select class="form-control-sm mb-3" name="ensemble_type" id="" placeholder="Ensemble">
                         <option value=""></option>
                         <option value="Concert Band">Concert Band</option>

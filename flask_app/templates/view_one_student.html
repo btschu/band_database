@@ -66,7 +66,7 @@
     <main>
 
 <!-- page title -->
-        <h1 class="text-center mb-3 mt-3">{{edit.student_full_name()}}</h1>
+        <h1 class="text-center mb-3 mt-3 text-light">{{edit.student_full_name()}}</h1>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <div class="mt-4 mb-4 col-6 mx-auto alert-danger border rounded border-danger p-2">
@@ -83,16 +83,16 @@
 
 <!-- Edit student name and instrument info -->
                 <div class="col-xs-6 col-sm-6 col-md-5 col-lg-3 mb-3 p-3 card">
-                    <h3 class="text-center text-decoration-underline mb-3">Name</h3>
+                    <h3 class="text-light text-center text-decoration-underline mb-3">Name</h3>
                     <input type="hidden" name="student_id" value={{edit.id}}>
                     <input type="hidden" name="id" value={{edit.id}}>
-                    <label for="student_first_name" class="form-label">Student First Name:</label>
+                    <label for="student_first_name" class="text-light form-label">Student First Name:</label>
                     <input type="text" class="form-control-sm mb-3" name="student_first_name" value="{{ edit.student_first_name }}">
 
-                    <label for="student_last_name" class="form-label">Student Last Name:</label>
+                    <label for="student_last_name" class="text-light form-label">Student Last Name:</label>
                     <input type="text" class="form-control-sm mb-3" name="student_last_name" value="{{ edit.student_last_name }}">
-                    <h3 class="text-center text-decoration-underline mb-3">Instruments</h3>
-                    <label for="concert_instrument" class="form-label">Concert Instrument:</label>
+                    <h3 class="text-light text-center text-decoration-underline mb-3">Instruments</h3>
+                    <label for="concert_instrument" class="text-light form-label">Concert Instrument:</label>
                     <select class="form-control-sm mb-3" name="concert_instrument" id="">
                         <option selected value="{{edit.concert_instrument}}">{{edit.concert_instrument}}</option>
                         <option value="Piccolo">Piccolo</option>
@@ -112,7 +112,7 @@
                         <option value="Percussion">Percussion</option>
                     </select>
 
-                    <label for="marching_instrument" class="form-label">Marching Instrument:</label>
+                    <label for="marching_instrument" class="text-light form-label">Marching Instrument:</label>
                     <select class="form-control-sm mb-3" name="marching_instrument" id="">
                         <option selected value="{{edit.marching_instrument}}">{{edit.marching_instrument}}</option>
                         <option value="Piccolo">Piccolo</option>
@@ -135,7 +135,7 @@
                         <option value="Drum Major">Drum Major</option>
                     </select>
 
-                    <label for="jazz_instrument" class="form-label">Jazz Instrument:</label>
+                    <label for="jazz_instrument" class="text-light form-label">Jazz Instrument:</label>
                     <select class="form-control-sm mb-3" name="jazz_instrument" id="">
                         <option selected value="{{edit.jazz_instrument}}">{{edit.jazz_instrument}}</option>
                         <option value="Alto Sax">Alto Sax</option>
@@ -149,7 +149,7 @@
                         <option value="Percussion">Percussion</option>
                     </select>
 
-                    <label for="instrument_type" class="form-label">School Instrument:</label>
+                    <label for="instrument_type" class="text-light form-label">School Instrument:</label>
                     <select class="form-control-sm mb-3" name="instrument_type" id="">
                         <option selected value="{{edit.school_instruments.instrument_type}}">{{edit.school_instruments.instrument_type}}</option>
                         <option value="Piccolo">Piccolo</option>
@@ -168,23 +168,23 @@
                         <option value="Tuba">Tuba</option>
                     </select>
 
-                    <label for="instrument_serial_number" class="form-label">School Instrument Serial Number:</label>
+                    <label for="instrument_serial_number" class="text-light form-label">School Instrument Serial Number:</label>
                     <input type="text" class="form-control-sm mb-3" name="instrument_serial_number" value="{{edit.school_instruments.instrument_serial_number}}">
                 </div>
 
 <!-- Edit Concert Uniform info -->
                 <div class="col-xs-6 col-sm-6 col-md-5 col-lg-3 mb-3 p-3 card">
-                    <h3 class="text-center text-decoration-underline mb-3">Concert Uniform</h3>
-                    <label for="tux_coat" class="form-label">Tuxedo Jacket:</label>
+                    <h3 class="text-light text-center text-decoration-underline mb-3">Concert Uniform</h3>
+                    <label for="tux_coat" class="text-light form-label">Tuxedo Jacket:</label>
                     <input type="number" class="form-control-sm mb-3" name="tux_coat" value="{{ edit.concert_uniforms.tux_coat }}">
 
-                    <label for="tux_pants" class="form-label">Tuxedo Pants:</label>
+                    <label for="tux_pants" class="text-light form-label">Tuxedo Pants:</label>
                     <input type="number" class="form-control-sm mb-3" name="tux_pants" value="{{ edit.concert_uniforms.tux_pants }}">
 
-                    <label for="dress" class="form-label">Concert Dress:</label>
+                    <label for="dress" class="text-light form-label">Concert Dress:</label>
                     <input type="number" class="form-control-sm mb-3" name="dress" value="{{ edit.concert_uniforms.dress }}">
 
-                    <label for="concert_uniform_location" class="form-label">Concert Uniform Location:</label>
+                    <label for="concert_uniform_location" class="text-light form-label">Concert Uniform Location:</label>
                     <select class="form-control-sm mb-3" name="concert_uniform_location" id="">
                         <option value="{{edit.concert_uniforms.concert_uniform_location}}">{{edit.concert_uniforms.concert_uniform_location}}</option>
                         <option value="Checked Out">Checked Out</option>
@@ -192,29 +192,29 @@
                         <option value="Partially Checked In">Partially Checked In</option>
                     </select>
 
-                    <label for="concert_uniform_notes" class="form-label">Concert Uniform Notes:</label>
+                    <label for="concert_uniform_notes" class="text-light form-label">Concert Uniform Notes:</label>
                     <textarea cols="30" rows="5" type="text" class="form-control-sm mb-3" name="concert_uniform_notes" value="">{{edit.concert_uniforms.concert_uniform_notes}}</textarea>
                 </div>
 
 <!-- Edit Marching Uniform info -->
                 <div class="col-xs-6 col-sm-6 col-md-5 col-lg-3 mb-3 p-3 card">
-                    <h3 class="text-center text-decoration-underline mb-3">Marching Uniform</h3>
-                    <label for="marching_jacket" class="form-label">Marching Jacket:</label>
+                    <h3 class="text-light text-center text-decoration-underline mb-3">Marching Uniform</h3>
+                    <label for="marching_jacket" class="text-light form-label">Marching Jacket:</label>
                     <input type="number" class="form-control-sm mb-3" name="marching_jacket" value="{{ edit.marching_uniforms.marching_jacket }}">
 
-                    <label for="marching_pants" class="form-label">Marching Pants:</label>
+                    <label for="marching_pants" class="text-light form-label">Marching Pants:</label>
                     <input type="number" class="form-control-sm mb-3" name="marching_pants" value="{{ edit.marching_uniforms.marching_pants }}">
 
-                    <label for="hat" class="form-label">Marching Hat:</label>
+                    <label for="hat" class="text-light form-label">Marching Hat:</label>
                     <input type="number" class="form-control-sm mb-3" name="hat" value="{{ edit.marching_uniforms.hat }}">
 
-                    <label for="gauntlets" class="form-label">Gauntlets:</label>
+                    <label for="gauntlets" class="text-light form-label">Gauntlets:</label>
                     <input type="number" class="form-control-sm mb-3" name="gauntlets" value="{{ edit.marching_uniforms.gauntlets }}">
 
-                    <label for="colorguard_uniform" class="form-label">Colorguard Uniform:</label>
+                    <label for="colorguard_uniform" class="text-light form-label">Colorguard Uniform:</label>
                     <input type="number" class="form-control-sm mb-3" name="colorguard_uniform" value="{{ edit.marching_uniforms.colorguard_uniform }}">
 
-                    <label for="marching_uniform_location" class="form-label">Marching Uniform Location:</label>
+                    <label for="marching_uniform_location" class="text-light form-label">Marching Uniform Location:</label>
                     <select class="form-control-sm mb-3" name="marching_uniform_location" id="">
                         <option value="{{edit.marching_uniforms.marching_uniform_location}}">{{edit.marching_uniforms.marching_uniform_location}}</option>
                         <option value="Checked Out">Checked Out</option>
@@ -222,12 +222,12 @@
                         <option value="Partially Checked In">Partially Checked In</option>
                     </select>
 
-                    <label for="marching_uniform_notes" class="form-label">Marching Uniform Notes:</label>
+                    <label for="marching_uniform_notes" class="text-light form-label">Marching Uniform Notes:</label>
                     <textarea cols="30" rows="5" type="text" class="form-control-sm mb-3" name="marching_uniform_notes" value="">{{edit.marching_uniforms.marching_uniform_notes}}</textarea>
 
                     <div class="d-flex justify-content-end ">
-                        <a href="/students/view/all" class="me-2 btn-sm d-flex text-decoration-none btn-danger">Cancel</a>
-                        <input type='submit' value='Update' class="btn-sm text-decoration-none btn-primary"><br>
+                        <a href="/students/view/all" class="me-2 btn d-flex btn-danger">Cancel</a>
+                        <input type='submit' value='Update' class="btn btn-primary"><br>
                     </div>
                 </div>
             </div>
